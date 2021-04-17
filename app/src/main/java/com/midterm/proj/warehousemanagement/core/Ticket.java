@@ -9,16 +9,16 @@ public class Ticket {
     private String sID;
     private String sDate;
     private String sCalcUnit;
-    private int iQuantum;
+    private int iNumber;
     private Product product;
 
 
     public Ticket(){}
 
     // for importing products
-    public Ticket(Product product, int iQuantum, String sCalcUnit){
+    public Ticket(Product product, int iNumber, String sCalcUnit){
         this.product = product;
-        this.iQuantum = iQuantum;
+        this.iNumber = iNumber;
         this.sCalcUnit = sCalcUnit;
         this.sID = generateTicketID();
 
@@ -28,8 +28,8 @@ public class Ticket {
     }
 
     // for exporting products
-    public Ticket(int iQuantum, String sCalcUnit){
-        this.iQuantum = iQuantum;
+    public Ticket(int iNumber, String sCalcUnit){
+        this.iNumber = iNumber;
         this.sCalcUnit = sCalcUnit;
         this.sID = generateTicketID();
 
@@ -66,12 +66,12 @@ public class Ticket {
         this.sCalcUnit = sCalcUnit;
     }
 
-    public int getiQuantum() {
-        return iQuantum;
+    public int getiNumber() {
+        return iNumber;
     }
 
-    public void setiQuantum(int iQuantum) {
-        this.iQuantum = iQuantum;
+    public void setiNumber(int iNumber) {
+        this.iNumber = iNumber;
     }
 
     public Product getProduct() {

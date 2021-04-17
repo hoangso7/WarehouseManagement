@@ -1,26 +1,26 @@
 package com.midterm.proj.warehousemanagement.core;
 
 public class ExportTicket extends Ticket{
-    private static int number = 0;
+    private static int index = 0;
     private String sCustomer;
     private String exportedProductName;
     public void increaseTicketID(){
-        number++;
+        index++;
     }
 
-    public static int getNumber() {
-        return number;
+    public static int getIndex() {
+        return index;
     }
 
-    public ExportTicket(Product product, int iQuantum, String sCalcUnit, String sCustomer) {
-        super(iQuantum, sCalcUnit);
+    public ExportTicket(Product product, int iNumber, String sCalcUnit, String sCustomer) {
+        super(iNumber, sCalcUnit);
         this.sCustomer = sCustomer;
         this.exportedProductName = product.getsName();
     }
     @Override
     String generateTicketID() {
         increaseTicketID();
-        return "OUT-"+getNumber();
+        return "OUT-"+ getIndex();
     }
 
     public String getsCustomer() {

@@ -1,23 +1,23 @@
 package com.midterm.proj.warehousemanagement.core;
 
 public class ImportTicket extends Ticket{
-    private static int number = 0;
+    private static int index = 0;
 
     public void increaseTicketID(){
-        number++;
+        index++;
     }
 
-    public static int getNumber() {
-        return number;
+    public static int getIndex() {
+        return index;
     }
 
-    public ImportTicket(Product product, int iQuantum, String sCalcUnit) {
-        super(product, iQuantum, sCalcUnit);
+    public ImportTicket(Product product, int iNumber, String sCalcUnit) {
+        super(product, iNumber, sCalcUnit);
     }
 
     @Override
     String generateTicketID() {
         increaseTicketID();
-        return "IN-"+String.valueOf(getNumber());
+        return "IN-"+getIndex();
     }
 }

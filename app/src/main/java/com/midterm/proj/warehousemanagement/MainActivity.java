@@ -46,6 +46,6 @@ public class MainActivity extends AppCompatActivity {
         ExportTicket exportTicket = new ExportTicket(product2, 155, "Thùng", "anh Hoàng, đường số 2 quận 9");
         warehouse.exportFromStock(exportTicket);
 
-        databaseReference.child(warehouse.getsID() +" : "+warehouse.getsName()).setValue(warehouse);
+        databaseReference.child(warehouse.getsID()).setValue(warehouse);
     }
 }

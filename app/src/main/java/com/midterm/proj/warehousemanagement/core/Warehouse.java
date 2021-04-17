@@ -23,16 +23,16 @@ public class Warehouse {
 
     public void importToStock(ImportTicket ticket){
         importTickets.add(ticket);
-        Product importProduct = ticket.getProduct();
-        int iQuantum = ticket.getiQuantum();
+        Product importProduct   = ticket.getProduct();
+        int iNumber            = ticket.getiNumber();
         // Check product already in stock
         if(inStock.containsKey(importProduct.getsName())){
             // Add more quantum
-            inStock.put(importProduct.getsName(), inStock.get(importProduct.getsName()) + iQuantum) ;
+            inStock.put(importProduct.getsName(), inStock.get(importProduct.getsName()) + iNumber) ;
         }
         else{
             // Else, put new product to stock
-            inStock.put(importProduct.getsName(), iQuantum);
+            inStock.put(importProduct.getsName(), iNumber);
         }
     }
 
@@ -41,14 +41,14 @@ public class Warehouse {
         String sProductName = "";
 
         try{
-            int iQuantum            = ticket.getiQuantum();
+            int iNumber            = ticket.getiNumber();
             sProductName            = ticket.getExportedProductName();
 
             if(inStock.containsKey(sProductName)){
                 int iProductsQuantumAvailable = inStock.get(sProductName);
                 // Check product enough to be export
-                if (iProductsQuantumAvailable >= iQuantum) {
-                    inStock.put(sProductName, inStock.get(sProductName) - iQuantum);
+                if (iProductsQuantumAvailable >= iNumber) {
+                    inStock.put(sProductName, inStock.get(sProductName) - iNumber);
                     exportTickets.add(ticket);
                     status = true;
                 }
