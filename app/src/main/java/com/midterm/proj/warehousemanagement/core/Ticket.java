@@ -15,8 +15,20 @@ public class Ticket {
 
     public Ticket(){}
 
+    // for importing products
     public Ticket(Product product, int iQuantum, String sCalcUnit){
         this.product = product;
+        this.iQuantum = iQuantum;
+        this.sCalcUnit = sCalcUnit;
+        this.sID = generateTicketID();
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        this.sDate = dateFormat.format(date);
+    }
+
+    // for exporting products
+    public Ticket(int iQuantum, String sCalcUnit){
         this.iQuantum = iQuantum;
         this.sCalcUnit = sCalcUnit;
         this.sID = generateTicketID();

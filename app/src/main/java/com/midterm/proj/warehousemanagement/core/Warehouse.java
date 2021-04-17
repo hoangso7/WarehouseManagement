@@ -41,15 +41,14 @@ public class Warehouse {
         String sProductName = "";
 
         try{
-            Product exportProduct   = ticket.getProduct();
             int iQuantum            = ticket.getiQuantum();
-            sProductName            = exportProduct.getsName();
+            sProductName            = ticket.getExportedProductName();
 
             if(inStock.containsKey(sProductName)){
                 int iProductsQuantumAvailable = inStock.get(sProductName);
                 // Check product enough to be export
                 if (iProductsQuantumAvailable >= iQuantum) {
-                    inStock.put(exportProduct.getsName(), inStock.get(sProductName) - iQuantum);
+                    inStock.put(sProductName, inStock.get(sProductName) - iQuantum);
                     exportTickets.add(ticket);
                     status = true;
                 }
