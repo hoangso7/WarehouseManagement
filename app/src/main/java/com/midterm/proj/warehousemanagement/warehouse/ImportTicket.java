@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.core;
+package com.midterm.proj.warehousemanagement.warehouse;
 
 public class ImportTicket extends Ticket{
     private static int index = 0;

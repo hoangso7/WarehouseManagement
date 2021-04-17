@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.core;
+package com.midterm.proj.warehousemanagement.warehouse;
 
 public class Product {
     private String sID;

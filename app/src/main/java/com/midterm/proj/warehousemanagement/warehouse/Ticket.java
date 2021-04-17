@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.core;
+package com.midterm.proj.warehousemanagement.warehouse;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
