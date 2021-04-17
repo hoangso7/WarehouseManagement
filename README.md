@@ -1,5 +1,6 @@
 # WarehouseManagement
 BÀI TẬP LỚN GIỮA KÌ - ANDROID D17AT01-N
+```json
 {
   "warehouse" : {
     "K1 : Thủ Đức" : {
@@ -56,4 +57,4 @@ BÀI TẬP LỚN GIỮA KÌ - ANDROID D17AT01-N
     }
   }
 }
-
+```
