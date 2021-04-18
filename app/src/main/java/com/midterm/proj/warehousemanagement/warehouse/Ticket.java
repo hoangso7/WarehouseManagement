@@ -11,7 +11,7 @@ public class Ticket {
     private String sCalcUnit;
     private int iNumber;
     private Product product;
-
+    private Date date;
 
     public Ticket(){}
 
@@ -22,9 +22,9 @@ public class Ticket {
         this.sCalcUnit = sCalcUnit;
         this.sID = generateTicketID();
 
-        Date date = Calendar.getInstance().getTime();
+        this.date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-        this.sDate = dateFormat.format(date);
+        this.sDate = dateFormat.format(this.date);
     }
 
     // for exporting products
@@ -82,4 +82,11 @@ public class Ticket {
         this.product = product;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

@@ -4,12 +4,21 @@ public class ExportTicket extends Ticket{
     private static int index = 0;
     private String sCustomer;
     private String exportedProductName;
+
+    public ExportTicket() {
+
+    }
+
     public void increaseTicketID(){
         index++;
     }
 
     public static int getIndex() {
         return index;
+    }
+
+    public ExportTicket(Ticket t){
+
     }
 
     public ExportTicket(Product product, int iNumber, String sCalcUnit, String sCustomer) {

@@ -1,13 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textview_import_ticket"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="QUẢN LÝ KHO"
         android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="#ccc"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_warehouse"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textSize="20sp"
+            />
+
+        <Spinner
+            android:id="@+id/spiner_choose_warehouse_mngmt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:isScrollContainer="true"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Mã kho:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="monospace"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/textview_warehouseID_mngmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_grey_900"
+                android:fontFamily="monospace"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Tên:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="monospace"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/textview_warehouseName_mngmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_grey_900"
+                android:fontFamily="monospace"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="monospace"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/textview_warehouseAddress_mngmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue_grey_900"
+                android:fontFamily="monospace"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+
+    <ListView
+        android:layout_margin="10dp"
+        android:id="@+id/lv_ticketLists"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+
+</LinearLayout>
