@@ -8,4 +8,7 @@
     android:ellipsize="marquee"
     android:fontFamily="monospace"
     android:textSize="20sp"
+    android:padding="8dp"
+    android:background="@drawable/triangle"
+
     android:textAlignment="inherit"/>

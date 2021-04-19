@@ -182,10 +182,8 @@ public class WarehouseManagementFragment extends Fragment {
                     else
                     {
                         return 1;
-
                     }
                 } catch (ParseException e) {
-
                     e.printStackTrace();
                 }
                 return 0;
