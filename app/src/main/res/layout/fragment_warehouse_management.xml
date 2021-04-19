@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/textview_import_ticket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,7 +125,18 @@
         android:layout_margin="10dp"
         android:id="@+id/lv_ticketLists"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
     />
+
+    <ToggleButton
+        android:id="@+id/tgbtn_ticket_type_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff=" Phiếu nhập kho "
+        android:textOn=" Phiếu xuất kho "
+        android:checked="true"
+        android:layout_gravity="center"
+        android:background="@color/import_ticket"
+        />
 
 </LinearLayout>

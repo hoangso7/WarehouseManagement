@@ -3,10 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="#A2DDA4">
 
-
+    <TextView
+        android:id="@+id/textview_import_ticket_create_time"
+        android:layout_width="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">

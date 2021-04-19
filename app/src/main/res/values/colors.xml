@@ -10,4 +10,7 @@
     <color name="blue_grey_500">#607D8B</color>
     <color name="blue_grey_700">#455A64</color>
     <color name="blue_grey_900">#263238</color>
+    <color name="import_ticket">#E0857E</color>
+    <color name="export_ticket">#A2DDA4</color>
+
 </resources>

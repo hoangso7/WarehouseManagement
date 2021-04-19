@@ -5,8 +5,12 @@ public class ExportTicket extends Ticket{
     private String sCustomer;
     private String exportedProductName;
 
-    public ExportTicket() {
-
+    public ExportTicket() {}
+    public ExportTicket(ExportTicket copyTicket){
+        super(copyTicket);
+        this.index = copyTicket.getIndex();
+        this.sCustomer = copyTicket.getsCustomer();
+        this.exportedProductName = copyTicket.getExportedProductName();
     }
 
     public void increaseTicketID(){

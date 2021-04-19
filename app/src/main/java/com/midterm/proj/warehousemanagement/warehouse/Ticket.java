@@ -15,6 +15,15 @@ public class Ticket {
 
     public Ticket(){}
 
+    public Ticket(Ticket copyTicket){
+        this.sID = copyTicket.getsID();
+        this.sDate = copyTicket.getsDate();
+        this.sCalcUnit = copyTicket.getsCalcUnit();
+        this.iNumber = copyTicket.getiNumber();
+        this.product = copyTicket.getProduct();
+        this.date = copyTicket.getDate();
+    }
+
     // for importing products
     public Ticket(Product product, int iNumber, String sCalcUnit){
         this.product = product;
@@ -23,7 +32,7 @@ public class Ticket {
         this.sID = generateTicketID();
 
         this.date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         this.sDate = dateFormat.format(this.date);
     }
 
@@ -34,7 +43,7 @@ public class Ticket {
         this.sID = generateTicketID();
 
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         this.sDate = dateFormat.format(date);
     }
 

@@ -7,8 +7,17 @@ public class ImportTicket extends Ticket{
 
     }
 
+    public ImportTicket(ImportTicket copy){
+        super(copy);
+        this.index = copy.getIndex();
+    }
+
     public void increaseTicketID(){
         index++;
+    }
+
+    public static void setIndex(int index) {
+        ImportTicket.index = index;
     }
 
     public static int getIndex() {
@@ -24,4 +33,5 @@ public class ImportTicket extends Ticket{
         increaseTicketID();
         return "IN-"+getIndex();
     }
+
 }

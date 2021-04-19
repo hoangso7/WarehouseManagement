@@ -44,6 +44,8 @@ public class TicketInfoAdapter extends ArrayAdapter {
 
         TextView name = listItem.findViewById(R.id.textview_ticket_info);
         name.setText(info);
+        TextView time = listItem.findViewById(R.id.textview_import_ticket_create_time);
+        time.setText(currentTicket.getsDate());
         return listItem;
     }
 }
