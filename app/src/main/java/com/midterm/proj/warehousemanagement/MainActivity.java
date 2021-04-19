@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.fragment.AddExportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddImportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddProductFragment;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDatabase() {
         //sqlDatabase = new SQLiteDatabaseHelper(this);
+        SqliteDatabaseHelper db = new SqliteDatabaseHelper(this);
         createTestData();
         //sqlDatabase.insertWarehouse(warehouses.get(0));
     }

@@ -66,4 +66,5 @@ public class CreateTable {
             +Constants.CUSTOMER_NAME+" TEXT NOT NULL, "
             +Constants.CUSTOMER_ADDRESS+" TEXT , "
             +")";
+
 }
