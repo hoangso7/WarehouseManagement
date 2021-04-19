@@ -1,21 +1,15 @@
 package com.midterm.proj.warehousemanagement;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.midterm.proj.warehousemanagement.database.SQLiteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.fragment.AddExportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddImportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddProductFragment;
@@ -23,22 +17,15 @@ import com.midterm.proj.warehousemanagement.fragment.WarehouseManagementFragment
 import com.midterm.proj.warehousemanagement.warehouse.ExportTicket;
 import com.midterm.proj.warehousemanagement.warehouse.ImportTicket;
 import com.midterm.proj.warehousemanagement.warehouse.Product;
-import com.midterm.proj.warehousemanagement.warehouse.Ticket;
 import com.midterm.proj.warehousemanagement.warehouse.TicketInfoAdapter;
 import com.midterm.proj.warehousemanagement.warehouse.Warehouse;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBar toolbar;
-    SQLiteDatabaseHelper sqlDatabase;
+    //SQLiteDatabaseHelper sqlDatabase;
     public static List<Warehouse> warehouses = new ArrayList<>();
     BottomNavigationView bottomNavigationView;
     private ListView listView;
