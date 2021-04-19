@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:hint="Nhập mã hàng"
+            android:hint="Nhập tên hàng"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="18dp" />
@@ -198,7 +198,7 @@
             android:layout_height="wrap_content"
 
             android:layout_marginLeft="26dp"
-            android:hint="Nhập mã hàng"
+            android:hint="Nhập đơn vị"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="18dp" />
@@ -224,7 +224,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:hint="Nhập mã hàng"
+            android:hint="Nhập số lượng"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="18dp" />
