@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="#16a085"
         android:padding="10dp"
-        android:text="Quản Lý Kho - Nhóm 2"
+        android:text="Quản Lý Kho"
         android:textColor="#fff"
         android:textSize="22dp" />
 
@@ -125,11 +125,12 @@
         android:layout_marginTop="10dp"
         android:background="@android:color/darker_gray" />
 
-        <ListView
-            android:id="@+id/lv_ticketLists"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:layout_margin="10dp" />
+    <ListView
+        android:id="@+id/lv_ticketLists"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_margin="10dp" />
+
     <ToggleButton
         android:id="@+id/tgbtn_ticket_type_switch"
         android:layout_width="wrap_content"
@@ -139,9 +140,9 @@
         android:checked="true"
         android:padding="8dp"
         android:textColor="#fff"
-        android:textSize="16dp"
-        android:textStyle="normal"
         android:textOff=" Phiếu nhập kho "
-        android:textOn=" Phiếu xuất kho " />
+        android:textOn=" Phiếu xuất kho "
+        android:textSize="16dp"
+        android:textStyle="normal" />
 
 </LinearLayout>
