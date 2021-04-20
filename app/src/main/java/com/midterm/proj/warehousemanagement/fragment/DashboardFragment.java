@@ -1,18 +1,28 @@
 package com.midterm.proj.warehousemanagement.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
 
 public class DashboardFragment extends Fragment {
-
+    Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
+    private FragmentActivity myContext;
+    LinearLayout dashboardMenu;
+    private FragmentManager fragmentManager;
+    int hidden_dashboard_status = 0;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -26,9 +36,35 @@ public class DashboardFragment extends Fragment {
         setEvent();
     }
 
-    private void setEvent() {
+    @Override
+    public void onAttach(@NonNull Context context) {
+        myContext=(FragmentActivity) context;
+        super.onAttach(context);
     }
 
     private void setControl() {
+        btn_instock = getView().findViewById(R.id.btn_instock);
+        btn_tickets_list = getView().findViewById(R.id.btn_tickets_list);
+        btn_warehouse_management = getView().findViewById(R.id.btn_warehouse_management);
+        btn_employee_info = getView().findViewById(R.id.btn_employee_info);
+        btn_customer_info = getView().findViewById(R.id.btn_customer_info);
+        btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
+        dashboardMenu = getView().findViewById(R.id.dashboard_menu);
+        fragmentManager = myContext.getSupportFragmentManager();
+    }
+
+    private void setEvent() {
+        btn_tickets_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dashboardMenu.setVisibility(View.INVISIBLE);
+                hidden_dashboard_status = 1;
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.fragment_dashboard_container, new TicketsListFragment());
+                //fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
     }
 }

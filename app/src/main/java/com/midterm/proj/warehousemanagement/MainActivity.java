@@ -15,7 +15,7 @@ import com.midterm.proj.warehousemanagement.fragment.AddExportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddImportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddProductFragment;
 import com.midterm.proj.warehousemanagement.fragment.DashboardFragment;
-import com.midterm.proj.warehousemanagement.fragment.WarehouseManagementFragment;
+import com.midterm.proj.warehousemanagement.fragment.TicketsListFragment;
 import com.midterm.proj.warehousemanagement.warehouse.ExportTicket;
 import com.midterm.proj.warehousemanagement.warehouse.ImportTicket;
 import com.midterm.proj.warehousemanagement.warehouse.Product;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private void setControl() {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setItemIconTintList(null);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WarehouseManagementFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
 
     }
 
@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
                     return true;
                 }
             };

@@ -34,7 +34,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-public class WarehouseManagementFragment extends Fragment {
+public class TicketsListFragment extends Fragment {
     private TextView txt;
     private ListView listView;
     private TicketInfoAdapter ticketInfoAdapter;

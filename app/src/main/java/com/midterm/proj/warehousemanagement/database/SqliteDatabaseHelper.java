@@ -1,26 +1,26 @@
 package com.midterm.proj.warehousemanagement.database;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.midterm.proj.warehousemanagement.constant.CreateTable;
 import com.midterm.proj.warehousemanagement.constant.DropTable;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 public class SqliteDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "WarehouseDB";
     private static final int DATABASE_VERSION = 1;
     private static SqliteDatabaseHelper databaseHelper;
 
-    public SqliteDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public SqliteDatabaseHelper() {
+        super(MyApp.context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static SqliteDatabaseHelper getInstance(Context context ) {
+    public static SqliteDatabaseHelper getInstance() {
         if (databaseHelper == null) {
             synchronized (SqliteDatabaseHelper.class){ //thread safe singleton
                 if (databaseHelper == null)
-                    databaseHelper = new SqliteDatabaseHelper(context);
+                    databaseHelper = new SqliteDatabaseHelper();
             }
         }
         return databaseHelper;

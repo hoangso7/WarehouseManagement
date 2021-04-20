@@ -1,22 +1,22 @@
 package com.midterm.proj.warehousemanagement.model;
 
-public class Employee {
-    private int ID_Employee;    // primary key
+public class Customer {
+    private int customerID;
     private String name;
     private String phone;
 
-    public Employee(int ID_Employee, String name, String phone) {
-        this.ID_Employee = ID_Employee;
+    public Customer(int customerID, String name, String phone) {
+        this.customerID = customerID;
         this.name = name;
         this.phone = phone;
     }
 
-    public int getID_Employee() {
-        return ID_Employee;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setID_Employee(int ID_Employee) {
-        this.ID_Employee = ID_Employee;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public String getName() {
@@ -34,6 +34,4 @@ public class Employee {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-
 }
