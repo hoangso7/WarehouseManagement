@@ -14,6 +14,7 @@ import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.fragment.AddExportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddImportTicketFragment;
 import com.midterm.proj.warehousemanagement.fragment.AddProductFragment;
+import com.midterm.proj.warehousemanagement.fragment.DashboardFragment;
 import com.midterm.proj.warehousemanagement.fragment.WarehouseManagementFragment;
 import com.midterm.proj.warehousemanagement.warehouse.ExportTicket;
 import com.midterm.proj.warehousemanagement.warehouse.ImportTicket;
@@ -61,14 +62,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+    private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()){
                         case R.id.item_warehouses_management:
-                            selectedFragment = new WarehouseManagementFragment();
+                            selectedFragment = new DashboardFragment();
                             break;
                         case R.id.item_import_ticket:
                             selectedFragment = new AddImportTicketFragment();

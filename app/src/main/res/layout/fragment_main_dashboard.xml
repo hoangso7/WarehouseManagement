@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_instock"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="HÀNG TRONG KHO"
+        android:backgroundTint="#009688"
+        android:textColor="#000"
+        />
+    <Button
+        android:id="@+id/btn_tickets_list"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="PHIẾU NHẬP/XUẤT KHO"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#000"
+        />
+    <Button
+        android:id="@+id/btn_warehouse_management"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="QUẢN LÝ KHO"
+        android:backgroundTint="#8BC34A"
+        android:textColor="#000"
+        />
+    <Button
+        android:id="@+id/btn_employee_info"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="QUẢN LÝ NHÂN VIÊN"
+        android:backgroundTint="#CDDC39"
+        android:textColor="#000"
+        />
+    <Button
+        android:id="@+id/btn_customer_info"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="THÔNG TIN KHÁCH HÀNG"
+        android:backgroundTint="#FFC107"
+        android:textColor="#000"
+        />
+    <Button
+        android:id="@+id/btn_supplier_info"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="THÔNG TIN NHÀ CUNG CẤP"
+        android:backgroundTint="#FF9800"
+        android:textColor="#000"
+        />
+
+</LinearLayout>

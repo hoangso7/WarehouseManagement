@@ -8,8 +8,8 @@ public class CreateTable {
             +Constants.IMPORT_TICKET_CREATION_DATE + "TEXT NOT NULL, "
             +Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS + "INTEGER NOT NULL, "
             +"PRIMARY KEY("+Constants._EMPLOYEE_ID+","+Constants._WAREHOUSE_ID+"), "
-            +"FOREIGN KEY (" + Constants.IMPORT_TICKET_PRODUCTS_ID_FK + ") REFERENCES " + Constants.PRODUCT_TABLE + "(" + Constants._PRODUCT_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
-            +"FOREIGN KEY (" + Constants.IMPORT_TICKET_SUPPLIER_ID_FK + ") REFERENCES " + Constants.SUPPLIER_TABLE + "(" + Constants._SUPPLIER_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
+            +"FOREIGN KEY (" + Constants.IMPORT_TICKET_PRODUCTS_ID_FK + ") REFERENCES " + Constants.PRODUCT_TABLE + "(" + Constants._PRODUCT_ID + ") ON UPDATE CASCADE, "
+            +"FOREIGN KEY (" + Constants.IMPORT_TICKET_SUPPLIER_ID_FK + ") REFERENCES " + Constants.SUPPLIER_TABLE + "(" + Constants._SUPPLIER_ID + ") ON UPDATE CASCADE, "
             +")";
 
     public static String CREATE_SUPPLIER_TABLE =
@@ -46,9 +46,9 @@ public class CreateTable {
             "CREATE TABLE " + Constants.EXPORT_TICKET_TABLE + "("
             +Constants._EXPORT_TICKET_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "
             +Constants.EXPORT_TICKET_CREATION_DATE+" TEXT NOT NULL, "
-            +"FOREIGN KEY (" + Constants.EMPLOYEE_ID_FK + ") REFERENCES " + Constants.EMPLOYEE_TABLE + "(" + Constants.__EMPLOYEE_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
-            +"FOREIGN KEY (" + Constants.CUSTOMER_ID_FK + ") REFERENCES " + Constants.CUSTOMER_TABLE + "(" + Constants.CUSTOMER_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
-            +"FOREIGN KEY (" + Constants.WAREHOUSE_ID_FK + ") REFERENCES " + Constants.WAREHOUSE_TABLE + "(" + Constants._WAREHOUSE_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, "
+            +"FOREIGN KEY (" + Constants.EMPLOYEE_ID_FK + ") REFERENCES " + Constants.EMPLOYEE_TABLE + "(" + Constants.__EMPLOYEE_ID + ") ON UPDATE CASCADE, "
+            +"FOREIGN KEY (" + Constants.CUSTOMER_ID_FK + ") REFERENCES " + Constants.CUSTOMER_TABLE + "(" + Constants.CUSTOMER_ID + ") ON UPDATE CASCADE, "
+            +"FOREIGN KEY (" + Constants.WAREHOUSE_ID_FK + ") REFERENCES " + Constants.WAREHOUSE_TABLE + "(" + Constants._WAREHOUSE_ID + ") ON UPDATE CASCADE, "
             +")";
 
     public static String CREATE_EXPORT_TICKET_DETAIL_TABLE =
