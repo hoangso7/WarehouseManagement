@@ -44,6 +44,7 @@ public class DAO {
         void readAllWarehouse(QueryResponse<List<Warehouse>> response);
         void updateWarehouse(Warehouse warehouse, QueryResponse<Boolean> response);
         void deleteWarehouse(int WarehouseID, QueryResponse<Boolean> response);
+        void anyWarehouseCreated(QueryResponse<Boolean> response);
 
     }
 

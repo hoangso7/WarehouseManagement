@@ -1,5 +1,6 @@
 package com.midterm.proj.warehousemanagement.features.warehouse.manager;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.DAO.DAO;
 import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseFragment;
+import com.midterm.proj.warehousemanagement.features.warehouse.show.ShowWarehouseFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
@@ -21,6 +27,8 @@ import java.util.List;
 
 public class WarehouseManagerFragment extends Fragment {
     private static int numOfWarehouse;
+    private FragmentManager fragmentManager;
+    private FragmentActivity myContext;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,24 +38,32 @@ public class WarehouseManagerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setControl();
     }
 
-    private boolean oneWarehouseCreated() {
-        DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
-        final boolean[] isWarehouseCreated = {false};
-        warehouseQuery.readAllWarehouse(new QueryResponse<List<Warehouse>>() {
-            @Override
-            public void onSuccess(List<Warehouse> data) {
-                ArrayList<Warehouse> warehouses = new ArrayList<>(data);
-                numOfWarehouse = warehouses.size();
-                isWarehouseCreated[0] = warehouses.isEmpty();
-            }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        myContext = (FragmentActivity) context;
+        super.onAttach(context);
+    }
 
+    private void setControl() {
+        fragmentManager = myContext.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
+        warehouseQuery.anyWarehouseCreated(new QueryResponse<Boolean>() {
+            @Override
+            public void onSuccess(Boolean data) {
+                fragmentTransaction.add(R.id.framelayout_warehouse_manager_container, new CreateWarehouseFragment());
+                fragmentTransaction.addToBackStack(null);
+            }
             @Override
             public void onFailure(String message) {
-                Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+                fragmentTransaction.add(R.id.framelayout_warehouse_manager_container, new ShowWarehouseFragment());
             }
         });
-        return isWarehouseCreated[0];
+        fragmentTransaction.commit();
     }
+
+
 }

@@ -27,7 +27,7 @@ public class CustomerQuery implements DAO.CustomerQuery {
                 response.onSuccess(true);
                 customer.setCustomerID((int) id);
             } else
-                response.onFailure("Failed to create customer. Unknown Reason!");
+                response.onFailure("Không tạo được khách hàng mới.");
         } catch (SQLiteException e) {
             response.onFailure(e.getMessage());
         }
@@ -49,7 +49,7 @@ public class CustomerQuery implements DAO.CustomerQuery {
                 response.onSuccess(customer);
             }
             else
-                response.onFailure("Customer not found with this ID in database");
+                response.onFailure("Không thể tìm thấy khách hàng với ID được cung cấp");
 
         } catch (Exception e){
             response.onFailure(e.getMessage());
@@ -76,7 +76,7 @@ public class CustomerQuery implements DAO.CustomerQuery {
 
                 response.onSuccess(customerList);
             } else
-                response.onFailure("There are no customer in database");
+                response.onFailure("Không có khách hàng nào trong database");
         }catch (Exception e){
             response.onFailure(e.getMessage());
         } finally {

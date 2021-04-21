@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.DAO.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
             if (id > 0) {
                 response.onSuccess(true);
                 warehouse.setID_Warehouse((int) id);
+                Toast.makeText(MyApp.context, "Tạo kho thành công. Mã kho: "+warehouse.getID_Warehouse(), Toast.LENGTH_LONG).show();
             } else
                 response.onFailure("Failed to create warehouse. Unknown Reason!");
         } catch (SQLiteException e) {
@@ -91,6 +94,23 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
             sqLiteDatabase.close();
             if(cursor!=null)
                 cursor.close();
+        }
+    }
+
+    @Override
+    public void anyWarehouseCreated(QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+        boolean empty = true;
+        Cursor cur = sqLiteDatabase.rawQuery("SELECT COUNT(*) FROM "+Constants.WAREHOUSE_TABLE, null);
+        if (cur != null && cur.moveToFirst()) {
+            empty = (cur.getInt (0) == 0);
+        }
+        cur.close();
+
+        if(empty){
+            response.onSuccess(empty);
+        }else{
+            response.onFailure("No Warehouse created");
         }
     }
 

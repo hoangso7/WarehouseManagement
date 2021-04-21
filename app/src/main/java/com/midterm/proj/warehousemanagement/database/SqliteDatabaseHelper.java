@@ -2,27 +2,32 @@ package com.midterm.proj.warehousemanagement.database;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.midterm.proj.warehousemanagement.constant.CreateTable;
 import com.midterm.proj.warehousemanagement.constant.DropTable;
 import com.midterm.proj.warehousemanagement.util.MyApp;
 
+import java.util.logging.Logger;
+
 public class SqliteDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "WarehouseDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static SqliteDatabaseHelper databaseHelper;
 
-    public SqliteDatabaseHelper() {
+    private SqliteDatabaseHelper() {
         super(MyApp.context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     public static SqliteDatabaseHelper getInstance() {
+
         if (databaseHelper == null) {
             synchronized (SqliteDatabaseHelper.class){ //thread safe singleton
                 if (databaseHelper == null)
                     databaseHelper = new SqliteDatabaseHelper();
             }
         }
+
         return databaseHelper;
     }
 
@@ -36,6 +41,7 @@ public class SqliteDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTable.CREATE_IMPORT_TICKET_TABLE);
         db.execSQL(CreateTable.CREATE_EXPORT_TICKET_TABLE);
         db.execSQL(CreateTable.CREATE_EXPORT_TICKET_DETAIL_TABLE);
+        Log.d("DEBUG-MSG", "CREATE DATABASE SUCCESSFULLY");
     }
 
     @Override
@@ -48,5 +54,7 @@ public class SqliteDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(DropTable.DROP_PRODUCT_TABLE);
         db.execSQL(DropTable.DROP_SUPPLIER_TABLE);
         db.execSQL(DropTable.DROP_WAREHOUSE_TABLE);
+        onCreate(db);
+        Log.d("DEBUG-MSG", "DROP DATABASE SUCCESSFULLY");
     }
 }

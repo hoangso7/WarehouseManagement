@@ -5,7 +5,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -35,8 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDatabase() {
-        SqliteDatabaseHelper db = new SqliteDatabaseHelper();
+//        SqliteDatabaseHelper db = new SqliteDatabaseHelper();
         createSqlFakeData();
+        SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
+        String dbName = databaseHelper.getDatabaseName();
+        Log.d("DATABASE NAME", dbName);
         //createTestData();
     }
 
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setItemIconTintList(null);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
-
+        //SqliteDatabaseHelper sqliteDatabaseHelper = new SQLiteDatabase();
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -58,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()){
                         case R.id.item_warehouses_management:
-                            //selectedFragment = new DashboardFragment();
+                            selectedFragment = new DashboardFragment();
                             break;
                         case R.id.item_import_ticket:
                             //selectedFragment = new AddImportTicketFragment();

@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
+import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
 
 public class DashboardFragment extends Fragment {
     Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
@@ -54,14 +55,14 @@ public class DashboardFragment extends Fragment {
     }
 
     private void setEvent() {
-        btn_tickets_list.setOnClickListener(new View.OnClickListener() {
+        btn_warehouse_management.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 hidden_dashboard_status = 1;
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                //fragmentTransaction.add(R.id.fragment_dashboard_container, new TicketsListFragment());
-                //fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.add(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
