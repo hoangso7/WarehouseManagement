@@ -64,7 +64,7 @@ public class CreateTable {
             "CREATE TABLE " + Constants.CUSTOMER_TABLE + "("
             +Constants.CUSTOMER_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT, "
             +Constants.CUSTOMER_NAME+" TEXT NOT NULL, "
-            +Constants.CUSTOMER_ADDRESS+" TEXT , "
+            +Constants.CUSTOMER_PHONE+" TEXT , "
             +")";
 
 }

@@ -1,5 +1,6 @@
-package com.midterm.proj.warehousemanagement.database;
+package com.midterm.proj.warehousemanagement.database.DAO;
 
+import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.model.Customer;
 import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.model.ExportTicket;
@@ -11,7 +12,8 @@ import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.List;
 
-public class QueryContract {
+public class DataAccessObject {
+
     public interface EmployeeQuery{
         void createEmployee(Employee employee, QueryResponse<Boolean> response);
         void readEmployee(int EmployeeID, QueryResponse<Employee> response);
@@ -53,9 +55,9 @@ public class QueryContract {
     }
 
     public interface ImportTicketQuery{
-        void createImportTicket(ImportTicket importTicket, QueryResponse<Boolean> response);
+        void createImportTicket(int pkWarehouseID, int pkEmployeeID,int fkProductID, int fkSupplierID,ImportTicket importTicket, QueryResponse<Boolean> response);
         void readImportTicket(int ImportTicketID, QueryResponse<ImportTicket> response);
-        void readAllImpoprtTicket(QueryResponse<List<ImportTicket>> response);
+        void readAllImpoprtTicketFromWarehouse(int WarehouseID, QueryResponse<List<ImportTicket>> response);
     }
 
     public interface ExportTicketQuery{

@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database;
+package com.midterm.proj.warehousemanagement.database.DAOC;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,12 +6,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
+import com.midterm.proj.warehousemanagement.database.DAO.DataAccessObject;
+import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerQuery implements QueryContract.CustomerQuery {
+public class CustomerQuery implements DataAccessObject.CustomerQuery {
 
     private final SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
 
@@ -37,7 +40,8 @@ public class CustomerQuery implements QueryContract.CustomerQuery {
 
         try {
             cursor = sqLiteDatabase.query(Constants.CUSTOMER_TABLE, null,
-                    Constants.CUSTOMER_ID + " =? ", new String[]{String.valueOf(CustomerID)},
+                    Constants.CUSTOMER_ID + " =? ",
+                    new String[]{String.valueOf(CustomerID)},
                     null, null, null);
 
             if(cursor!=null && cursor.moveToFirst()) {

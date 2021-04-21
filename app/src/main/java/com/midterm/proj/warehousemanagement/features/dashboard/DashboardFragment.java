@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.fragment;
+package com.midterm.proj.warehousemanagement.features.dashboard;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -60,7 +60,7 @@ public class DashboardFragment extends Fragment {
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 hidden_dashboard_status = 1;
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_dashboard_container, new TicketsListFragment());
+                //fragmentTransaction.add(R.id.fragment_dashboard_container, new TicketsListFragment());
                 //fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

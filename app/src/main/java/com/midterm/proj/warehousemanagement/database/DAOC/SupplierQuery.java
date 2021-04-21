@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database;
+package com.midterm.proj.warehousemanagement.database.DAOC;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,12 +6,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
+import com.midterm.proj.warehousemanagement.database.DAO.DataAccessObject;
+import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Supplier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupplierQuery implements QueryContract.SupplierQuery {
+public class SupplierQuery implements DataAccessObject.SupplierQuery {
 
     private final SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
 

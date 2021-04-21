@@ -5,6 +5,9 @@ public class ImportTicket {
     private int ID_Employee;     // primary key
     private String createDate;
     private int number;
+    private int productID;
+    private int supplierID;
+    public ImportTicket(){}
 
     public ImportTicket(int ID_Warehouse, int ID_Employee, String createDate, int number) {
         this.ID_Warehouse = ID_Warehouse;
@@ -43,5 +46,21 @@ public class ImportTicket {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public int getProductID() {
+        return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public int getSupplierID() {
+        return supplierID;
+    }
+
+    public void setSupplierID(int supplierID) {
+        this.supplierID = supplierID;
     }
 }
