@@ -12,7 +12,7 @@ import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.List;
 
-public class DataAccessObject {
+public class DAO {
 
     public interface EmployeeQuery{
         void createEmployee(Employee employee, QueryResponse<Boolean> response);
@@ -44,6 +44,7 @@ public class DataAccessObject {
         void readAllWarehouse(QueryResponse<List<Warehouse>> response);
         void updateWarehouse(Warehouse warehouse, QueryResponse<Boolean> response);
         void deleteWarehouse(int WarehouseID, QueryResponse<Boolean> response);
+
     }
 
     public interface SupplierQuery{

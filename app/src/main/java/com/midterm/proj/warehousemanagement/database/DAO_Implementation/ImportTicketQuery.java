@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database.DAOC;
+package com.midterm.proj.warehousemanagement.database.DAO_Implementation;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
-import com.midterm.proj.warehousemanagement.database.DAO.DataAccessObject;
+import com.midterm.proj.warehousemanagement.database.DAO.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
@@ -14,7 +14,7 @@ import com.midterm.proj.warehousemanagement.model.ImportTicket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImportTicketQuery implements DataAccessObject.ImportTicketQuery{
+public class ImportTicketQuery implements DAO.ImportTicketQuery{
     private final SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
 
     @Override
