@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database.DAO_Implementation;
+package com.midterm.proj.warehousemanagement.database.daoImplementation;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
-import com.midterm.proj.warehousemanagement.database.DAO.DAO;
+import com.midterm.proj.warehousemanagement.database.dao.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Product;
@@ -36,8 +36,9 @@ public class ProductQuery implements DAO.ProductQuery {
 
         contentValues.put(Constants.PRODUCT_NAME, product.getName());
         contentValues.put(Constants.PRODUCT_UNIT, product.getUnit());
-        contentValues.put(Constants.PRODUCT_INSTOCK_NUMBER, product.getNumber());
+        //contentValues.put(Constants.PRODUCT_INSTOCK_NUMBER, product.getNumber());
         contentValues.put(Constants.PRODUCT_PRICE, product.getPrice());
+        contentValues.put(Constants.PRODUCT_IMAGE, product.getBytesImage());
 
         return contentValues;
     }
@@ -107,9 +108,9 @@ public class ProductQuery implements DAO.ProductQuery {
         int id = cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_ID));
         String name = cursor.getString(cursor.getColumnIndex(Constants.PRODUCT_NAME));
         String unit= cursor.getString(cursor.getColumnIndex(Constants.PRODUCT_UNIT));
-        int number= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_INSTOCK_NUMBER));
+        //int number= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_INSTOCK_NUMBER));
         int price= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_PRICE));
-
-        return new Product(id,name,unit,number,price);
+        byte[] bytesImage = cursor.getBlob(cursor.getColumnIndex(Constants.PRODUCT_IMAGE));
+        return new Product(id,name,unit,price,bytesImage);
     }
 }

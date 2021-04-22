@@ -2,8 +2,6 @@ package com.midterm.proj.warehousemanagement.features.import_ticket.create;
 
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.midterm.proj.warehousemanagement.R;
-import com.midterm.proj.warehousemanagement.database.DAO.DAO;
-import com.midterm.proj.warehousemanagement.database.DAO_Implementation.ImportTicketQuery;
-import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
+import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.ImportTicketQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
@@ -106,7 +103,7 @@ public class CreateImportTicketFragment extends Fragment {
         spnWarehouse.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                tvWarehouseID.setText(warehouses.get(i).getID_Warehouse());
+                tvWarehouseID.setText(String.valueOf( warehouses.get(i).getID_Warehouse()));
                 tvWarehouseName.setText(warehouses.get(i).getName());
                 tvWarehouseAddress.setText(warehouses.get(i).getAddress());
             }
@@ -124,23 +121,6 @@ public class CreateImportTicketFragment extends Fragment {
             }
         });
 
-//        edtProductName.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                String getCurrentText = s.toString();
-//                edtProductID.setText(generateProductID(getCurrentText));
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
     }
 
     private void submitImportForm() {
@@ -157,10 +137,7 @@ public class CreateImportTicketFragment extends Fragment {
             Toast.makeText(getActivity(),"Vui lòng kiểm tra lại phiếu nhập kho!",Toast.LENGTH_SHORT).show();
             return;
         }
-//        if (productNameExisted(productName)){
-//            String exinfo = productNumber + " " + productUnit;
-//            Toast.makeText(getActivity(),"Tên hàng đã tồn tại, thêm vào kho: "+exinfo,Toast.LENGTH_SHORT).show();
-//        }
+
         DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
         //importTicketQuery.createImportTicket();
     }
@@ -173,26 +150,5 @@ public class CreateImportTicketFragment extends Fragment {
         return result;
     }
 
-//    private boolean productNameExisted(String productName){
-//        Warehouse warehouse = MainActivity.warehouses.get(spnWarehouse.getSelectedItemPosition());
-//        ArrayList<ImportTicket> importTickets = warehouse.getImportTickets();
-//        for(ImportTicket it : importTickets){
-//            String pProductName = it.getProduct().getsName();
-//            if(pProductName.equals(productName))
-//                return true;
-//        }
-//        return false;
-//    }
-//
-//    private boolean productUnitExisted(String productUnit){
-//        Warehouse warehouse = MainActivity.warehouses.get(spnWarehouse.getSelectedItemPosition());
-//        ArrayList<ImportTicket> importTickets = warehouse.getImportTickets();
-//        for(ImportTicket it : importTickets){
-//            String pProductUnit = it.getsCalcUnit();
-//            if(pProductUnit.equals(productUnit))
-//                return true;
-//        }
-//        return false;
-//    }
 
 }

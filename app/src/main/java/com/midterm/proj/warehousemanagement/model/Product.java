@@ -4,15 +4,23 @@ public class Product {
     private int ID_Product;     // primary key
     private String name;
     private String unit;
-    private int number;
+    //private int number;
     private int price;
+    private byte[] bytesImage;
 
-    public Product(int ID_Product, String name, String unit, int number, int price) {
+    public Product(int ID_Product, String name, String unit, int price, byte[] bytesImage) {
         this.ID_Product = ID_Product;
         this.name = name;
         this.unit = unit;
-        this.number = number;
         this.price = price;
+        this.bytesImage = bytesImage;
+    }
+
+    public Product(String name, String unit, int price, byte[] bytesImage) {
+        this.name = name;
+        this.unit = unit;
+        this.price = price;
+        this.bytesImage = bytesImage;
     }
 
     public int getID_Product() {
@@ -39,13 +47,21 @@ public class Product {
         this.unit = unit;
     }
 
-    public int getNumber() {
+    public byte[] getBytesImage() {
+        return bytesImage;
+    }
+
+    public void setBytesImage(byte[] bytesImage) {
+        this.bytesImage = bytesImage;
+    }
+
+    /*public int getNumber() {
         return number;
     }
 
     public void setNumber(int number) {
         this.number = number;
-    }
+    }*/
 
     public int getPrice() {
         return price;

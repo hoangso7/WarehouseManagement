@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database.DAO_Implementation;
+package com.midterm.proj.warehousemanagement.database.daoImplementation;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
-import com.midterm.proj.warehousemanagement.database.DAO.DAO;
+import com.midterm.proj.warehousemanagement.database.dao.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Warehouse;

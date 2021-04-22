@@ -15,6 +15,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment;
+import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
+import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
@@ -66,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new DashboardFragment();
                             break;
                         case R.id.item_import_ticket:
-                            //selectedFragment = new AddImportTicketFragment();
+                            selectedFragment = new CreateImportTicketFragment();
                             break;
                         case R.id.item_export_ticket:
                             //selectedFragment = new AddExportTicketFragment();
                             break;
                         case R.id.item_add_product:
-                            //selectedFragment = new AddProductFragment();
+                            selectedFragment = new CreateProductFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

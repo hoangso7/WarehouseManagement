@@ -13,8 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.midterm.proj.warehousemanagement.R;
-import com.midterm.proj.warehousemanagement.database.DAO.DAO;
-import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
+import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
 import com.midterm.proj.warehousemanagement.model.Warehouse;

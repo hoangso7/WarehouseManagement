@@ -13,16 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
-import com.midterm.proj.warehousemanagement.constant.Constants;
-import com.midterm.proj.warehousemanagement.database.DAO.DAO;
-import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
+import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
 import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseDialogFragment;
-import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;

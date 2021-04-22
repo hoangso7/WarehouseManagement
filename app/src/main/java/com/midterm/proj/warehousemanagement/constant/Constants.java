@@ -30,6 +30,7 @@ public class Constants {
     public static final String PRODUCT_NAME = "product_name";
     public static final String PRODUCT_UNIT = "product_unit";
     public static final String PRODUCT_INSTOCK_NUMBER = "product_instock_number";
+    public static final String PRODUCT_IMAGE = "product_image";
     public static final String PRODUCT_PRICE = "product_price";
 
     // warehouse table

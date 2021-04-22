@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database.DAO;
+package com.midterm.proj.warehousemanagement.database.dao;
 
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.model.Customer;

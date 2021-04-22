@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,15 +14,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
-import com.midterm.proj.warehousemanagement.database.DAO.DAO;
-import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
+import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.show.ShowWarehouseFragment;
-import com.midterm.proj.warehousemanagement.model.Warehouse;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WarehouseManagerFragment extends Fragment {
     private static int numOfWarehouse;
