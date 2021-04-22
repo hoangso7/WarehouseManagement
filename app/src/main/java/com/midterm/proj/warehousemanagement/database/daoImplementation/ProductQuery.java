@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.dao.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Product;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,9 @@ public class ProductQuery implements DAO.ProductQuery {
             if (id > 0) {
                 response.onSuccess(true);
                 product.setID_Product((int) id);
+                Toast.makeText(MyApp.context, "Tạo sản phẩm thành công. Mã sản phẩm: "+product.getID_Product(), Toast.LENGTH_LONG).show();
             } else
-                response.onFailure("Failed to create product. Unknown Reason!");
+                response.onFailure("Không tạo được sản phẩm mới! Vui lòng kiểm tra lại thông tin");
         } catch (SQLiteException e) {
             response.onFailure(e.getMessage());
         }
@@ -58,7 +61,7 @@ public class ProductQuery implements DAO.ProductQuery {
                 response.onSuccess(product);
             }
             else
-                response.onFailure("Product not found with this ID in database");
+                response.onFailure("Không tìm thấy sản phẩm này trong database");
 
         } catch (Exception e){
             response.onFailure(e.getMessage());
@@ -85,7 +88,7 @@ public class ProductQuery implements DAO.ProductQuery {
 
                 response.onSuccess(productsList);
             } else
-                response.onFailure("There are no product in database");
+                response.onFailure("Không có sản phẩm nào trong database");
         }catch (Exception e){
             response.onFailure(e.getMessage());
         } finally {

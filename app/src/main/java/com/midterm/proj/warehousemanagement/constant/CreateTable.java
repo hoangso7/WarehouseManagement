@@ -33,8 +33,9 @@ public class CreateTable {
             +Constants._PRODUCT_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +Constants.PRODUCT_NAME+" TEXT NOT NULL, "
             +Constants.PRODUCT_UNIT+ " TEXT NOT NULL, "
-            +Constants.PRODUCT_INSTOCK_NUMBER+ " INT NOT NULL, "
-            +Constants.PRODUCT_PRICE+ " INT "
+            +Constants.PRODUCT_INSTOCK_NUMBER+ " INT, "
+            +Constants.PRODUCT_PRICE+ " INT NOT NULL, "
+            +Constants.PRODUCT_IMAGE+ " BLOB"
             +")";
 
     public static String CREATE_WAREHOUSE_TABLE=

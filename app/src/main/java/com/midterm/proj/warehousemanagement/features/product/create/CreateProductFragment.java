@@ -115,7 +115,7 @@ public class CreateProductFragment extends Fragment {
             productQuery.createProduct(product, new QueryResponse<Boolean>() {
                 @Override
                 public void onSuccess(Boolean data) {
-                    Toast.makeText(getActivity(), "Tạo sản phẩm mới thành công!", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), "Tạo sản phẩm mới thành công!", Toast.LENGTH_LONG).show();
                 }
 
                 @Override

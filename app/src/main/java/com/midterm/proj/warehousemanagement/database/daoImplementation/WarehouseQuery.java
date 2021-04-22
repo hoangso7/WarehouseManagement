@@ -29,7 +29,7 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
                 warehouse.setID_Warehouse((int) id);
                 Toast.makeText(MyApp.context, "Tạo kho thành công. Mã kho: "+warehouse.getID_Warehouse(), Toast.LENGTH_LONG).show();
             } else
-                response.onFailure("Failed to create warehouse. Unknown Reason!");
+                response.onFailure("Không thể tạo được nhà kho mới. Vui lòng kiểm tra lại thông tin");
         } catch (SQLiteException e) {
             response.onFailure(e.getMessage());
         }
@@ -60,7 +60,7 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
                 response.onSuccess(warehouse);
             }
             else
-                response.onFailure("Warehouse not found with this ID in database");
+                response.onFailure("Không tìm thấy nhà kho này trong database");
 
         } catch (Exception e){
             response.onFailure(e.getMessage());
@@ -87,7 +87,7 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
 
                 response.onSuccess(warehousesList);
             } else
-                response.onFailure("There are no warehouse in database");
+                response.onFailure("Không có nhà kho nào cả");
         }catch (Exception e){
             response.onFailure(e.getMessage());
         } finally {
@@ -110,7 +110,7 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
         if(empty){
             response.onSuccess(empty);
         }else{
-            response.onFailure("No Warehouse created");
+            response.onFailure("Chưa có nhà kho nào được tạo");
         }
     }
 

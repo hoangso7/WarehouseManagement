@@ -25,9 +25,11 @@ public class CreateWarehouseFragment extends Fragment {
     private EditText edtWarehouseName, edtWarehouseAddress;
     private Button btnCreateWarehouse;
     private static WarehouseCrudListener warehouseCrudListener;
+    Bundle args;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        args = this.getArguments();
         return inflater.inflate(R.layout.fragment_create_warehouse, container, false);
     }
 
@@ -89,7 +91,13 @@ public class CreateWarehouseFragment extends Fragment {
         warehouseQuery.createWarehouse(warehouse, new QueryResponse<Boolean>() {
             @Override
             public void onSuccess(Boolean data) {
-                warehouseCrudListener.onWarehouseListUpdate(data);
+                if(args!=null){
+                    int number_of_warehouse = args.getInt("number_of_warehouse");
+                    if(number_of_warehouse != 0){
+                        // no warehouse created
+                        warehouseCrudListener.onWarehouseListUpdate(data);
+                    }
+                }
             }
 
             @Override

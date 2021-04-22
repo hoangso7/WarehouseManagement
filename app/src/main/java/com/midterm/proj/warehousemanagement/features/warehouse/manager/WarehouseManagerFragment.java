@@ -46,10 +46,15 @@ public class WarehouseManagerFragment extends Fragment {
         fragmentManager = myContext.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
+        Bundle args = new Bundle();
+
         warehouseQuery.anyWarehouseCreated(new QueryResponse<Boolean>() {
             @Override
             public void onSuccess(Boolean data) {
-                fragmentTransaction.add(R.id.framelayout_warehouse_manager_container, new CreateWarehouseFragment());
+                args.putInt("number_of_warehouse", 0);
+                Fragment fragment = new CreateWarehouseFragment();
+                fragment.setArguments(args);
+                fragmentTransaction.add(R.id.framelayout_warehouse_manager_container, fragment);
                 fragmentTransaction.addToBackStack(null);
             }
             @Override
