@@ -4,7 +4,7 @@ public class Product {
     private int ID_Product;     // primary key
     private String name;
     private String unit;
-    //private int number;
+    private int number;
     private int price;
     private byte[] bytesImage;
 
@@ -55,13 +55,13 @@ public class Product {
         this.bytesImage = bytesImage;
     }
 
-    /*public int getNumber() {
+    public int getNumber() {
         return number;
     }
 
     public void setNumber(int number) {
         this.number = number;
-    }*/
+    }
 
     public int getPrice() {
         return price;

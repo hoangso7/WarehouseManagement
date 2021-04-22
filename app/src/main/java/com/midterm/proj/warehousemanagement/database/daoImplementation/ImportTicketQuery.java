@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,25 +20,29 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
     private final SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
 
     @Override
-    public void createImportTicket(int pkWarehouseID, int pkEmployeeID,int fkProductID, int fkSupplierID,ImportTicket importTicket, QueryResponse<Boolean> response){
+    public void createImportTicket(ImportTicket importTicket, QueryResponse<Boolean> response){
 
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
         // put the primary key
-        contentValues.put(Constants._WAREHOUSE_ID, pkWarehouseID);
-        contentValues.put(Constants._EMPLOYEE_ID, pkEmployeeID);
+        contentValues.put(Constants._WAREHOUSE_ID, importTicket.getID_Warehouse());
+        contentValues.put(Constants._EMPLOYEE_ID, importTicket.getID_Employee());
         // put creation date & num of products
         contentValues.put(Constants.IMPORT_TICKET_CREATION_DATE, importTicket.getCreateDate());
         contentValues.put(Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS, importTicket.getNumber());
         // put the foreign key
-        contentValues.put(Constants.IMPORT_TICKET_PRODUCTS_ID_FK, fkProductID);
-        contentValues.put(Constants.IMPORT_TICKET_SUPPLIER_ID_FK, fkSupplierID);
+        contentValues.put(Constants.IMPORT_TICKET_PRODUCTS_ID_FK, importTicket.getProductID());
+        contentValues.put(Constants.IMPORT_TICKET_SUPPLIER_ID_FK, importTicket.getSupplierID());
         try{
             long rowCount = sqLiteDatabase.insertOrThrow(Constants.IMPORT_TICKET_TABLE, null,contentValues);
 
-            if (rowCount > 0)
+            if (rowCount > 0){
                 response.onSuccess(true);
+                String info =  "Xác nhận phiếu nhập kho lúc: " + importTicket.getCreateDate();
+                Toast.makeText(MyApp.context, info, Toast.LENGTH_LONG).show();
+
+            }
             else
                 response.onFailure("Create import ticket failed!");
 
@@ -81,7 +87,7 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
     }
 
     @Override
-    public void readAllImpoprtTicketFromWarehouse(int WarehouseID, QueryResponse<List<ImportTicket>> response){
+    public void readAllImportTicketFromWarehouse(int WarehouseID, QueryResponse<List<ImportTicket>> response){
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
         //  select * from import_ticket_table where warehouse_id = 1
         String QUERY = "SELECT * FROM "
@@ -118,4 +124,8 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
         }
     }
 
+    @Override
+    public void updateImportTicket(ImportTicket importTicket, QueryResponse<Boolean> response){
+
+    }
 }

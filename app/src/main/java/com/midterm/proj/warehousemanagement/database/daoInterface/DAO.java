@@ -35,8 +35,9 @@ public class DAO {
         void createProduct(Product product, QueryResponse<Boolean> response);
         void readProduct(int ProductID, QueryResponse<Product> response);
         void readAllProduct(QueryResponse<List<Product>> response);
-        void updateProduct(Product product, QueryResponse<Boolean> response);
+        void updateProduct(Product Product, QueryResponse<Boolean> response);
         void deleteProduct(int ProductID, QueryResponse<Boolean> response);
+        void updateInstock(int ProductID, int ProductNumber, QueryResponse<Boolean> response);
     }
 
     public interface WarehouseQuery{
@@ -58,9 +59,10 @@ public class DAO {
     }
 
     public interface ImportTicketQuery{
-        void createImportTicket(int pkWarehouseID, int pkEmployeeID,int fkProductID, int fkSupplierID,ImportTicket importTicket, QueryResponse<Boolean> response);
+        void createImportTicket(ImportTicket importTicket, QueryResponse<Boolean> response);
         void readImportTicket(int ImportTicketID, QueryResponse<ImportTicket> response);
-        void readAllImpoprtTicketFromWarehouse(int WarehouseID, QueryResponse<List<ImportTicket>> response);
+        void readAllImportTicketFromWarehouse(int WarehouseID, QueryResponse<List<ImportTicket>> response);
+        void updateImportTicket(ImportTicket importTicket, QueryResponse<Boolean> response);
     }
 
     public interface ExportTicketQuery{

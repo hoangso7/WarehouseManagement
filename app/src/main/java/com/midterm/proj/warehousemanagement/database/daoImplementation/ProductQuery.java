@@ -10,6 +10,7 @@ import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
+import com.midterm.proj.warehousemanagement.model.ImportTicket;
 import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.util.MyApp;
 
@@ -100,6 +101,44 @@ public class ProductQuery implements DAO.ProductQuery {
 
     @Override
     public void updateProduct(Product product, QueryResponse<Boolean> response) {
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        ContentValues contentValues = getContentValuesForProduct(product);
+
+        try {
+            long rowCount = sqLiteDatabase.update(Constants.PRODUCT_TABLE, contentValues,
+                    Constants.PRODUCT_ID + " =? ", new String[]{String.valueOf(product.getID_Product())});
+            if(rowCount>0){
+                response.onSuccess(true);
+            }
+            else
+                response.onFailure("No data is updated at all");
+        } catch (Exception e){
+            response.onFailure(e.getMessage());
+        } finally {
+            sqLiteDatabase.close();
+        }
+    }
+
+    @Override
+    public void updateInstock(int ProductID, int ProductNumber, QueryResponse<Boolean> response){
+        String QUERY = "UPDATE " + Constants.PRODUCT_TABLE
+                + " SET " + Constants.PRODUCT_INSTOCK_NUMBER +" = " + String.valueOf(ProductNumber)
+                + " WHERE " + Constants.PRODUCT_ID + " = "+ String.valueOf(ProductID);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+        Cursor cursor = null;
+        try{
+            cursor = sqLiteDatabase.rawQuery(QUERY,null);
+            if(cursor.moveToFirst()) {
+                response.onSuccess(true);
+            }
+        }catch (Exception e){
+            response.onFailure(e.getMessage());
+        }finally {
+            sqLiteDatabase.close();
+            if(cursor != null)
+                cursor.close();
+        }
 
     }
 

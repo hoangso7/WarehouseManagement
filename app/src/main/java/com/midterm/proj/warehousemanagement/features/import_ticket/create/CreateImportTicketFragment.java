@@ -16,22 +16,33 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.midterm.proj.warehousemanagement.R;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.SupplierQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ImportTicketQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
+import com.midterm.proj.warehousemanagement.model.Product;
+import com.midterm.proj.warehousemanagement.model.Supplier;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 public class CreateImportTicketFragment extends Fragment {
     private Spinner spnWarehouse;
-    private TextView tvWarehouseID, tvWarehouseName, tvWarehouseAddress;
-    private EditText edtProductID, edtProductName, edtProductUnit, edtProductNumber;
-    private Button btnSubmitImportForm;
+    private TextView tvWarehouseID, tvWarehouseName, tvWarehouseAddress, tvProductUnit;
+    private EditText edtProductNumber, edtSupplierName, edtSupplierAddress;
+    private Button btnSubmitImportForm, btnChooseEmployee, btnChooseProduct;
     private ArrayList<ImportTicket> importTickets = new ArrayList<>();
     private ArrayList<Warehouse> warehouses = new ArrayList<>();
+
+    private int warehouseID;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +59,7 @@ public class CreateImportTicketFragment extends Fragment {
 
     private void fetchImportTicketFromWarehouse(int warehouseID) {
         DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
-        importTicketQuery.readAllImpoprtTicketFromWarehouse(warehouseID, new QueryResponse<List<ImportTicket>>() {
+        importTicketQuery.readAllImportTicketFromWarehouse(warehouseID, new QueryResponse<List<ImportTicket>>() {
             @Override
             public void onSuccess(List<ImportTicket> data) {
                 importTickets.clear();
@@ -83,10 +94,12 @@ public class CreateImportTicketFragment extends Fragment {
         tvWarehouseID = getView().findViewById(R.id.textview_warehouseID);
         tvWarehouseName = getView().findViewById(R.id.textview_warehouseName);
         tvWarehouseAddress = getView().findViewById(R.id.textview_warehouseAddress);
+        tvProductUnit = getView().findViewById(R.id.tv_productUnit);
         btnSubmitImportForm = getView().findViewById(R.id.btn_submit_import_form);
-        edtProductID = getView().findViewById(R.id.edt_productID);
-        edtProductName = getView().findViewById(R.id.edt_productName);
-        edtProductUnit = getView().findViewById(R.id.edt_productUnit);
+        btnChooseEmployee = getView().findViewById(R.id.btn_ctk_choose_employee);
+        btnChooseProduct = getView().findViewById(R.id.btn_ctk_choose_product);
+        edtSupplierName = getView().findViewById(R.id.edt_supplier_name);
+        edtSupplierAddress = getView().findViewById(R.id.edt_supplier_address);
         edtProductNumber = getView().findViewById(R.id.edt_productNumber);
     }
     private void setEvent() {
@@ -106,6 +119,7 @@ public class CreateImportTicketFragment extends Fragment {
                 tvWarehouseID.setText(String.valueOf( warehouses.get(i).getID_Warehouse()));
                 tvWarehouseName.setText(warehouses.get(i).getName());
                 tvWarehouseAddress.setText(warehouses.get(i).getAddress());
+                warehouseID = i;
             }
 
             @Override
@@ -124,22 +138,220 @@ public class CreateImportTicketFragment extends Fragment {
     }
 
     private void submitImportForm() {
-        String productID, productName, productUnit, productNumber;
-        productID = edtProductID.getText().toString().trim();
-        productName = edtProductName.getText().toString().trim();
-        productUnit = edtProductUnit.getText().toString().trim();
-        productNumber = edtProductNumber.getText().toString().trim();
+        ImportTicket importTicket = new ImportTicket();
 
-        if(productID.length() == 0 ||
-                productName.length()==0 ||
-                productUnit.length()==0 ||
-                productNumber.length()==0){
-            Toast.makeText(getActivity(),"Vui lòng kiểm tra lại phiếu nhập kho!",Toast.LENGTH_SHORT).show();
+        int productID = getProductIdFromName();
+        if(productID == -1){
+            Toast.makeText(MyApp.context, "Vui lòng chọn sản phẩm", Toast.LENGTH_LONG).show();
             return;
         }
 
-        DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
+        int employeeID = getEmployeeIdFromName();
+        if(employeeID == -1){
+            Toast.makeText(MyApp.context, "Vui lòng chọn nhân viên", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        String strProductNumber=edtProductNumber.getText().toString();
+        if(strProductNumber.length() == 0){
+            Toast.makeText(MyApp.context, "Vui lòng nhập số lượng", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // set primary key
+        importTicket.setID_Warehouse(warehouseID);
+        importTicket.setID_Employee(getEmployeeIdFromName());
+        // set import ticket info
+        importTicket.setCreateDate(getCreationDate());
+        importTicket.setNumber(Integer.parseInt(edtProductNumber.getText().toString()));
+        // set foreign key
+        importTicket.setSupplierID(getSupplierID());
+        importTicket.setProductID(getProductIdFromName());
+
+        sanityCheck(importTicket);
+//        if(){
+//            Toast.makeText(getActivity(),"Không tạo được phiếu nhập. Vui lòng kiểm tra lại.",Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+
+        //DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
         //importTicketQuery.createImportTicket();
+    }
+
+    private int getSupplierID() {
+        int id = -1;
+        String supplierName = edtSupplierName.getText().toString().trim();
+        String supplierAddress = edtSupplierAddress.getText().toString().trim();
+        if(supplierName.length() == 0 || supplierAddress.length() == 0){
+            Toast.makeText(MyApp.context, "Vui lòng kiểm tra lại thông tin nhà cung cấp", Toast.LENGTH_LONG).show();
+            return id;
+        }
+
+        ArrayList<Supplier> suppliers = new ArrayList<>();
+        DAO.SupplierQuery supplierQuery = new SupplierQuery();
+        supplierQuery.readAllSupplier(new QueryResponse<List<Supplier>>() {
+            @Override
+            public void onSuccess(List<Supplier> data) {
+                suppliers.addAll(data);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        // check if this supplier already in database and get its id
+        for(Supplier s : suppliers){
+            if(s.getName().equals(supplierName)){
+                return s.getID_Supplier();
+            }
+        }
+        Supplier supplier = new Supplier(supplierName,supplierAddress);
+        supplierQuery.createSupplier(supplier, new QueryResponse<Boolean>() {
+            @Override
+            public void onSuccess(Boolean data) {
+                // now this supplier exists in db, re-run the function to get the ID
+                // what a nice recursion! :))
+                getSupplierID();
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        return id;
+    }
+
+    private String getCreationDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date date = new Date();
+        return formatter.format(date);
+    }
+
+    private int getProductIdFromName() {
+        int id=-1;
+        String name = btnChooseProduct.getText().toString();
+        if(name.equals("Chọn sản phẩm")){
+            return id;
+        }
+        ArrayList<Product> products = new ArrayList<>();
+        DAO.ProductQuery productQuery = new ProductQuery();
+        productQuery.readAllProduct(new QueryResponse<List<Product>>() {
+            @Override
+            public void onSuccess(List<Product> data) {
+                products.addAll(data);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        for(Product p : products){
+            if(p.getName().equals(name)){
+                id = p.getID_Product();
+                break;
+            }
+        }
+        return id;
+    }
+
+    private int getEmployeeIdFromName() {
+        int id=-1;
+        String name = btnChooseEmployee.getText().toString();
+        if(name.equals("Chọn nhân viên")){
+            return id;
+        }
+        ArrayList<Employee> employees = new ArrayList<>();
+        DAO.EmployeeQuery employeeQuery = new EmployeeQuery();
+        employeeQuery.readAllEmployee(new QueryResponse<List<Employee>>() {
+            @Override
+            public void onSuccess(List<Employee> data) {
+                employees.addAll(data);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        for(Employee e : employees){
+            if(e.getName().equals(name)){
+                id = e.getID_Employee();
+                break;
+            }
+        }
+        return id;
+    }
+
+    private void sanityCheck(ImportTicket importTicket) {
+        DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
+        ArrayList<ImportTicket>importTickets = new ArrayList<>();
+        importTicketQuery.readAllImportTicketFromWarehouse(warehouseID, new QueryResponse<List<ImportTicket>>() {
+            @Override
+            public void onSuccess(List<ImportTicket> data) {
+                importTickets.addAll(data);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        for(ImportTicket i : importTickets){
+            int pId = i.getProductID();
+            if(pId == importTicket.getProductID()){
+                updateInstock(importTicket);
+                break;
+            }
+        }
+        createImportTicket(importTicket);
+    }
+
+    private void updateInstock(ImportTicket importTicket) {
+        int productNumber = importTicket.getNumber();
+        int productId = importTicket.getProductID();
+        DAO.ProductQuery productQuery = new ProductQuery();
+        productQuery.readProduct(productId, new QueryResponse<Product>() {
+            @Override
+            public void onSuccess(Product data) {
+                int currentProductNumber = data.getNumber();
+                currentProductNumber += productNumber;
+                data.setNumber(currentProductNumber);
+                productQuery.updateProduct(data, new QueryResponse<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean data) {
+
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+    }
+
+    private void createImportTicket(ImportTicket importTicket) {
+        DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
+        importTicketQuery.createImportTicket(importTicket, new QueryResponse<Boolean>() {
+            @Override
+            public void onSuccess(Boolean data) {
+
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
     }
 
     private String generateProductID(String productName){
