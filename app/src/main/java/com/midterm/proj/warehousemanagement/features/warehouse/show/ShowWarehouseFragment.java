@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.midterm.proj.warehousemanagement.R;
-import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
@@ -63,10 +63,6 @@ public class ShowWarehouseFragment extends Fragment implements WarehouseCrudList
         btnAddWarehouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                fragmentTransaction.add(R.id.fl_add_warehouse_inside_list, new CreateWarehouseFragment());
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
                 CreateWarehouseDialogFragment createWarehouseDialogFragment = CreateWarehouseDialogFragment.newInstance("Tạo kho mới", ShowWarehouseFragment.this);
                 createWarehouseDialogFragment.show(getFragmentManager(), "create_warehouse");
             }

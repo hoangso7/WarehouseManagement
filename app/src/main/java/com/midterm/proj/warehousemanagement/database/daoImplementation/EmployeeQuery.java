@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
-import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Employee;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,8 @@ public class EmployeeQuery implements DAO.EmployeeQuery {
             if (id > 0) {
                 response.onSuccess(true);
                 employee.setID_Employee((int) id);
+                Toast.makeText(MyApp.context, "Thêm mới nhân viên thành công. Mã nhân viên: "+id, Toast.LENGTH_LONG).show();
+
             } else
                 response.onFailure("Failed to create employee. Unknown Reason!");
         } catch (SQLiteException e) {
@@ -82,6 +86,23 @@ public class EmployeeQuery implements DAO.EmployeeQuery {
             sqLiteDatabase.close();
             if(cursor!=null)
                 cursor.close();
+        }
+    }
+
+    @Override
+    public void anyEmployeeCreated(QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+        boolean empty = true;
+        Cursor cur = sqLiteDatabase.rawQuery("SELECT COUNT(*) FROM "+Constants.EMPLOYEE_TABLE, null);
+        if (cur != null && cur.moveToFirst()) {
+            empty = (cur.getInt (0) == 0);
+        }
+        cur.close();
+
+        if(empty){
+            response.onSuccess(empty);
+        }else{
+            response.onFailure("Chưa có nhân viên nào");
         }
     }
 

@@ -13,12 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.midterm.proj.warehousemanagement.R;
-import com.midterm.proj.warehousemanagement.database.dao.DAO;
+import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreateWarehouseFragment extends Fragment {
@@ -71,22 +72,23 @@ public class CreateWarehouseFragment extends Fragment {
         }
 
         DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
+        ArrayList<Warehouse> e = new ArrayList<>();
         warehouseQuery.readAllWarehouse(new QueryResponse<List<Warehouse>>() {
             @Override
             public void onSuccess(List<Warehouse> data) {
-                for(Warehouse w : data){
-                    if (w.getName().equals(name) && w.getName().equals(address)){
-                        Toast.makeText(getActivity(), "Tên & Địa chỉ kho đã tồn tại", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                }
+                e.addAll(data);
             }
-
             @Override
             public void onFailure(String message) {
 
             }
         });
+        for(Warehouse w : e) {
+            if (w.getName().equals(name) && w.getAddress().equals(address)) {
+                Toast.makeText(getActivity(), "Thông tin kho đã tồn tại", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
         Warehouse warehouse = new Warehouse(name,address);
         warehouseQuery.createWarehouse(warehouse, new QueryResponse<Boolean>() {
             @Override

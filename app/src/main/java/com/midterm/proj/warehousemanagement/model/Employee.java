@@ -5,6 +5,11 @@ public class Employee {
     private String name;
     private String phone;
 
+    public Employee(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
     public Employee(int ID_Employee, String name, String phone) {
         this.ID_Employee = ID_Employee;
         this.name = name;

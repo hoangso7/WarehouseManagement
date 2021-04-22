@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.database.dao;
+package com.midterm.proj.warehousemanagement.database.daoInterface;
 
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.model.Customer;
@@ -18,6 +18,7 @@ public class DAO {
         void createEmployee(Employee employee, QueryResponse<Boolean> response);
         void readEmployee(int EmployeeID, QueryResponse<Employee> response);
         void readAllEmployee(QueryResponse<List<Employee>> response);
+        void anyEmployeeCreated(QueryResponse<Boolean> response);
         void updateEmployee(Employee employee, QueryResponse<Boolean> response);
         void deleteEmployee(int employeeID, QueryResponse<Boolean> response);
     }

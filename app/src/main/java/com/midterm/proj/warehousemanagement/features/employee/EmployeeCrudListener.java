@@ -1,4 +1,5 @@
 package com.midterm.proj.warehousemanagement.features.employee;
 
-public class EmployeeCrudListener {
+public interface EmployeeCrudListener {
+    void onEmployeeListUpdate(boolean isUpdated);
 }

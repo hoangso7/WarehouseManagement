@@ -18,14 +18,14 @@ public class CreateTable {
             "CREATE TABLE " + Constants.SUPPLIER_TABLE + "("
             +Constants._SUPPLIER_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +Constants.SUPPLIER_NAME+" TEXT NOT NULL, "
-            +Constants.SUPPLIER_ADDRESS+ "TEXT "
+            +Constants.SUPPLIER_ADDRESS+ " TEXT "
             +")";
 
     public static String CREATE_EMPLOYEE_TABLE=
             "CREATE TABLE " + Constants.EMPLOYEE_TABLE + "("
             +Constants.__EMPLOYEE_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +Constants.EMPLOYEE_NAME+" TEXT NOT NULL, "
-            +Constants.EMPLOYEE_PHONE+ "TEXT"
+            +Constants.EMPLOYEE_PHONE+ " TEXT NOT NULL"
             +")";
 
     public static String CREATE_PRODUCT_TABLE=
