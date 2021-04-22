@@ -16,6 +16,8 @@ import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.DAO.DAO;
 import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
+import com.midterm.proj.warehousemanagement.features.warehouse.show.ShowWarehouseFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.List;
@@ -23,7 +25,7 @@ import java.util.List;
 public class CreateWarehouseFragment extends Fragment {
     private EditText edtWarehouseName, edtWarehouseAddress;
     private Button btnCreateWarehouse;
-
+    private static WarehouseCrudListener warehouseCrudListener;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class CreateWarehouseFragment extends Fragment {
                 String address = edtWarehouseAddress.getText().toString().trim();
 
                 createWarehouse(name,address);
-                getActivity().onBackPressed();
+
+                onDetach();
             }
         });
     }
@@ -87,7 +90,7 @@ public class CreateWarehouseFragment extends Fragment {
         warehouseQuery.createWarehouse(warehouse, new QueryResponse<Boolean>() {
             @Override
             public void onSuccess(Boolean data) {
-
+                warehouseCrudListener.onWarehouseListUpdate(data);
             }
 
             @Override

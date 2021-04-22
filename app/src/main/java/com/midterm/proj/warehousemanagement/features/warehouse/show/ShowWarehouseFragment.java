@@ -16,21 +16,25 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
+import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.DAO.DAO;
 import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
+import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseDialogFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowWarehouseFragment extends Fragment {
+public class ShowWarehouseFragment extends Fragment implements WarehouseCrudListener {
     private ListView lvWarehouseList;
     public WarehouseAdapter warehouseAdapter;
     private FragmentManager fragmentManager;
     private FragmentActivity myContext;
     private Button btnAddWarehouse;
+    private ArrayList<Warehouse> warehouses = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,22 +66,42 @@ public class ShowWarehouseFragment extends Fragment {
         btnAddWarehouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fl_add_warehouse_inside_list, new CreateWarehouseFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                fragmentTransaction.add(R.id.fl_add_warehouse_inside_list, new CreateWarehouseFragment());
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+                CreateWarehouseDialogFragment createWarehouseDialogFragment = CreateWarehouseDialogFragment.newInstance("Tạo kho mới", ShowWarehouseFragment.this);
+                createWarehouseDialogFragment.show(getFragmentManager(), "create_warehouse");
             }
         });
     }
 
-    private void fetchWarehouseList(){
+    public void fetchWarehouseList(){
         DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
         warehouseQuery.readAllWarehouse(new QueryResponse<List<Warehouse>>() {
             @Override
             public void onSuccess(List<Warehouse> data) {
-                ArrayList<Warehouse> warehouses = new ArrayList<>(data);
+                warehouses.addAll(data);
                 warehouseAdapter = new WarehouseAdapter(getContext(), warehouses);
                 lvWarehouseList.setAdapter(warehouseAdapter);
+                warehouseAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+    }
+
+    private void updateWarehouseList(){
+        DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
+        warehouseQuery.readAllWarehouse(new QueryResponse<List<Warehouse>>() {
+            @Override
+            public void onSuccess(List<Warehouse> data) {
+                warehouses.clear();
+                warehouses.addAll(data);
                 warehouseAdapter.notifyDataSetChanged();
             }
 
@@ -86,5 +110,11 @@ public class ShowWarehouseFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onWarehouseListUpdate(boolean isUpdated){
+        if(isUpdated)
+            updateWarehouseList();
     }
 }
