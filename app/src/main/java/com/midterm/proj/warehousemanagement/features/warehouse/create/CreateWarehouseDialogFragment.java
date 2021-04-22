@@ -17,7 +17,6 @@ import com.midterm.proj.warehousemanagement.database.DAO.DAO;
 import com.midterm.proj.warehousemanagement.database.DAO_Implementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
-import com.midterm.proj.warehousemanagement.features.warehouse.show.ShowWarehouseFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.List;
