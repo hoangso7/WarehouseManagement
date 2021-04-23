@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
+import com.midterm.proj.warehousemanagement.features.product.SearchProductItemListener;
 import com.midterm.proj.warehousemanagement.features.product.show.ProductListAdapter;
 import com.midterm.proj.warehousemanagement.model.Product;
 
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ProductSearchDialogFragment extends DialogFragment {
+    private static SearchProductItemListener chooseProductListener;
     private static String TAG = "ProductSearchDialogFragment";
     private static final int STANDARD_APPBAR = 0;
     private static final int SEARCH_APPBAR = 1;
@@ -41,6 +44,11 @@ public class ProductSearchDialogFragment extends DialogFragment {
     EditText mSearchProducts;
     private AppBarLayout viewProductsBar, searchBar;
     private ProductListAdapter productListAdapter;
+
+    public static ProductSearchDialogFragment newInstance(SearchProductItemListener listener){
+        chooseProductListener = listener;
+        return new ProductSearchDialogFragment();
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
@@ -71,6 +79,7 @@ public class ProductSearchDialogFragment extends DialogFragment {
                 toggleToolBarState();
             }
         });
+
         setupProductList();
         return view;
     }
@@ -108,6 +117,14 @@ public class ProductSearchDialogFragment extends DialogFragment {
             }
         });
         productsList.setAdapter(productListAdapter);
+        productsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = products.get(position).getName();
+                chooseProductListener.setProductNameCallback(name);
+                getDialog().dismiss();
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

@@ -1,5 +1,5 @@
 package com.midterm.proj.warehousemanagement.features.product;
 
-public interface ChooseProductListener {
+public interface SearchProductItemListener {
     void setProductNameCallback(String productName);
 }

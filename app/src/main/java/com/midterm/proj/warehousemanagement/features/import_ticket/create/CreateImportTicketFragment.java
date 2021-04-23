@@ -23,6 +23,7 @@ import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ImportTicketQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.features.product.SearchProductItemListener;
 import com.midterm.proj.warehousemanagement.features.product.search.ProductSearchDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
@@ -35,7 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-public class CreateImportTicketFragment extends Fragment {
+public class CreateImportTicketFragment extends Fragment implements SearchProductItemListener {
     private Spinner spnWarehouse;
     private TextView tvWarehouseID, tvWarehouseName, tvWarehouseAddress, tvProductUnit;
     private EditText edtProductNumber, edtSupplierName, edtSupplierAddress;
@@ -139,7 +140,7 @@ public class CreateImportTicketFragment extends Fragment {
         btnChooseProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProductSearchDialogFragment productSearchDialogFragment = new ProductSearchDialogFragment();
+                ProductSearchDialogFragment productSearchDialogFragment = ProductSearchDialogFragment.newInstance(CreateImportTicketFragment.this);
                 productSearchDialogFragment.show(getFragmentManager(), "searchproduct");
             }
         });
@@ -371,5 +372,27 @@ public class CreateImportTicketFragment extends Fragment {
         return result;
     }
 
+    public void setProductNameCallback(String productName){
+        btnChooseProduct.setText(productName);
+        DAO.ProductQuery productQuery = new ProductQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        productQuery.readAllProduct(new QueryResponse<List<Product>>() {
+            @Override
+            public void onSuccess(List<Product> data) {
+                products.addAll(data);
+            }
 
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        for(Product product : products){
+            if(product.getName().equals(productName)){
+                String unit = product.getUnit();
+                tvProductUnit.setText(unit);
+                break;
+            }
+        }
+    }
 }
