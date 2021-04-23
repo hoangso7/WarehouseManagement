@@ -20,6 +20,7 @@ import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
 import com.midterm.proj.warehousemanagement.features.employee.EmployeeCrudListener;
 import com.midterm.proj.warehousemanagement.features.employee.create.CreateEmployeeDialogFragment;
+import com.midterm.proj.warehousemanagement.features.employee.search.SearchEmployeeAdapter;
 import com.midterm.proj.warehousemanagement.model.Employee;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
             @Override
             public void onSuccess(List<Employee> data) {
                 employees.addAll(data);
-                employeeAdapter = new EmployeeAdapter(getContext(),0, employees);
+                employeeAdapter = new EmployeeAdapter(getContext(), employees);
                 lvEmployeeList.setAdapter(employeeAdapter);
                 employeeAdapter.notifyDataSetChanged();
             }

@@ -25,8 +25,6 @@ import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.employee.SearchEmployeeItemListener;
-import com.midterm.proj.warehousemanagement.features.employee.show.EmployeeAdapter;
-import com.midterm.proj.warehousemanagement.features.employee.search.EmployeeSearchDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Employee;
 
 import java.util.ArrayList;
@@ -46,7 +44,7 @@ public class EmployeeSearchDialogFragment extends DialogFragment {
 
     EditText mSearchEmployees;
     private AppBarLayout viewEmployeesBar, searchBar;
-    private EmployeeAdapter employeesListAdapter;
+    private SearchEmployeeAdapter employeesListAdapter;
 
     public static EmployeeSearchDialogFragment newInstance(SearchEmployeeItemListener listener){
         chooseEmloyeeListener = listener;
@@ -102,7 +100,7 @@ public class EmployeeSearchDialogFragment extends DialogFragment {
                                           }
                                       });
 
-        employeesListAdapter = new EmployeeAdapter(getContext(),R.layout.layout_employee_item, employees);
+        employeesListAdapter = new SearchEmployeeAdapter(getContext(),R.layout.layout_employee_item, employees);
         mSearchEmployees.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
