@@ -2,11 +2,13 @@ package com.midterm.proj.warehousemanagement.features.product.show;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -49,7 +51,7 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
 
     private static class ViewHolder {
         TextView name;
-        CircleImageView productImage;
+        ImageView productImage;
     }
 
     @NonNull
@@ -68,33 +70,8 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
         }
 
         String productName = getItem(position).getName();
-        String productImagePath = BitmapHelper.saveProductImageToFile(getItem(position));
         holder.name.setText(productName);
-        UniversalImageLoader universalImageLoader = new UniversalImageLoader(getContext());
-        ImageLoader.getInstance().init(universalImageLoader.getConfig());
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        String decodedImgUri = Uri.fromFile(new File(productImagePath)).toString();
-        imageLoader.displayImage(decodedImgUri, holder.productImage, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String imageUri, View view) {
-
-            }
-
-            @Override
-            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-
-            }
-
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-
-            }
-
-            @Override
-            public void onLoadingCancelled(String imageUri, View view) {
-
-            }
-        });
+        holder.productImage.setImageBitmap(BitmapFactory.decodeByteArray(getItem(position).getBytesImage(),0,getItem(position).getBytesImage().length));
         return convertView;
     }
 
