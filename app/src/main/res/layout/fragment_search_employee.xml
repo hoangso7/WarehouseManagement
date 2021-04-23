@@ -16,7 +16,7 @@
 
 
             <include layout="@layout/snippet_search_toolbar"/>
-            <include layout="@layout/snippet_view_product_toolbar"/>
+            <include layout="@layout/snippet_view_employee_toolbar"/>
 
 
         </RelativeLayout>
@@ -28,7 +28,7 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:id="@+id/lv_productsList"
+                android:id="@+id/lv_employeesList"
                 android:layout_height="match_parent">
             </ListView>
 
