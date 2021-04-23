@@ -23,6 +23,8 @@ import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ImportTicketQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.features.employee.SearchEmployeeItemListener;
+import com.midterm.proj.warehousemanagement.features.employee.search.EmployeeSearchDialogFragment;
 import com.midterm.proj.warehousemanagement.features.product.SearchProductItemListener;
 import com.midterm.proj.warehousemanagement.features.product.search.ProductSearchDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Employee;
@@ -36,7 +38,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-public class CreateImportTicketFragment extends Fragment implements SearchProductItemListener {
+public class CreateImportTicketFragment extends Fragment implements SearchProductItemListener, SearchEmployeeItemListener{
     private Spinner spnWarehouse;
     private TextView tvWarehouseID, tvWarehouseName, tvWarehouseAddress, tvProductUnit;
     private EditText edtProductNumber, edtSupplierName, edtSupplierAddress;
@@ -142,6 +144,14 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
             public void onClick(View v) {
                 ProductSearchDialogFragment productSearchDialogFragment = ProductSearchDialogFragment.newInstance(CreateImportTicketFragment.this);
                 productSearchDialogFragment.show(getFragmentManager(), "searchproduct");
+            }
+        });
+
+        btnChooseEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EmployeeSearchDialogFragment employeeSearchDialogFragment = EmployeeSearchDialogFragment.newInstance(CreateImportTicketFragment.this);
+                employeeSearchDialogFragment.show(getFragmentManager(),"searchemployee");
             }
         });
 
@@ -392,6 +402,29 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
                 String unit = product.getUnit();
                 tvProductUnit.setText(unit);
                 break;
+            }
+        }
+    }
+
+    @Override
+    public void setEmployeeNameCallback(String employeeName) {
+        btnChooseEmployee.setText(employeeName);
+        DAO.EmployeeQuery employeeQuery = new EmployeeQuery();
+        ArrayList<Employee> employees = new ArrayList<>();
+        employeeQuery.readAllEmployee(new QueryResponse<List<Employee>>() {
+            @Override
+            public void onSuccess(List<Employee> data) {
+                employees.addAll(data);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        for (Employee employee: employees){
+            if(employee.getName().equals(employeeName)){
+                String phone = employee.getPhone();
             }
         }
     }

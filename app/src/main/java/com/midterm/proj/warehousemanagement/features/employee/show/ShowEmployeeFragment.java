@@ -66,7 +66,7 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
             @Override
             public void onSuccess(List<Employee> data) {
                 employees.addAll(data);
-                employeeAdapter = new EmployeeAdapter(getContext(), employees);
+                employeeAdapter = new EmployeeAdapter(getContext(),0, employees);
                 lvEmployeeList.setAdapter(employeeAdapter);
                 employeeAdapter.notifyDataSetChanged();
             }

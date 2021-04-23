@@ -2,10 +2,13 @@ package com.midterm.proj.warehousemanagement.features.employee.show;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -13,34 +16,77 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.midterm.proj.warehousemanagement.R;
+import com.midterm.proj.warehousemanagement.features.product.show.ProductListAdapter;
 import com.midterm.proj.warehousemanagement.model.Employee;
+import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class EmployeeAdapter extends ArrayAdapter<Employee> {
+    private LayoutInflater mInflater;
     private Context mContext;
-    private ArrayList<Employee> employees = new ArrayList<>();
+    private int layoutResource;
+    private List<Employee> mEmployees = null;
+    private ArrayList<Employee> arrayList;
 
-    public EmployeeAdapter(@NonNull Context context, @SuppressLint("SupportAnnotationUsage") @LayoutRes ArrayList<Employee> list) {
-        super(context, 0 , list);
-        mContext = context;
-        employees = list;
+    public EmployeeAdapter(@NonNull Context context,int resource , List<Employee> employees) {
+        super(context, resource , employees);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layoutResource = resource;
+        this.mContext = context;
+        this.mEmployees = employees;
+
+        arrayList = new ArrayList<>();
+        this.arrayList.addAll(mEmployees);
+    }
+    private static class ViewHolder {
+        TextView name;
+        TextView employeePhone;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.employee_list_item, parent, false);
-        Employee employee = employees.get(position);
-        TextView employeeName = listItem.findViewById(R.id.tv_employee_name);
-        TextView employeePhone = listItem.findViewById(R.id.tv_employee_phonenum);
-        TextView employeeID = listItem.findViewById(R.id.tv_employee_id);
-        employeeName.setText(employee.getName());
-        employeePhone.setText(employee.getPhone());
-        employeeID.setText( String.valueOf(employee.getID_Employee()));
-        return listItem;
+        final ViewHolder holder;
+        if(convertView == null){
+            convertView = mInflater.inflate(layoutResource, parent, false);
+            holder = new EmployeeAdapter.ViewHolder();
+            holder.name = convertView.findViewById(R.id.EmployeeName);
+            holder.employeePhone = convertView.findViewById(R.id.EmployeePhone);
+            convertView.setTag(holder);
+        }
+        else{
+            holder = (EmployeeAdapter.ViewHolder)convertView.getTag();
+        }
+
+        String EmployeePhone = getItem(position).getPhone();
+        holder.employeePhone.setText(EmployeePhone);
+        String EmployeeName = getItem(position).getName();
+        holder.name.setText(EmployeeName);
+        Log.d("TAG", String.valueOf(position));
+        Log.d("TAG", "phone: "+ EmployeePhone);
+        Log.d("TAG", "phone: "+ EmployeeName);
+
+
+        return convertView;
+    }
+
+    public void filter(String characterText) {
+        characterText = characterText.toLowerCase(Locale.getDefault());
+        mEmployees.clear();
+        if (characterText.length() == 0) {
+            mEmployees.addAll(arrayList);
+        } else {
+            mEmployees.clear();
+            for (Employee employee: arrayList) {
+                if (employee.getName().toLowerCase(Locale.getDefault()).contains(characterText)) {
+                    mEmployees.add(employee);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
