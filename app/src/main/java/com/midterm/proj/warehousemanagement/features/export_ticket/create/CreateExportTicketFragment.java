@@ -312,7 +312,8 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         btnChooseProduct.setText(productName);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         final EditText edittext = new EditText(getContext());
-        edittext.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        edittext.setHint("");
+        edittext.setInputType(InputType.TYPE_CLASS_NUMBER);
         alert.setMessage("Vui lòng nhập số lượng sản phẩm");
         //alert.setTitle("Enter Your Title");
 

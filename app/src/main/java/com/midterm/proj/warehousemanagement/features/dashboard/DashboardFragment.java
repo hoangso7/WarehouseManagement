@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +24,7 @@ import com.midterm.proj.warehousemanagement.features.warehouse.manager.Warehouse
 public class DashboardFragment extends Fragment {
     Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
     private FragmentActivity myContext;
+    TextView edtWarehouseDashboard;
     LinearLayout dashboardMenu;
     private FragmentManager fragmentManager;
     int hidden_dashboard_status = 0;
@@ -53,6 +56,7 @@ public class DashboardFragment extends Fragment {
         btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
         dashboardMenu = getView().findViewById(R.id.dashboard_menu);
         fragmentManager = myContext.getSupportFragmentManager();
+        edtWarehouseDashboard = getView().findViewById(R.id.textview_main_dasboard);
     }
 
     private void setEvent() {
@@ -60,6 +64,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
+                edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
                 fragmentTransaction.addToBackStack(null);
@@ -71,6 +76,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
+                edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
                 fragmentTransaction.addToBackStack(null);
