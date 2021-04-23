@@ -23,6 +23,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment;
+import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new CreateImportTicketFragment();
                             break;
                         case R.id.item_export_ticket:
-                            //selectedFragment = new AddExportTicketFragment();
+                            selectedFragment = new CreateExportTicketFragment();
                             break;
                         case R.id.item_add_product:
                             selectedFragment = new CreateProductFragment();

@@ -44,7 +44,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
     private ArrayList<ImportTicket> importTickets = new ArrayList<>();
     private ArrayList<Warehouse> warehouses = new ArrayList<>();
 
-    private int warehouseID;
+    private static int warehouseID;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setControl();
+        setControl(view);
         setEvent();
     }
 
@@ -91,18 +91,18 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
         });
     }
 
-    private void setControl() {
-        spnWarehouse = getView().findViewById(R.id.spiner_choose_warehouse);
-        tvWarehouseID = getView().findViewById(R.id.textview_warehouseID);
-        tvWarehouseName = getView().findViewById(R.id.textview_warehouseName);
-        tvWarehouseAddress = getView().findViewById(R.id.textview_warehouseAddress);
-        tvProductUnit = getView().findViewById(R.id.tv_productUnit);
-        btnSubmitImportForm = getView().findViewById(R.id.btn_submit_import_form);
-        btnChooseEmployee = getView().findViewById(R.id.btn_ctk_choose_employee);
-        btnChooseProduct = getView().findViewById(R.id.btn_ctk_choose_product);
-        edtSupplierName = getView().findViewById(R.id.edt_supplier_name);
-        edtSupplierAddress = getView().findViewById(R.id.edt_supplier_address);
-        edtProductNumber = getView().findViewById(R.id.edt_productNumber);
+    private void setControl(View view) {
+        spnWarehouse = view.findViewById(R.id.spiner_choose_warehouse);
+        tvWarehouseID = view.findViewById(R.id.textview_warehouseID);
+        tvWarehouseName = view.findViewById(R.id.textview_warehouseName);
+        tvWarehouseAddress = view.findViewById(R.id.textview_warehouseAddress);
+        tvProductUnit = view.findViewById(R.id.tv_productUnit);
+        btnSubmitImportForm = view.findViewById(R.id.btn_submit_import_form);
+        btnChooseEmployee = view.findViewById(R.id.btn_ctk_choose_employee);
+        btnChooseProduct = view.findViewById(R.id.btn_ctk_choose_product);
+        edtSupplierName = view.findViewById(R.id.edt_supplier_name);
+        edtSupplierAddress = view.findViewById(R.id.edt_supplier_address);
+        edtProductNumber = view.findViewById(R.id.edt_productNumber);
     }
     private void setEvent() {
         fetchWarehouseList();
