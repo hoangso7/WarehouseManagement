@@ -23,6 +23,7 @@ import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ImportTicketQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.features.product.search.ProductSearchDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
 import com.midterm.proj.warehousemanagement.model.Product;
@@ -132,6 +133,14 @@ public class CreateImportTicketFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 submitImportForm();
+            }
+        });
+
+        btnChooseProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProductSearchDialogFragment productSearchDialogFragment = new ProductSearchDialogFragment();
+                productSearchDialogFragment.show(getFragmentManager(), "searchproduct");
             }
         });
 
