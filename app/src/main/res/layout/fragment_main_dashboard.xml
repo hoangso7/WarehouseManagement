@@ -5,87 +5,219 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textview_main_dasboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#16a085"
+        android:padding="15dp"
+        android:text="Quản Lý Kho"
+        android:textColor="#fff"
+        android:textSize="22dp" />
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/dashboard_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/dashboard_menu"
-        >
-        <Button
-            android:id="@+id/btn_instock"
+        android:layout_below="@+id/textview_main_dasboard"
+        android:gravity="center"
+
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="HÀNG TRONG KHO"
-            android:backgroundTint="#009688"
-            android:textColor="#000"
-            />
-        <Button
-            android:id="@+id/btn_tickets_list"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="PHIẾU NHẬP/XUẤT KHO"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#000"
-            />
-        <Button
-            android:id="@+id/btn_warehouse_management"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="QUẢN LÝ KHO"
-            android:backgroundTint="#8BC34A"
-            android:textColor="#000"
-            />
-        <Button
-            android:id="@+id/btn_employee_info"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="QUẢN LÝ NHÂN VIÊN"
-            android:backgroundTint="#CDDC39"
-            android:textColor="#000"
-            />
-        <Button
-            android:id="@+id/btn_customer_info"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="THÔNG TIN KHÁCH HÀNG"
-            android:backgroundTint="#FFC107"
-            android:textColor="#000"
-            />
-        <Button
-            android:id="@+id/btn_supplier_info"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="THÔNG TIN NHÀ CUNG CẤP"
-            android:backgroundTint="#FF9800"
-            android:textColor="#000"
-            />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+
+            android:paddingTop="50dp"
+            android:paddingBottom="50dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:backgroundTint="#16a085"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/_warehouse" />
+
+                <Button
+                    android:id="@+id/btn_instock"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#16a085"
+                    android:stateListAnimator="@null"
+                    android:text="HÀNG TRONG KHO"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:backgroundTint="#16a085"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/inventory" />
+
+                <Button
+                    android:id="@+id/btn_tickets_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:backgroundTint="#16a085"
+                    android:text="PHIẾU NHẬP/XUẤT KHO"
+                    android:stateListAnimator="@null"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:backgroundTint="#16a085"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/monitoring" />
+
+                <Button
+                    android:id="@+id/btn_warehouse_management"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:backgroundTint="#16a085"
+                    android:text="QUẢN LÝ KHO"
+                    android:stateListAnimator="@null"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:backgroundTint="#16a085"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/staff" />
+
+                <Button
+                    android:id="@+id/btn_employee_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:backgroundTint="#16a085"
+                    android:text="QUẢN LÝ NHÂN VIÊN"
+                    android:stateListAnimator="@null"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:backgroundTint="#16a085"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/customer" />
+
+                <Button
+                    android:id="@+id/btn_customer_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:backgroundTint="#16a085"
+                    android:text="THÔNG TIN KHÁCH HÀNG"
+                    android:stateListAnimator="@null"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:backgroundTint="#16a085"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/info" />
+
+                <Button
+                    android:id="@+id/btn_supplier_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:backgroundTint="#16a085"
+                    android:text="THÔNG TIN NHÀ CUNG CẤP"
+                    android:stateListAnimator="@null"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_dashboard_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
 

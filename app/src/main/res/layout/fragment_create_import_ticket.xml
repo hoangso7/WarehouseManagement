@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#16a085"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="Phiếu Nhập Kho"
         android:textColor="#fff"
         android:textSize="22dp" />
@@ -17,16 +17,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+
         android:layout_marginTop="10dp"
-        android:background="#fff"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="Chọn Kho: "
+
+            android:text="Chọn Kho"
             android:textColor="#14232d"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -42,18 +47,16 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
+
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:orientation="vertical"
-        android:paddingLeft="10dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -119,18 +122,21 @@
         </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+
+        android:background="@drawable/triangle_radius"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -145,6 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:backgroundTint="#fff"
             android:hint="Nhập mã hàng"
             android:inputType="text"
             android:maxLines="1"
@@ -154,9 +161,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -171,6 +186,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
+            android:backgroundTint="#fff"
             android:hint="Nhập tên hàng"
             android:inputType="text"
             android:maxLines="1"
@@ -180,9 +196,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,8 +220,8 @@
             android:id="@+id/edt_productUnit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="26dp"
+            android:backgroundTint="#fff"
             android:hint="Nhập đơn vị"
             android:inputType="text"
             android:maxLines="1"
@@ -207,9 +231,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -224,17 +255,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
+            android:backgroundTint="#fff"
             android:hint="Nhập số lượng"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="18dp" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_submit_import_form"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#16a085"
         android:text="Nhập kho" />
 
     <TextView
