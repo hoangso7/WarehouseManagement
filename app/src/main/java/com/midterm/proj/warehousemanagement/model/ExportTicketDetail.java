@@ -6,6 +6,7 @@ public class ExportTicketDetail {
     int number;
     int pricePerUnit;
 
+
     public ExportTicketDetail(int ID_ExportTicket, int ID_Product, int number, int pricePerUnit) {
         this.ID_ExportTicket = ID_ExportTicket;
         this.ID_Product = ID_Product;
