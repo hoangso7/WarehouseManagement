@@ -66,9 +66,6 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         holder.employeePhone.setText(EmployeePhone);
         String EmployeeName = getItem(position).getName();
         holder.name.setText(EmployeeName);
-        Log.d("TAG", String.valueOf(position));
-        Log.d("TAG", "phone: "+ EmployeePhone);
-        Log.d("TAG", "phone: "+ EmployeeName);
 
 
         return convertView;
