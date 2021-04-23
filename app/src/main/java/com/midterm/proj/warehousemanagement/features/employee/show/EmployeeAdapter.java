@@ -3,6 +3,7 @@ package com.midterm.proj.warehousemanagement.features.employee.show;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,10 +62,15 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
             holder = (EmployeeAdapter.ViewHolder)convertView.getTag();
         }
 
+        String EmployeePhone = getItem(position).getPhone();
+        holder.employeePhone.setText(EmployeePhone);
         String EmployeeName = getItem(position).getName();
         holder.name.setText(EmployeeName);
-        String EmployeePhone = getItem(position).getPhone();
-        holder.name.setText(EmployeePhone);
+        Log.d("TAG", String.valueOf(position));
+        Log.d("TAG", "phone: "+ EmployeePhone);
+        Log.d("TAG", "phone: "+ EmployeeName);
+
+
         return convertView;
     }
 

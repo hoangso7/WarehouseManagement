@@ -107,7 +107,7 @@ public class EmployeeSearchDialogFragment extends DialogFragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 String text = mSearchEmployees.getText().toString().toLowerCase(Locale.getDefault());
-//                EmployeeAdapter.
+                employeesListAdapter.filter(text);
             }
 
             @Override
