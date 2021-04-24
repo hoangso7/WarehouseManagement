@@ -18,8 +18,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
+import com.midterm.proj.warehousemanagement.features.customer.show.ShowCustomerListFragment;
 import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
 import com.midterm.proj.warehousemanagement.features.product.show.ShowInstockFragment;
+import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
 
 public class DashboardFragment extends Fragment {
@@ -91,6 +93,30 @@ public class DashboardFragment extends Fragment {
                 //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        btn_customer_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dashboardMenu.setVisibility(View.INVISIBLE);
+                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.fragment_dashboard_container, new ShowCustomerListFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        btn_supplier_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dashboardMenu.setVisibility(View.INVISIBLE);
+                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.fragment_dashboard_container, new ShowSupplierListFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
