@@ -47,13 +47,13 @@ public class ShowSupplierListFragment extends Fragment {
     }
 
     private void setEvent() {
-//        lvSupplierList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String phone = supplierArrayList.get(position).getPhone();
-//                ThirdPartyApp.dialPhoneNumber(phone);
-//            }
-//        });
+        lvSupplierList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String address = supplierArrayList.get(position).getAddress();
+                ThirdPartyApp.googlemapSearchForAddress(address);
+            }
+        });
     }
     public void fetchCustomerList(){
         DAO.SupplierQuery supplierQuery = new SupplierQuery();

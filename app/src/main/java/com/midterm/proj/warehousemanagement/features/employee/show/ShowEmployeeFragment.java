@@ -1,11 +1,14 @@
 package com.midterm.proj.warehousemanagement.features.employee.show;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +25,7 @@ import com.midterm.proj.warehousemanagement.features.employee.EmployeeCrudListen
 import com.midterm.proj.warehousemanagement.features.employee.create.CreateEmployeeDialogFragment;
 import com.midterm.proj.warehousemanagement.features.employee.search.SearchEmployeeAdapter;
 import com.midterm.proj.warehousemanagement.model.Employee;
+import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,10 +62,10 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
         btnAddEmployee = getView().findViewById(R.id.btn_create_employee);
         fragmentManager = myContext.getSupportFragmentManager();
 
-        fetchWarehouseList();
+        fetchEmployeeList();
     }
 
-    private void fetchWarehouseList() {
+    private void fetchEmployeeList() {
         DAO.EmployeeQuery employeeQuery = new EmployeeQuery();
         employeeQuery.readAllEmployee(new QueryResponse<List<Employee>>() {
             @Override
@@ -85,6 +89,35 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
             public void onClick(View v) {
                 CreateEmployeeDialogFragment createEmployeeDialogFragment = CreateEmployeeDialogFragment.newInstance("Thêm nhân viên mới", ShowEmployeeFragment.this);
                 createEmployeeDialogFragment.show(getFragmentManager(), "create_warehouse");
+            }
+        });
+
+        lvEmployeeList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                showOptions(pos);
+                return true;
+            }
+        });
+
+    }
+
+    private void showOptions(int pos) {
+        final Dialog optionDialog = new Dialog(getContext());
+        optionDialog.setTitle("Tùy chọn");
+        Button btnChangeInfo = new Button(getContext());
+        Button btnCall = new Button(getContext());
+        optionDialog.setContentView(R.layout.dialog_options);
+        optionDialog.show();
+        optionDialog.getWindow().setLayout((6 * 1024)/7, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        btnChangeInfo = optionDialog.findViewById(R.id.btn_edit_info);
+        btnCall = optionDialog.findViewById(R.id.btn_call);
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ThirdPartyApp.dialPhoneNumber(employees.get(pos).getPhone());
             }
         });
     }

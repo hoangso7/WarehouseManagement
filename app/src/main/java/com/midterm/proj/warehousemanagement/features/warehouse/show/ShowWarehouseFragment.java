@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -21,6 +22,7 @@ import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.features.warehouse.WarehouseCrudListener;
 import com.midterm.proj.warehousemanagement.features.warehouse.create.CreateWarehouseDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
+import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +67,14 @@ public class ShowWarehouseFragment extends Fragment implements WarehouseCrudList
             public void onClick(View v) {
                 CreateWarehouseDialogFragment createWarehouseDialogFragment = CreateWarehouseDialogFragment.newInstance("Tạo kho mới", ShowWarehouseFragment.this);
                 createWarehouseDialogFragment.show(getFragmentManager(), "create_warehouse");
+            }
+        });
+
+        lvWarehouseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String address = warehouses.get(position).getAddress();
+                ThirdPartyApp.googlemapSearchForAddress(address);
             }
         });
     }
