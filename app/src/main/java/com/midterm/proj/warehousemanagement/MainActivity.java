@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.main_activity;
+package com.midterm.proj.warehousemanagement;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment;
 import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;

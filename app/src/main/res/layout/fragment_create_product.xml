@@ -17,10 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#16a085"
-            android:padding="10dp"
-            android:text="Thêm Sản Phẩm"
+            android:fontFamily="@font/hachi"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="THÊM SẢN PHẨM"
             android:textColor="#fff"
-            android:textSize="22dp" />
+            android:textSize="22dp"
+            android:textStyle="normal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,10 +43,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Tên hàng:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/edt_create_product_name"
@@ -51,10 +55,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
                 android:hint="Nhập tên hàng"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,10 +81,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên hàng:"
+                android:fontFamily="@font/hachi"
+                android:text="Đơn vị:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/edt_create_product_unit"
@@ -86,10 +93,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
                 android:hint="Nhập đơn vị tính"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -110,10 +119,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tên hàng:"
+                android:fontFamily="@font/hachi"
+                android:text="Gía tiền:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/edt_create_product_price"
@@ -121,10 +131,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
                 android:hint="Nhập giá tiền (VNĐ)"
                 android:inputType="number"
                 android:maxLines="1"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <Button
@@ -152,7 +164,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:scaleType="fitXY" />
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
     <Button
@@ -163,7 +175,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:backgroundTint="#16a085"
+        android:fontFamily="@font/hachi"
         android:text="Thêm sản phẩm"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:textStyle="normal" />
 
 </LinearLayout>

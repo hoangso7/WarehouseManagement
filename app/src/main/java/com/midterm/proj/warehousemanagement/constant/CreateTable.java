@@ -3,13 +3,15 @@ package com.midterm.proj.warehousemanagement.constant;
 public class CreateTable {
     public static String CREATE_IMPORT_TICKET_TABLE =
             "CREATE TABLE " + Constants.IMPORT_TICKET_TABLE + "("
-            +Constants._EMPLOYEE_ID + " INTEGER, "
-            +Constants._WAREHOUSE_ID + " INTEGER, "
+            +Constants.IMPORT_TICKET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +Constants._EMPLOYEE_ID + " INTEGER NOT NULL, "
+            +Constants._WAREHOUSE_ID + " INTEGER NOT NULL, "
             +Constants.IMPORT_TICKET_CREATION_DATE + " TEXT NOT NULL, "
             +Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS + " INTEGER NOT NULL, "
             +Constants.IMPORT_TICKET_SUPPLIER_ID_FK+ " INTEGER NOT NULL, "
             +Constants.IMPORT_TICKET_PRODUCTS_ID_FK+ " INTEGER NOT NULL, "
-            +"PRIMARY KEY ("+Constants._EMPLOYEE_ID+","+Constants._WAREHOUSE_ID+"), "
+            +"FOREIGN KEY (" + Constants._EMPLOYEE_ID + ") REFERENCES " + Constants.EMPLOYEE_TABLE + "(" + Constants.__EMPLOYEE_ID + ") ON UPDATE CASCADE, "
+            +"FOREIGN KEY (" + Constants._WAREHOUSE_ID + ") REFERENCES " + Constants.WAREHOUSE_TABLE + "(" + Constants.__WAREHOUSE_ID + ") ON UPDATE CASCADE, "
             +"FOREIGN KEY (" + Constants.IMPORT_TICKET_PRODUCTS_ID_FK + ") REFERENCES " + Constants.PRODUCT_TABLE + "(" + Constants._PRODUCT_ID + ") ON UPDATE CASCADE, "
             +"FOREIGN KEY (" + Constants.IMPORT_TICKET_SUPPLIER_ID_FK + ") REFERENCES " + Constants.SUPPLIER_TABLE + "(" + Constants._SUPPLIER_ID + ") ON UPDATE CASCADE "
             +")";

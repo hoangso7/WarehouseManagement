@@ -22,7 +22,7 @@ public class SupplierQuery implements DAO.SupplierQuery {
     public void createSupplier(Supplier supplier, QueryResponse<Boolean> response){
         try (SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase()) {
             ContentValues contentValues = getContentValuesForSupplier(supplier);
-            long id = sqLiteDatabase.insertOrThrow(Constants.EMPLOYEE_TABLE, null, contentValues);
+            long id = sqLiteDatabase.insertOrThrow(Constants.SUPPLIER_TABLE, null, contentValues);
             if (id > 0) {
                 response.onSuccess(true);
                 supplier.setID_Supplier((int) id);

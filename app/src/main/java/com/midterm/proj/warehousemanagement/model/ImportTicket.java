@@ -1,8 +1,9 @@
 package com.midterm.proj.warehousemanagement.model;
 
 public class ImportTicket {
-    private int ID_Warehouse;    // primary key
-    private int ID_Employee;     // primary key
+    private int importTicketID;
+    private int ID_Warehouse;
+    private int ID_Employee;
     private String createDate;
     private int number;
     private int productID;
@@ -14,6 +15,14 @@ public class ImportTicket {
         this.ID_Employee = ID_Employee;
         this.createDate = createDate;
         this.number = number;
+    }
+
+    public int getImportTicketID() {
+        return importTicketID;
+    }
+
+    public void setImportTicketID(int importTicketID) {
+        this.importTicketID = importTicketID;
     }
 
     public int getID_Warehouse() {

@@ -56,7 +56,7 @@ public class DashboardFragment extends Fragment {
         btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
         dashboardMenu = getView().findViewById(R.id.dashboard_menu);
         fragmentManager = myContext.getSupportFragmentManager();
-        edtWarehouseDashboard = getView().findViewById(R.id.textview_main_dasboard);
+        //edtWarehouseDashboard = getView().findViewById(R.id.textview_main_dasboard);
     }
 
     private void setEvent() {
@@ -64,7 +64,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                edtWarehouseDashboard.setVisibility(View.INVISIBLE);
+                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
                 fragmentTransaction.addToBackStack(null);
@@ -76,7 +76,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                edtWarehouseDashboard.setVisibility(View.INVISIBLE);
+                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.add(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
                 fragmentTransaction.addToBackStack(null);

@@ -4,6 +4,7 @@ public class Constants {
 
     // import tickets table
     public static final String IMPORT_TICKET_TABLE = "import_ticket_table";
+    public static final String IMPORT_TICKET_ID = "import_ticket_id";
     public static final String _EMPLOYEE_ID = "employee_id";
     public static final String _WAREHOUSE_ID = "warehouse_id";
     public static final String IMPORT_TICKET_CREATION_DATE = "import_ticket_creation_date";

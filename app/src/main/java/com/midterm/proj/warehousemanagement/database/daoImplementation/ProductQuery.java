@@ -40,7 +40,7 @@ public class ProductQuery implements DAO.ProductQuery {
 
         contentValues.put(Constants.PRODUCT_NAME, product.getName());
         contentValues.put(Constants.PRODUCT_UNIT, product.getUnit());
-        //contentValues.put(Constants.PRODUCT_INSTOCK_NUMBER, product.getNumber());
+        contentValues.put(Constants.PRODUCT_INSTOCK_NUMBER, product.getNumber());
         contentValues.put(Constants.PRODUCT_PRICE, product.getPrice());
         contentValues.put(Constants.PRODUCT_IMAGE, product.getBytesImage());
 
@@ -150,7 +150,7 @@ public class ProductQuery implements DAO.ProductQuery {
         int id = cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_ID));
         String name = cursor.getString(cursor.getColumnIndex(Constants.PRODUCT_NAME));
         String unit= cursor.getString(cursor.getColumnIndex(Constants.PRODUCT_UNIT));
-        //int number= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_INSTOCK_NUMBER));
+        int number= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_INSTOCK_NUMBER));
         int price= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_PRICE));
         byte[] bytesImage = cursor.getBlob(cursor.getColumnIndex(Constants.PRODUCT_IMAGE));
         return new Product(id,name,unit,price,bytesImage);

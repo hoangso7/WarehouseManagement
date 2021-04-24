@@ -5,15 +5,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:id="@+id/textview_main_dasboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#16a085"
-        android:padding="15dp"
-        android:text="Quản Lý Kho"
-        android:textColor="#fff"
-        android:textSize="22dp" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
+            android:text="QUẢN LÝ KHO"
+            android:textColor="#fff"
+            android:textSize="22dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dashboard_menu"
@@ -30,10 +49,10 @@
             android:layout_margin="10dp"
             android:orientation="vertical"
 
-            android:paddingTop="50dp"
-            android:paddingBottom="50dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="10dp"
 
             >
 
@@ -41,13 +60,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/triangle_radius"
+                android:backgroundTint="#16a085"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:backgroundTint="#16a085"
-                >
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -57,26 +75,28 @@
                 <Button
                     android:id="@+id/btn_instock"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:backgroundTint="#16a085"
+                    android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
                     android:text="HÀNG TRONG KHO"
-                    android:textColor="#fff" />
-            </LinearLayout>
 
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/triangle_radius"
+                android:backgroundTint="#16a085"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:backgroundTint="#16a085"
-                android:layout_marginTop="10dp"
-                >
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -86,26 +106,29 @@
                 <Button
                     android:id="@+id/btn_tickets_list"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_marginRight="15dp"
                     android:backgroundTint="#16a085"
-                    android:text="PHIẾU NHẬP/XUẤT KHO"
+                    android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
-                    android:textColor="#fff" />
+                    android:text="PHIẾU NHẬP/XUẤT KHO"
+
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/triangle_radius"
+                android:backgroundTint="#16a085"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:backgroundTint="#16a085"
-                android:layout_marginTop="10dp"
-                >
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -115,26 +138,29 @@
                 <Button
                     android:id="@+id/btn_warehouse_management"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_marginRight="15dp"
                     android:backgroundTint="#16a085"
-                    android:text="QUẢN LÝ KHO"
+                    android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
-                    android:textColor="#fff" />
+                    android:text="QUẢN LÝ KHO"
+
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/triangle_radius"
+                android:backgroundTint="#16a085"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:backgroundTint="#16a085"
-                android:layout_marginTop="10dp"
-                >
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -144,26 +170,29 @@
                 <Button
                     android:id="@+id/btn_employee_info"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_marginRight="15dp"
                     android:backgroundTint="#16a085"
-                    android:text="QUẢN LÝ NHÂN VIÊN"
+                    android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
-                    android:textColor="#fff" />
+                    android:text="QUẢN LÝ NHÂN VIÊN"
+
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/triangle_radius"
+                android:backgroundTint="#16a085"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:backgroundTint="#16a085"
-                android:layout_marginTop="10dp"
-                >
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -173,26 +202,29 @@
                 <Button
                     android:id="@+id/btn_customer_info"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_marginRight="15dp"
                     android:backgroundTint="#16a085"
-                    android:text="THÔNG TIN KHÁCH HÀNG"
+                    android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
-                    android:textColor="#fff" />
+                    android:text="THÔNG TIN KHÁCH HÀNG"
+
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/triangle_radius"
+                android:backgroundTint="#16a085"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:backgroundTint="#16a085"
-                android:layout_marginTop="10dp"
-                >
+                android:paddingBottom="5dp">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -202,12 +234,16 @@
                 <Button
                     android:id="@+id/btn_supplier_info"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginRight="15dp"
                     android:backgroundTint="#16a085"
-                    android:text="THÔNG TIN NHÀ CUNG CẤP"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="normal"
                     android:stateListAnimator="@null"
-                    android:textColor="#fff" />
+                    android:text="NHÀ CUNG CẤP"
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                     />
             </LinearLayout>
 
         </LinearLayout>

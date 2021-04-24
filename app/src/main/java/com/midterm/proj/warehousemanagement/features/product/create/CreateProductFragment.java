@@ -100,7 +100,7 @@ public class CreateProductFragment extends Fragment {
         byte[] bytesImage = byteArrayOutputStream.toByteArray();
 
         if(productValid(name,unit,sPrice,path)){
-            Product product = new Product(name,unit,price,bytesImage);
+            Product product = new Product(name,unit,0,price,bytesImage);
             DAO.ProductQuery productQuery = new ProductQuery();
             productQuery.createProduct(product, new QueryResponse<Boolean>() {
                 @Override

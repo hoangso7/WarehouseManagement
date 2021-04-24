@@ -46,7 +46,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
     private ArrayList<ImportTicket> importTickets = new ArrayList<>();
     private ArrayList<Warehouse> warehouses = new ArrayList<>();
 
-    private static int warehouseID;
+    private static int warehouseID = 0;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -106,6 +106,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
         edtSupplierAddress = view.findViewById(R.id.edt_supplier_address);
         edtProductNumber = view.findViewById(R.id.edt_productNumber);
     }
+
     private void setEvent() {
         fetchWarehouseList();
         ArrayList<String> warehouseNameList = new ArrayList<>();
@@ -123,7 +124,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
                 tvWarehouseID.setText(String.valueOf( warehouses.get(i).getID_Warehouse()));
                 tvWarehouseName.setText(warehouses.get(i).getName());
                 tvWarehouseAddress.setText(warehouses.get(i).getAddress());
-                warehouseID = i;
+                warehouseID = i+1;
             }
 
             @Override
@@ -185,56 +186,68 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
         importTicket.setCreateDate(getCreationDate());
         importTicket.setNumber(Integer.parseInt(edtProductNumber.getText().toString()));
         // set foreign key
-        importTicket.setSupplierID(getSupplierID());
+        int supplierID = getSupplierID();
+        if (supplierID != -1){
+            importTicket.setSupplierID(getSupplierID());
+        }
+        else{
+            Toast.makeText(MyApp.context, "Có lỗi gì đó, không nhận được ID NCC", Toast.LENGTH_LONG).show();
+            return;
+        }
         importTicket.setProductID(getProductIdFromName());
-
-        sanityCheck(importTicket);
-
+        createImportTicket(importTicket);
     }
 
     private int getSupplierID() {
         int id = -1;
+        // Some sanity check:
         String supplierName = edtSupplierName.getText().toString().trim();
         String supplierAddress = edtSupplierAddress.getText().toString().trim();
         if(supplierName.length() == 0 || supplierAddress.length() == 0){
             Toast.makeText(MyApp.context, "Vui lòng kiểm tra lại thông tin nhà cung cấp", Toast.LENGTH_LONG).show();
             return id;
         }
-
+        // Check if supplier already exist:
         ArrayList<Supplier> suppliers = new ArrayList<>();
         DAO.SupplierQuery supplierQuery = new SupplierQuery();
         supplierQuery.readAllSupplier(new QueryResponse<List<Supplier>>() {
             @Override
-            public void onSuccess(List<Supplier> data) {
-                suppliers.addAll(data);
-            }
-
+            public void onSuccess(List<Supplier> data) {suppliers.addAll(data);}
             @Override
-            public void onFailure(String message) {
-
-            }
+            public void onFailure(String message) {}
         });
-        // check if this supplier already in database and get its id
+        // then get its id
         for(Supplier s : suppliers){
             if(s.getName().equals(supplierName)){
                 return s.getID_Supplier();
             }
         }
+        // Else, create a new supplier and get it id
+        ArrayList<Integer> supId = new ArrayList<>();
         Supplier supplier = new Supplier(supplierName,supplierAddress);
         supplierQuery.createSupplier(supplier, new QueryResponse<Boolean>() {
             @Override
-            public void onSuccess(Boolean data) {
-                // now this supplier exists in db, re-run the function to get the ID
-                // what a nice recursion! :))
-                getSupplierID();
-            }
+            public void onSuccess(Boolean data) {supplierQuery.readAllSupplier(new QueryResponse<List<Supplier>>() {
+                    @Override
+                    public void onSuccess(List<Supplier> data) {
+                        suppliers.clear();
+                        suppliers.addAll(data);
+                    }
 
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                });}
             @Override
-            public void onFailure(String message) {
-
-            }
+            public void onFailure(String message) {}
         });
-        return id;
+        for(Supplier s : suppliers){
+            if(s.getName().equals(supplierName)){
+                return s.getID_Supplier();
+            }
+        }
+        return -1;
     }
 
     private String getCreationDate() {
@@ -313,13 +326,13 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
 
             }
         });
-        for(ImportTicket i : importTickets){
-            int pId = i.getProductID();
-            if(pId == importTicket.getProductID()){
-                updateInstock(importTicket);
-                break;
-            }
-        }
+//        for(ImportTicket i : importTickets){
+//            int pId = i.getProductID();
+//            if(pId == importTicket.getProductID()){
+//                updateInstock(importTicket);
+//                break;
+//            }
+//        }
         createImportTicket(importTicket);
     }
 
@@ -358,15 +371,13 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
         importTicketQuery.createImportTicket(importTicket, new QueryResponse<Boolean>() {
             @Override
             public void onSuccess(Boolean data) {
-
+                updateInstock(importTicket);
             }
-
             @Override
             public void onFailure(String message) {
-
+                Toast.makeText(MyApp.context, message, Toast.LENGTH_LONG).show();
             }
         });
-        updateInstock(importTicket);
     }
 
     private String generateProductID(String productName){
@@ -377,6 +388,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
         return result;
     }
 
+    @Override
     public void setProductNameCallback(String productName){
         btnChooseProduct.setText(productName);
         DAO.ProductQuery productQuery = new ProductQuery();

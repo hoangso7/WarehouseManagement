@@ -35,7 +35,7 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
         contentValues.put(Constants.IMPORT_TICKET_PRODUCTS_ID_FK, importTicket.getProductID());
         contentValues.put(Constants.IMPORT_TICKET_SUPPLIER_ID_FK, importTicket.getSupplierID());
         try{
-            long rowCount = sqLiteDatabase.insertOrThrow(Constants.IMPORT_TICKET_TABLE, null,contentValues);
+            long rowCount = sqLiteDatabase.insert(Constants.IMPORT_TICKET_TABLE, null,contentValues);
 
             if (rowCount > 0){
                 response.onSuccess(true);
@@ -44,7 +44,7 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
 
             }
             else
-                response.onFailure("Create import ticket failed!");
+                response.onFailure("Không thể tạo phiếu nhập kho!");
 
         }catch (SQLiteException e){
             response.onFailure(e.getMessage());

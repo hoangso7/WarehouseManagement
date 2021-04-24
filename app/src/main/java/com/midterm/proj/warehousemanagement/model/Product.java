@@ -16,9 +16,10 @@ public class Product {
         this.bytesImage = bytesImage;
     }
 
-    public Product(String name, String unit, int price, byte[] bytesImage) {
+    public Product(String name, String unit, int number ,int price, byte[] bytesImage) {
         this.name = name;
         this.unit = unit;
+        this.number = number;
         this.price = price;
         this.bytesImage = bytesImage;
     }
