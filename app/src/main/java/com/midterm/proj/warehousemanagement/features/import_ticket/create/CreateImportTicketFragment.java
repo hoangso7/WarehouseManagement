@@ -189,13 +189,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
         importTicket.setProductID(getProductIdFromName());
 
         sanityCheck(importTicket);
-//        if(){
-//            Toast.makeText(getActivity(),"Không tạo được phiếu nhập. Vui lòng kiểm tra lại.",Toast.LENGTH_SHORT).show();
-//            return;
-//        }
 
-        //DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
-        //importTicketQuery.createImportTicket();
     }
 
     private int getSupplierID() {
@@ -342,7 +336,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
                 productQuery.updateProduct(data, new QueryResponse<Boolean>() {
                     @Override
                     public void onSuccess(Boolean data) {
-
+                        Toast.makeText(MyApp.context, "Đã cập nhật số lượng sản phẩm.", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -372,6 +366,7 @@ public class CreateImportTicketFragment extends Fragment implements SearchProduc
 
             }
         });
+        updateInstock(importTicket);
     }
 
     private String generateProductID(String productName){

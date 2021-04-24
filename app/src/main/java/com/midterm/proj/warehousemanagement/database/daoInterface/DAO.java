@@ -74,5 +74,6 @@ public class DAO {
     public interface ExportTicketDetailQuery{
         void createExportTicketDetail(ExportTicketDetail exportTicketDetail, QueryResponse<Boolean> response);
         void readExportTicketDetail(int ExportTicketDetailID, QueryResponse<ExportTicketDetail> response);
+        void readAllExportTicketDetail(int ExportTicketID, QueryResponse<List <ExportTicketDetail>> response);
     }
 }

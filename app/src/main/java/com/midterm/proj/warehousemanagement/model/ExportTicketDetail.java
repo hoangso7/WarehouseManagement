@@ -14,6 +14,10 @@ public class ExportTicketDetail {
         this.pricePerUnit = pricePerUnit;
     }
 
+    public ExportTicketDetail() {
+
+    }
+
     public int getID_ExportTicket() {
         return ID_ExportTicket;
     }

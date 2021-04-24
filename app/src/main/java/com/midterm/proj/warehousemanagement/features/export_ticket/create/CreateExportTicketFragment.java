@@ -208,8 +208,8 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
             Toast.makeText(MyApp.context, "Vui lòng nhập tên khách hàng", Toast.LENGTH_LONG).show();
             return customerID;
         }
-        if(customerPhone.length() == 0){
-            Toast.makeText(MyApp.context, "Vui lòng nhập tên SDT khách hàng", Toast.LENGTH_LONG).show();
+        if(customerPhone.length() != 10){
+            Toast.makeText(MyApp.context, "Vui lòng kiểm tra SDT khách hàng", Toast.LENGTH_LONG).show();
             return customerID;
         }
         ArrayList<Customer> customers = new ArrayList<>();
