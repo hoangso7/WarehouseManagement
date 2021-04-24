@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
+import com.midterm.proj.warehousemanagement.features.product.show.ShowInstockFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
 
 public class DashboardFragment extends Fragment {
@@ -60,6 +61,17 @@ public class DashboardFragment extends Fragment {
     }
 
     private void setEvent() {
+        btn_instock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dashboardMenu.setVisibility(View.INVISIBLE);
+                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.add(R.id.fragment_dashboard_container, new ShowInstockFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         btn_warehouse_management.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -25,7 +25,7 @@ import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.product.SearchProductItemListener;
-import com.midterm.proj.warehousemanagement.features.product.show.ProductListAdapter;
+import com.midterm.proj.warehousemanagement.features.product.show.SearchProductListAdapter;
 import com.midterm.proj.warehousemanagement.model.Product;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class ProductSearchDialogFragment extends DialogFragment {
 
     EditText mSearchProducts;
     private AppBarLayout viewProductsBar, searchBar;
-    private ProductListAdapter productListAdapter;
+    private SearchProductListAdapter productListAdapter;
 
     public static ProductSearchDialogFragment newInstance(SearchProductItemListener listener){
         chooseProductListener = listener;
@@ -98,7 +98,7 @@ public class ProductSearchDialogFragment extends DialogFragment {
 
             }
         });
-        productListAdapter = new ProductListAdapter(getActivity(), R.layout.layout_product_item, products);
+        productListAdapter = new SearchProductListAdapter(getActivity(), R.layout.layout_product_item, products);
         mSearchProducts.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

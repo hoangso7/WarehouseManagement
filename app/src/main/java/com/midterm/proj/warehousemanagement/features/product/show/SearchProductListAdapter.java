@@ -30,7 +30,7 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ProductListAdapter extends ArrayAdapter<Product> {
+public class SearchProductListAdapter extends ArrayAdapter<Product> {
     private LayoutInflater mInflater;
     private List<Product> mProducts = null;
     private ArrayList<Product> arrayList; //used for the search bar
@@ -38,7 +38,7 @@ public class ProductListAdapter extends ArrayAdapter<Product> {
     private Context mContext;
     private String mAppend;
 
-    public ProductListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Product> products) {
+    public SearchProductListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Product> products) {
         super(context, resource, products);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutResource = resource;
