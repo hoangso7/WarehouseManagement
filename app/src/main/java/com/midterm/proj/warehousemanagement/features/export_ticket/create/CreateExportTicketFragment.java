@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,19 +27,19 @@ import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.CustomerQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.ExportTicketDetailQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ExportTicketQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.employee.SearchEmployeeItemListener;
 import com.midterm.proj.warehousemanagement.features.employee.search.EmployeeSearchDialogFragment;
-import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.SearchProductItemListener;
 import com.midterm.proj.warehousemanagement.features.product.search.ProductSearchDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Customer;
 import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.model.ExportTicket;
-import com.midterm.proj.warehousemanagement.model.ImportTicket;
+import com.midterm.proj.warehousemanagement.model.ExportTicketDetail;
 import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 import com.midterm.proj.warehousemanagement.util.MyApp;
@@ -62,6 +60,31 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
     private static int warehouseID;
     private static int tableIndex = 0;
     private static int totalMoney = 0;
+
+    public static class ChosenProductInfo {
+        private String name;
+        private int number;
+        private int price;
+
+        public ChosenProductInfo(String name, int number, int price) {
+            this.name = name;
+            this.number = number;
+            this.price = price;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+    }
+    private static ArrayList<ChosenProductInfo> chosenProductsList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -104,7 +127,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
                 tvWarehouseID.setText(String.valueOf( warehouses.get(i).getID_Warehouse()));
                 tvWarehouseName.setText(warehouses.get(i).getName());
                 tvWarehouseAddress.setText(warehouses.get(i).getAddress());
-                warehouseID = i;
+                warehouseID = i+1;
             }
 
             @Override
@@ -139,23 +162,26 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
 
     private void submitExportForm() {
         int employeeID = getEmployeeIdFromName();
+        if(employeeID == -1) return;
         int customerID = getCustomerId();
+        if(customerID == -1) return;
         String creationDate = getCreationDate();
         ExportTicket exportTicket = new ExportTicket();
-
-        //int productID = getProductIdFromName();
 
         exportTicket.setEmployeeID(employeeID);
         exportTicket.setCustomerID(customerID);
         exportTicket.setCreateDate(creationDate);
         exportTicket.setWarehouseID(warehouseID);
 
+        createExportTicket(exportTicket);
+    }
+
+    private void createExportTicket(ExportTicket exportTicket) {
         DAO.ExportTicketQuery exportTicketQuery = new ExportTicketQuery();
-        ArrayList<ExportTicket> exportTickets=new ArrayList<>();
-        exportTicketQuery.readAllExpoprtTicket(warehouseID, new QueryResponse<List<ExportTicket>>() {
+        exportTicketQuery.createExportTicket(exportTicket, new QueryResponse<Boolean>() {
             @Override
-            public void onSuccess(List<ExportTicket> data) {
-                exportTickets.addAll(data);
+            public void onSuccess(Boolean data) {
+                createExportTicketDetails();
             }
 
             @Override
@@ -163,12 +189,69 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
 
             }
         });
-
     }
 
-    private int getProductIdFromName() {
+    private void createExportTicketDetails() {
+        DAO.ExportTicketQuery exportTicketQuery = new ExportTicketQuery();
+        exportTicketQuery.getRowCount(new QueryResponse<Integer>() {
+            @Override
+            public void onSuccess(Integer data) {
+                int exportTicketID = data;
+                for(ChosenProductInfo p : chosenProductsList){
+                    DAO.ExportTicketDetailQuery exportTicketDetailQuery = new ExportTicketDetailQuery();
+                    int productID = getProductIdFromName(p.getName());
+                    ExportTicketDetail exportTicketDetail =
+                            new ExportTicketDetail(exportTicketID,productID, p.getNumber(),p.getPrice());
+                    exportTicketDetailQuery.createExportTicketDetail(exportTicketDetail, new QueryResponse<Boolean>() {
+                        @Override
+                        public void onSuccess(Boolean data) {}
+                        @Override
+                        public void onFailure(String message) {}
+                    });
+                    updateInstock(p);
+                }
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+    }
+
+    private void updateInstock(ChosenProductInfo p) {
+        int id = getProductIdFromName(p.getName());
+        int numb = p.getNumber();
+        DAO.ProductQuery productQuery = new ProductQuery();
+        productQuery.readProduct(id, new QueryResponse<Product>() {
+            @Override
+            public void onSuccess(Product data) {
+                int currentProductNumber = data.getNumber();
+                currentProductNumber-= numb;
+                data.setNumber(currentProductNumber);
+                productQuery.updateProduct(data, new QueryResponse<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean data) {
+                        Toast.makeText(MyApp.context, "Đã cập nhật số lượng sản phẩm.", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+    }
+
+    private int getProductIdFromName(String productName) {
         int id=-1;
-        String name = btnChooseProduct.getText().toString();
+        String name = productName;
         if(name.equals("Chọn sản phẩm")){
             return id;
         }
@@ -322,7 +405,11 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String productNumber = edittext.getText().toString();
-                addProductToTable(productName, productNumber);
+                if(productAvailable(productName,productNumber)){
+                    addProductToTable(productName, productNumber);
+                }else{
+                    btnChooseProduct.setText("Chọn sản phẩm");
+                }
             }
         });
         alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
@@ -332,6 +419,42 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         });
         alert.show();
 
+    }
+
+    private boolean productAvailable(String productName,String productNumber) {
+        boolean isAvailable = false;
+        int id = getProductIdFromName(productName);
+        int numb = Integer.valueOf(productNumber);
+        DAO.ProductQuery productQuery = new ProductQuery();
+        ArrayList<Product>products = new ArrayList<>();
+        productQuery.readProduct(id, new QueryResponse<Product>() {
+            @Override
+            public void onSuccess(Product data) {
+                products.add(data);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        int instockProductNumber = products.get(0).getNumber();
+        if(instockProductNumber < numb){
+            AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+            alert.setTitle("Sản phẩm tồn kho không đủ.");
+            alert.setMessage(productName+" chỉ còn: "+instockProductNumber);
+            alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alert.show();
+        }
+        else{
+            isAvailable = true;
+        }
+        return isAvailable;
     }
 
     private void addProductToTable(String productName, String productNumber) {
@@ -365,6 +488,8 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         tableRow.addView(tvProductName);
         tableRow.addView(tvProductNumber);
         tableRow.addView(tvProductPrice);
+
+        chosenProductsList.add(new ChosenProductInfo(productName,Integer.parseInt(productNumber),getProductPriceFromName()));
     }
 
     private int getProductPriceFromName() {

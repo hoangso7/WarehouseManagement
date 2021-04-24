@@ -8,12 +8,17 @@ public class Product {
     private int price;
     private byte[] bytesImage;
 
-    public Product(int ID_Product, String name, String unit, int price, byte[] bytesImage) {
+    public Product(String name){
+        this.name= name;
+    }
+
+    public Product(int ID_Product, String name, String unit, int number, int price, byte[] bytesImage) {
         this.ID_Product = ID_Product;
         this.name = name;
         this.unit = unit;
         this.price = price;
         this.bytesImage = bytesImage;
+        this.number = number;
     }
 
     public Product(String name, String unit, int number ,int price, byte[] bytesImage) {

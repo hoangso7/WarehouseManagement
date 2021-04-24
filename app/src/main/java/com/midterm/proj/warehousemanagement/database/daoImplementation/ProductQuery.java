@@ -153,6 +153,6 @@ public class ProductQuery implements DAO.ProductQuery {
         int number= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_INSTOCK_NUMBER));
         int price= cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_PRICE));
         byte[] bytesImage = cursor.getBlob(cursor.getColumnIndex(Constants.PRODUCT_IMAGE));
-        return new Product(id,name,unit,price,bytesImage);
+        return new Product(id,name,unit,number,price,bytesImage);
     }
 }

@@ -1,4 +1,4 @@
-package com.midterm.proj.warehousemanagement.algorithm;
+package com.midterm.proj.warehousemanagement.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

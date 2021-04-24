@@ -19,7 +19,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:backgroundTint="#16a085"
-        android:text="Tạo nhà kho mới" />
+        android:text="Tạo nhà kho" />
 
     <FrameLayout
         android:id="@+id/fl_add_warehouse_inside_list"

@@ -80,4 +80,16 @@ public class ExportTicketQuery implements DAO.ExportTicketQuery {
                 cursor.close();
         }
     }
+
+    public void getRowCount(QueryResponse<Integer> response){
+        String countQuery = "SELECT  * FROM " + Constants.EXPORT_TICKET_TABLE;
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        if (count > 0)
+            response.onSuccess(count);
+        else
+            response.onFailure("rowcount = -1");
+    }
 }

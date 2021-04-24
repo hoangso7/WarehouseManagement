@@ -19,7 +19,7 @@
         android:fontFamily="@font/hachi"
         android:textStyle="normal"
         android:textSize="14dp"
-        android:text="Thêm nhân viên mới"
+        android:text="Thêm nhân viên"
         android:backgroundTint="#16a085"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
