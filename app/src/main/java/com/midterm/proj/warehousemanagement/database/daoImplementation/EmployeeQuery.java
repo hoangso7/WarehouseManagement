@@ -79,7 +79,7 @@ public class EmployeeQuery implements DAO.EmployeeQuery {
 
                 response.onSuccess(employeeList);
             } else
-                response.onFailure("There are no employee in database");
+                response.onFailure("Chưa có nhân viên nào");
         }catch (Exception e){
             response.onFailure(e.getMessage());
         } finally {

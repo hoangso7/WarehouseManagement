@@ -112,7 +112,7 @@ public class ProductQuery implements DAO.ProductQuery {
                 response.onSuccess(true);
             }
             else
-                response.onFailure("No data is updated at all");
+                response.onFailure("Lỗi. Dữ liệu chưa được cập nhật");
         } catch (Exception e){
             response.onFailure(e.getMessage());
         } finally {

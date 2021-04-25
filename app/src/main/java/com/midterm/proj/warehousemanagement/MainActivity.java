@@ -8,8 +8,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -25,6 +27,7 @@ import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment
 import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
+import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
@@ -53,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDatabase() {
-        createSqlFakeData();
         SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
         String dbName = databaseHelper.getDatabaseName();
         //Log.d("DATABASE NAME", dbName);
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @SuppressLint({"ResourceType", "NonConstantResourceId"})
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
@@ -88,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new CreateProductFragment();
                             break;
                     }
+                    assert selectedFragment != null;
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
                     return true;
                 }
             };
 
 
-    public void createSqlFakeData(){}
 
     protected void checkPermission(){
         if(ContextCompat.checkSelfPermission(mActivity, Manifest.permission.CAMERA)
@@ -102,14 +105,10 @@ public class MainActivity extends AppCompatActivity {
                 mActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
 
-            // Do something, when permissions not granted
             if(ActivityCompat.shouldShowRequestPermissionRationale(
                     mActivity,Manifest.permission.CAMERA)
                     ||  ActivityCompat.shouldShowRequestPermissionRationale(
                     mActivity,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                // If we should give explanation of requested permissions
-
-                // Show an alert dialog here with request explanation
                 AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
                 builder.setMessage("Yêu cầu quyền truy cập Camera và bộ nhớ để" +
                         " thực thi chương trình.");
@@ -131,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }else{
-                // Directly request for required permissions, without explanation
                 ActivityCompat.requestPermissions(
                         mActivity,
                         new String[]{
@@ -142,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 );
             }
         }else {
-            // Do something, when permissions are already granted
             //Toast.makeText(mContext,"Permissions already granted", Toast.LENGTH_SHORT).show();
         }
     }
@@ -151,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
         switch (requestCode){
             case MY_PERMISSIONS_REQUEST_CODE:{
-                // When request is cancelled, the results array are empty
                 if(
                         (grantResults.length >0) &&
                                 (grantResults[0]
@@ -160,10 +156,8 @@ public class MainActivity extends AppCompatActivity {
                                         == PackageManager.PERMISSION_GRANTED
                                 )
                 ){
-                    // Permissions are granted
                     //Toast.makeText(mContext,"Permissions granted.",Toast.LENGTH_SHORT).show();
                 }else {
-                    // Permissions are denied
                     Toast.makeText(mContext,"Permissions denied.",Toast.LENGTH_SHORT).show();
                 }
                 return;

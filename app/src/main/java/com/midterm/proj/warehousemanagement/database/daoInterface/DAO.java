@@ -68,7 +68,7 @@ public class DAO {
     public interface ExportTicketQuery{
         void createExportTicket(ExportTicket exportTicket, QueryResponse<Boolean> response);
         void readExportTicket(int ExportTicketID, QueryResponse<ExportTicket> response);
-        void readAllExpoprtTicket(int WarehouseID, QueryResponse<List<ExportTicket>> response);
+        void readAllExportTicket(int WarehouseID, QueryResponse<List<ExportTicket>> response);
         void getRowCount(QueryResponse<Integer> response);
     }
 

@@ -29,7 +29,7 @@ public class SupplierQuery implements DAO.SupplierQuery {
                 response.onSuccess(true);
                 supplier.setID_Supplier((int) id);
             } else
-                response.onFailure("Failed to create supplier. Unknown Reason!");
+                response.onFailure("Không tạo được nhà cung cấp");
         } catch (SQLiteException e) {
             response.onFailure(e.getMessage());
         }
@@ -50,7 +50,7 @@ public class SupplierQuery implements DAO.SupplierQuery {
                 response.onSuccess(supplier);
             }
             else
-                response.onFailure("Supplier not found with this ID in database");
+                response.onFailure("Không tìm thấy");
 
         } catch (Exception e){
             response.onFailure(e.getMessage());
@@ -77,7 +77,7 @@ public class SupplierQuery implements DAO.SupplierQuery {
 
                 response.onSuccess(supplierList);
             } else
-                response.onFailure("There are no supplier in database");
+                response.onFailure("Chưa có nhà cung cấp nào");
         }catch (Exception e){
             response.onFailure(e.getMessage());
         } finally {

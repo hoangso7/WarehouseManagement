@@ -37,7 +37,7 @@ public class ExportTicketQuery implements DAO.ExportTicketQuery {
                 Toast.makeText(MyApp.context, info, Toast.LENGTH_LONG).show();
             }
             else
-                response.onFailure("Create export ticket failed!");
+                response.onFailure("Không tạo được phiếu xuất kho!");
 
         }catch (SQLiteException e){
             response.onFailure(e.getMessage());
@@ -46,7 +46,7 @@ public class ExportTicketQuery implements DAO.ExportTicketQuery {
         }
     }
     public void readExportTicket(int ExportTicketID, QueryResponse<ExportTicket> response){}
-    public void readAllExpoprtTicket(int WarehouseID, QueryResponse<List<ExportTicket>> response){
+    public void readAllExportTicket(int WarehouseID, QueryResponse<List<ExportTicket>> response){
         SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
         //  select * from import_ticket_table where warehouse_id = 1
         String QUERY = "SELECT * FROM "
