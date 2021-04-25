@@ -1,9 +1,12 @@
 package com.midterm.proj.warehousemanagement.features.product.create;
 
+import androidx.core.content.FileProvider;
 import androidx.core.graphics.BitmapCompat;
 import androidx.fragment.app.Fragment;
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -31,12 +34,16 @@ import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.model.Product;
+import com.midterm.proj.warehousemanagement.util.BitmapHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 public class CreateProductFragment extends Fragment {
+
     private ImageView imgvProductImage;
     private EditText edtProductName;
     private EditText edtProductUnit;
@@ -46,6 +53,7 @@ public class CreateProductFragment extends Fragment {
     private String path;
     private static final int REQUEST_IMAGE_CAPTURE = 3;
     private static final int REQUEST_IMAGE_GALLERY = 1;
+    private Bitmap mResultsBitmap;
 
     @Nullable
     @Override
@@ -76,7 +84,7 @@ public class CreateProductFragment extends Fragment {
                             REQUEST_IMAGE_CAPTURE
                     );
                 } else {
-                    launchGalleryImagePicker();
+                    startImageUploadOptions();
                 }
             }
         });
@@ -88,6 +96,63 @@ public class CreateProductFragment extends Fragment {
             }
         });
 
+    }
+
+    private void startImageUploadOptions() {
+        final CharSequence[] options = {"Chụp từ Camera", "Chọn từ thư viện", "Hủy"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Chọn ảnh cho sản phẩm mới");
+        builder.setIcon(R.drawable.camera);
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+
+                if (options[item].equals("Chụp từ Camera")) {
+                    launchCamera();
+                } else if (options[item].equals("Chọn từ thư viện")) {
+                    launchGalleryImagePicker();
+                } else if (options[item].equals("Hủy")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    private void launchCamera() {
+        // Create the capture image intent
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        // Ensure that there's a camera activity to handle the intent
+        //if (takePictureIntent.resolveActivity() != null) {
+            // Create the temporary File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = BitmapHelper.createTempImageFile(getContext());
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                ex.printStackTrace();
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+
+                // Get the path of the temporary file
+                this.path = photoFile.getAbsolutePath();
+
+                // Get the content URI for the image file
+                Uri photoURI = FileProvider.getUriForFile(getContext(),
+                        "com.midterm.proj.warehousemanagement",
+                        photoFile);
+
+                // Add the URI so the camera can store the image
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+
+                // Launch the camera activity
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
+        //}
     }
 
     private void createNewProduct() {
@@ -139,15 +204,35 @@ public class CreateProductFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null) {
-            this.path = getPathFromCameraData(data, this.getActivity());
-            if(checkImageSizeLimit(path)){
-                imgvProductImage.setImageBitmap(BitmapFactory.decodeFile(this.path));
-                btnAddProduct.setVisibility(View.VISIBLE);
+        if (resultCode != RESULT_CANCELED) {
+            switch (requestCode) {
+                case REQUEST_IMAGE_CAPTURE:
+                    processAndSetImage();
+                    break;
+                case REQUEST_IMAGE_GALLERY:
+                    if (resultCode == RESULT_OK && data != null) {
+                        getImageFromGallery(data);
+                    }
+                    break;
             }
-            else{
-                Toast.makeText(getActivity(), "File quá lớn. Tối đa chỉ 1 MB", Toast.LENGTH_LONG).show();
-            }
+
+        }
+    }
+
+    private void processAndSetImage() {
+        mResultsBitmap = BitmapHelper.resamplePic(getContext(), this.path);
+        imgvProductImage.setImageBitmap(mResultsBitmap);
+        btnAddProduct.setVisibility(View.VISIBLE);
+    }
+
+    private void getImageFromGallery(Intent data) {
+        this.path = getPathFromCameraData(data, this.getActivity());
+        if(checkImageSizeLimit(path)){
+            imgvProductImage.setImageBitmap(BitmapFactory.decodeFile(this.path));
+            btnAddProduct.setVisibility(View.VISIBLE);
+        }
+        else{
+            Toast.makeText(getActivity(), "File quá lớn. Tối đa chỉ 1 MB", Toast.LENGTH_LONG).show();
         }
     }
 
