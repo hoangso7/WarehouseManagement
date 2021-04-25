@@ -16,6 +16,10 @@ public class Employee {
         this.phone = phone;
     }
 
+    public Employee() {
+
+    }
+
     public int getID_Employee() {
         return ID_Employee;
     }

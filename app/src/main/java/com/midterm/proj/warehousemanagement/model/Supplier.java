@@ -16,6 +16,10 @@ public class Supplier {
         this.address = address;
     }
 
+    public Supplier() {
+
+    }
+
     public int getID_Supplier() {
         return ID_Supplier;
     }

@@ -53,12 +53,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDatabase() {
-//        SqliteDatabaseHelper db = new SqliteDatabaseHelper();
         createSqlFakeData();
         SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
         String dbName = databaseHelper.getDatabaseName();
-        Log.d("DATABASE NAME", dbName);
-        //createTestData();
+        //Log.d("DATABASE NAME", dbName);
     }
 
     private void setEvent() {
@@ -69,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setItemIconTintList(null);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
-        //SqliteDatabaseHelper sqliteDatabaseHelper = new SQLiteDatabase();
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -92,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-
                     return true;
                 }
             };

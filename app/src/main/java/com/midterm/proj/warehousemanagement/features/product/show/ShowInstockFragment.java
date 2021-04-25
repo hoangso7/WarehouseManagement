@@ -1,5 +1,7 @@
 package com.midterm.proj.warehousemanagement.features.product.show;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +11,15 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
+import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
+import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.show.WarehouseAdapter;
 import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
@@ -35,8 +40,48 @@ public class ShowInstockFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        checkForEmptyInstock();
         setControl();
         setEvent();
+    }
+
+    private void checkForEmptyInstock() {
+        DAO.ProductQuery productQuery = new ProductQuery();
+        productQuery.readAllProduct(new QueryResponse<List<Product>>() {
+            @Override
+            public void onSuccess(List<Product> data) {
+                if(data.isEmpty()){
+                    askForNewProduct();
+                }
+            }
+
+            @Override
+            public void onFailure(String message) {
+                askForNewProduct();
+            }
+        });
+    }
+
+    private void askForNewProduct() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Danh sách sản phẩm trống!");
+        builder.setMessage("Hãy bắt đầu bằng cách thêm một sản phẩm mới...");
+        builder.setIcon(R.drawable._warehouse);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new CreateProductFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void setControl() {

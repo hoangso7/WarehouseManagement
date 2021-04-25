@@ -1,5 +1,6 @@
 package com.midterm.proj.warehousemanagement.features.product.create;
 
+import androidx.core.graphics.BitmapCompat;
 import androidx.fragment.app.Fragment;
 import android.Manifest;
 import android.content.Context;
@@ -32,6 +33,7 @@ import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQu
 import com.midterm.proj.warehousemanagement.model.Product;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
 public class CreateProductFragment extends Fragment {
@@ -136,13 +138,16 @@ public class CreateProductFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null) {
             this.path = getPathFromCameraData(data, this.getActivity());
-//            Log.d("hihi", "onActivityResult: " + path);
-            imgvProductImage.setImageBitmap(BitmapFactory.decodeFile(this.path));
-            btnAddProduct.setVisibility(View.VISIBLE);
+            if(checkImageSizeLimit(path)){
+                imgvProductImage.setImageBitmap(BitmapFactory.decodeFile(this.path));
+                btnAddProduct.setVisibility(View.VISIBLE);
+            }
+            else{
+                Toast.makeText(getActivity(), "File quá lớn. Tối đa chỉ 1 MB", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -165,5 +170,14 @@ public class CreateProductFragment extends Fragment {
     private void launchGalleryImagePicker() {
         Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickPhoto, REQUEST_IMAGE_GALLERY);
+    }
+
+    boolean checkImageSizeLimit(String path){
+        File file = new File(path);
+        int file_size = Integer.parseInt(String.valueOf(file.length()/1024));
+        if(file_size < 1000)// smaller than 1mb, 24kb is saved for better future :D
+            return true;
+        else
+            return false;
     }
 }

@@ -116,12 +116,35 @@ public class WarehouseQuery implements DAO.WarehouseQuery {
 
     @Override
     public void updateWarehouse(Warehouse warehouse, QueryResponse<Boolean> response) {
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
+        String id = String.valueOf(warehouse.getID_Warehouse());
+        ContentValues contentValues = getContentValuesForWarehouse(warehouse);
+        int row = sqLiteDatabase.update(Constants.WAREHOUSE_TABLE,
+                contentValues,
+                Constants.__WAREHOUSE_ID + " = ?",
+                new String[]{id});
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Xác nhận thay đổi thông tin nhà kho", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể thay đổi thông tin nhà kho");
+        }
     }
 
     @Override
     public void deleteWarehouse(int WarehouseID, QueryResponse<Boolean> response) {
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        int row = sqLiteDatabase.delete(Constants.WAREHOUSE_TABLE, Constants.__WAREHOUSE_ID+" = ?",new String[]{String.valueOf(WarehouseID)});
 
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Đã xóa kho", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể xóa kho này");
+        }
     }
 
     private Warehouse getWarehouseFromCursor(Cursor cursor){

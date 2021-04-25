@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Supplier;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,10 +88,37 @@ public class SupplierQuery implements DAO.SupplierQuery {
     }
 
     @Override
-    public void updateSupplier(Supplier supplier, QueryResponse<Boolean> response){}
+    public void updateSupplier(Supplier supplier, QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        String id = String.valueOf(supplier.getID_Supplier());
+        ContentValues contentValues = getContentValuesForSupplier(supplier);
+        int row = sqLiteDatabase.update(Constants.SUPPLIER_TABLE,
+                contentValues,
+                Constants._SUPPLIER_ID + " = ?",
+                new String[]{id});
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Xác nhận thay đổi thông tin nhà cung cấp", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể thay đổi thông tin nhà cung cấp");
+        }
+    }
 
     @Override
-    public void deleteSupplier(int supplierID, QueryResponse<Boolean> response){}
+    public void deleteSupplier(int supplierID, QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        int row = sqLiteDatabase.delete(Constants.SUPPLIER_TABLE, Constants._SUPPLIER_ID+" = ?",new String[]{String.valueOf(supplierID)});
+
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Đã xóa nhà cung cấp", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể xóa cung cấp này");
+        }
+    }
 
     private ContentValues getContentValuesForSupplier(Supplier supplier){
         ContentValues contentValues = new ContentValues();

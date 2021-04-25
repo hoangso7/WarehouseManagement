@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.widget.Toast;
 
 import com.midterm.proj.warehousemanagement.constant.Constants;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.model.Customer;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,10 +89,37 @@ public class CustomerQuery implements DAO.CustomerQuery {
     }
 
     @Override
-    public void updateCustomer(Customer customer, QueryResponse<Boolean> response){}
+    public void updateCustomer(Customer customer, QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        String id = String.valueOf(customer.getCustomerID());
+        ContentValues contentValues = getContentValuesForCustomer(customer);
+        int row = sqLiteDatabase.update(Constants.CUSTOMER_TABLE,
+                contentValues,
+                Constants.CUSTOMER_ID + " = ?",
+                new String[]{id});
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Xác nhận thay đổi thông tin khách hàng", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể thay đổi thông tin khách hàng");
+        }
+    }
 
     @Override
-    public void deleteCustomer(int customerID, QueryResponse<Boolean> response){}
+    public void deleteCustomer(int customerID, QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        int row = sqLiteDatabase.delete(Constants.CUSTOMER_TABLE, Constants.CUSTOMER_ID+" = ?",new String[]{String.valueOf(customerID)});
+
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Đã xóa thông tin khách hàng", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể xóa thông tin khách hàng");
+        }
+    }
 
     private ContentValues getContentValuesForCustomer(Customer customer){
         ContentValues contentValues = new ContentValues();

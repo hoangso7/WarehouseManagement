@@ -1,6 +1,8 @@
 package com.midterm.proj.warehousemanagement.features.dashboard;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,19 +20,22 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
+import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
+import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.customer.show.ShowCustomerListFragment;
 import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
 import com.midterm.proj.warehousemanagement.features.product.show.ShowInstockFragment;
 import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
+import com.midterm.proj.warehousemanagement.model.Warehouse;
+
+import java.util.List;
 
 public class DashboardFragment extends Fragment {
     Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
     private FragmentActivity myContext;
-    TextView edtWarehouseDashboard;
     LinearLayout dashboardMenu;
-    private FragmentManager fragmentManager;
-    int hidden_dashboard_status = 0;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,8 +45,26 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        checkEmptyWarehouseList();
         setControl();
         setEvent();
+    }
+
+    private void checkEmptyWarehouseList() {
+        DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
+        warehouseQuery.readAllWarehouse(new QueryResponse<List<Warehouse>>() {
+            @Override
+            public void onSuccess(List<Warehouse> data) {
+                if(data.isEmpty()){
+                    askForFirstWarehouse();
+                }
+            }
+
+            @Override
+            public void onFailure(String message) {
+                askForFirstWarehouse();
+            }
+        });
     }
 
     @Override
@@ -58,8 +81,6 @@ public class DashboardFragment extends Fragment {
         btn_customer_info = getView().findViewById(R.id.btn_customer_info);
         btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
         dashboardMenu = getView().findViewById(R.id.dashboard_menu);
-        fragmentManager = myContext.getSupportFragmentManager();
-        //edtWarehouseDashboard = getView().findViewById(R.id.textview_main_dasboard);
     }
 
     private void setEvent() {
@@ -67,10 +88,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_dashboard_container, new ShowInstockFragment());
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowInstockFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -78,10 +97,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -90,10 +107,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -102,10 +117,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_dashboard_container, new ShowCustomerListFragment());
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowCustomerListFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -114,12 +127,33 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dashboardMenu.setVisibility(View.INVISIBLE);
-                //edtWarehouseDashboard.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.add(R.id.fragment_dashboard_container, new ShowSupplierListFragment());
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowSupplierListFragment());
                 fragmentTransaction.commit();
             }
         });
+    }
+
+    private void askForFirstWarehouse(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Danh sách nhà kho trống!");
+        builder.setMessage("Hãy bắt đầu bằng cách thêm một nhà kho mới...");
+        builder.setIcon(R.drawable._warehouse);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dashboardMenu.setVisibility(View.INVISIBLE);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

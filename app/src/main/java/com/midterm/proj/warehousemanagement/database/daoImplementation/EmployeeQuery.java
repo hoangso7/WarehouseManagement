@@ -52,7 +52,7 @@ public class EmployeeQuery implements DAO.EmployeeQuery {
                 response.onSuccess(employee);
             }
             else
-                response.onFailure("Employee not found with this ID in database");
+                response.onFailure("Không tìm thấy nhân viên này trong database.");
 
         } catch (Exception e){
             response.onFailure(e.getMessage());
@@ -107,10 +107,37 @@ public class EmployeeQuery implements DAO.EmployeeQuery {
     }
 
     @Override
-    public void updateEmployee(Employee employee, QueryResponse<Boolean> response){}
+    public void updateEmployee(Employee employee, QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        String id = String.valueOf(employee.getID_Employee());
+        ContentValues contentValues = getContentValuesForEmployee(employee);
+        int row = sqLiteDatabase.update(Constants.EMPLOYEE_TABLE,
+                contentValues,
+                Constants.__EMPLOYEE_ID + " = ?",
+                new String[]{id});
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Xác nhận thay đổi thông tin nhân viên", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể thay đổi thông tin nhân viên");
+        }
+    }
 
     @Override
-    public void deleteEmployee(int employeeID, QueryResponse<Boolean> response){}
+    public void deleteEmployee(int employeeID, QueryResponse<Boolean> response){
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        int row = sqLiteDatabase.delete(Constants.EMPLOYEE_TABLE, Constants.__EMPLOYEE_ID+" = ?",new String[]{String.valueOf(employeeID)});
+
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Đã xóa thông tin nhân viên", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể xóa thông tin nhân viên");
+        }
+    }
 
     private ContentValues getContentValuesForEmployee(Employee employee){
         ContentValues contentValues = new ContentValues();

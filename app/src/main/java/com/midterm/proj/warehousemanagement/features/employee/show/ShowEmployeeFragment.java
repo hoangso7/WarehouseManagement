@@ -1,7 +1,9 @@
 package com.midterm.proj.warehousemanagement.features.employee.show;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +27,9 @@ import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQ
 import com.midterm.proj.warehousemanagement.features.employee.EmployeeCrudListener;
 import com.midterm.proj.warehousemanagement.features.employee.create.CreateEmployeeDialogFragment;
 import com.midterm.proj.warehousemanagement.features.employee.search.SearchEmployeeAdapter;
+import com.midterm.proj.warehousemanagement.features.employee.update.UpdateEmployeeDialogFragment;
 import com.midterm.proj.warehousemanagement.model.Employee;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
 import java.util.ArrayList;
@@ -103,23 +108,65 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
     }
 
     private void showOptions(int pos) {
-        final Dialog optionDialog = new Dialog(getContext());
-        optionDialog.setTitle("Tùy chọn");
-        Button btnChangeInfo = new Button(getContext());
-        Button btnCall = new Button(getContext());
-        optionDialog.setContentView(R.layout.dialog_options);
-        optionDialog.show();
-        optionDialog.getWindow().setLayout((6 * 1024)/7, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        btnChangeInfo = optionDialog.findViewById(R.id.btn_edit_info);
-        btnCall = optionDialog.findViewById(R.id.btn_call);
-
-        btnCall.setOnClickListener(new View.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Tùy chọn");
+        builder.setIcon(R.drawable.staff);
+        String[] animals = {"Chỉnh sửa thông tin", "Gọi điện", "Xóa"};
+        builder.setItems(animals, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ThirdPartyApp.dialPhoneNumber(employees.get(pos).getPhone());
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0: // Chỉnh sửa thông tin
+                        editEmployeeInfo(pos+1);
+                        break;
+                    case 1: // Gọi điện
+                        ThirdPartyApp.dialPhoneNumber(employees.get(pos).getPhone());
+                        break;
+                    case 2: // Xóa
+                        deleteEmployee(pos+1);
+                }
             }
         });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void deleteEmployee(int pos) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("CẢNH BÁO");
+        builder.setIcon(R.drawable.ic_dangerous);
+        builder.setMessage("Bạn chắc muốn xóa nhân viên này chứ?");
+
+        // add the buttons
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DAO.EmployeeQuery employeeQuery = new EmployeeQuery();
+                employeeQuery.deleteEmployee(pos, new QueryResponse<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean data) {
+                        updateEmployeeList();
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        Toast.makeText(MyApp.context, message, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton("Hủy", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void editEmployeeInfo(int pos) {
+        UpdateEmployeeDialogFragment updateEmployeeDialogFragment = UpdateEmployeeDialogFragment.newInstance("Chỉnh sửa thông tin", pos, ShowEmployeeFragment.this);
+        updateEmployeeDialogFragment.show(getFragmentManager(), "update_employee");
+
     }
 
     @Override
