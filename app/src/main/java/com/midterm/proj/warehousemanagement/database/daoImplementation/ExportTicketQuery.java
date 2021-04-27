@@ -51,7 +51,7 @@ public class ExportTicketQuery implements DAO.ExportTicketQuery {
         //  select * from import_ticket_table where warehouse_id = 1
         String QUERY = "SELECT * FROM "
                 +Constants.EXPORT_TICKET_TABLE + " WHERE "
-                +Constants._WAREHOUSE_ID + " = "
+                +Constants.WAREHOUSE_ID_FK + " = "
                 +WarehouseID;
         Cursor cursor = null;
         try{
@@ -62,10 +62,11 @@ public class ExportTicketQuery implements DAO.ExportTicketQuery {
                 do {
                     ExportTicket exportTicket = new ExportTicket();
 
-                    exportTicket.setEmployeeID(cursor.getInt(Integer.parseInt(Constants.EMPLOYEE_ID_FK)));
-                    exportTicket.setWarehouseID(cursor.getInt(Integer.parseInt(Constants.WAREHOUSE_ID_FK)));
+                    exportTicket.setID_ExportTicket(cursor.getInt(cursor.getColumnIndex(Constants.EXPORT_TICKET_ID)));;
+                    exportTicket.setEmployeeID(cursor.getInt(cursor.getColumnIndex(Constants.EMPLOYEE_ID_FK)));
+                    exportTicket.setWarehouseID(cursor.getInt(cursor.getColumnIndex(Constants.WAREHOUSE_ID_FK)));
                     exportTicket.setCreateDate(cursor.getString(cursor.getColumnIndex(Constants.EXPORT_TICKET_CREATION_DATE)));
-                    exportTicket.setCustomerID(cursor.getInt(Integer.parseInt(Constants.CUSTOMER_ID_FK)));
+                    exportTicket.setCustomerID(cursor.getInt(cursor.getColumnIndex(Constants.CUSTOMER_ID_FK)));
 
                     exportTickets.add(exportTicket);
                 } while (cursor.moveToNext());

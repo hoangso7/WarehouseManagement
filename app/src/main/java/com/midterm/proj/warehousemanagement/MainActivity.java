@@ -22,12 +22,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.ExportTicketQuery;
+import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment;
 import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
 import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
+import com.midterm.proj.warehousemanagement.model.ExportTicket;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
@@ -53,7 +57,25 @@ public class MainActivity extends AppCompatActivity {
         setDatabase();
         setControl();
         setEvent();
+        //testsomeshit();
     }
+
+//    private void testsomeshit() {
+//        DAO.ExportTicketQuery exportTicketQuery = new ExportTicketQuery();
+//        ArrayList<ExportTicket> exportTickets = new ArrayList<>();
+//        exportTicketQuery.readAllExportTicket(1, new QueryResponse<List<ExportTicket>>() {
+//            @Override
+//            public void onSuccess(List<ExportTicket> data) {
+//                exportTickets.addAll(data);
+//            }
+//
+//            @Override
+//            public void onFailure(String message) {
+//
+//            }
+//        });
+//        exportTickets.size();
+//    }
 
     private void setDatabase() {
         SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
