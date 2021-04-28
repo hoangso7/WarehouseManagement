@@ -4,7 +4,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_height="65dp"
 
-        android:background="#0099ff"
+        android:background="@color/primaryColor"
+
         android:layout_width="match_parent"
         android:id="@+id/viewEmployeesToolbar">
 

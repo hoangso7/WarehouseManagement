@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hachi"
             android:textStyle="normal"
-            android:backgroundTint="#16a085"
+            android:backgroundTint="@color/primaryColor"
             android:text="Tạo"
             android:layout_marginTop="15dp"
             android:textColor="#fff" />
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hachi"
             android:textStyle="normal"
-            android:backgroundTint="#16a085"
+            android:backgroundTint="@color/primaryColor"
             android:layout_marginTop="10dp"
             android:text="Hủy"
             android:textColor="#fff" />

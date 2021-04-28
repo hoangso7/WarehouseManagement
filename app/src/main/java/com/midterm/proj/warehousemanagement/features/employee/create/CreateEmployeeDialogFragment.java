@@ -98,7 +98,7 @@ public class CreateEmployeeDialogFragment extends DialogFragment {
             Toast.makeText(getActivity(), "Tên nhân viên không được trống", Toast.LENGTH_LONG).show();
             return;
         }
-        if(phone.length()==0){
+        if(phone.length()==0 ){
             Toast.makeText(getActivity(), "SĐT nhân viên không được trống", Toast.LENGTH_LONG).show();
             return;
         }

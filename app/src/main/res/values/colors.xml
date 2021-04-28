@@ -13,4 +13,7 @@
     <color name="import_ticket">#E0857E</color>
     <color name="export_ticket">#A2DDA4</color>
 
+
+    <color name="primaryColor">#7b1fa2</color>
+
 </resources>

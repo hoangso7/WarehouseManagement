@@ -8,7 +8,7 @@
     <ListView
         android:id="@+id/lv_warehouse_list"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="585dp"
         android:layout_margin="10dp" />
 
     <Button
@@ -18,7 +18,9 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="#16a085"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/primaryColor"
+        android:layout_weight="1"
         android:text="Tạo nhà kho mới" />
 
     <FrameLayout

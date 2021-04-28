@@ -4,18 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textview_import_ticket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hachi"
-        android:textStyle="normal"
-        android:background="#16a085"
-        android:gravity="center"
-        android:padding="15dp"
-        android:text="PHIẾU NHẬP KHO"
-        android:textColor="#fff"
-        android:textSize="22dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textview_import_ticket"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/hachi"-->
+<!--        android:textStyle="bold"-->
+<!--        android:background="#16a085"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="15dp"-->
+<!--        android:text="PHIẾU NHẬP KHO"-->
+<!--        android:textColor="#fff"-->
+<!--        android:textSize="22dp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spiner_choose_warehouse"
@@ -44,7 +44,7 @@
             android:layout_marginLeft="10dp"
             android:dropDownVerticalOffset="36dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:isScrollContainer="true"
             android:spinnerMode="dropdown" />
 
@@ -72,14 +72,14 @@
                 android:textColor="#14232d"
                 android:textSize="16dp"
                 android:fontFamily="@font/hachi"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textview_warehouseID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
-                android:textStyle="normal"
+                android:textStyle="bold"
                 android:textColor="#333"
                 android:textSize="16dp" />
         </LinearLayout>
@@ -96,14 +96,14 @@
                 android:textColor="#14232d"
                 android:textSize="16dp"
                 android:fontFamily="@font/hachi"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textview_warehouseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
-                android:textStyle="normal"
+                android:textStyle="bold"
                 android:textColor="#333"
                 android:textSize="16dp" />
         </LinearLayout>
@@ -120,14 +120,14 @@
                 android:textColor="#14232d"
                 android:textSize="16dp"
                 android:fontFamily="@font/hachi"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textview_warehouseAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
-                android:textStyle="normal"
+                android:textStyle="bold"
                 android:textColor="#333"
                 android:textSize="16dp" />
         </LinearLayout>
@@ -151,7 +151,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ctk_choose_product"
@@ -159,7 +159,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
             android:backgroundTint="#fff"
             android:textSize="14dp"
             android:text="Chọn sản phẩm"
@@ -184,7 +183,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_productUnit"
@@ -192,7 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:textSize="16dp" />
     </LinearLayout>
 
@@ -214,7 +213,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edt_productNumber"
@@ -223,7 +222,7 @@
             android:layout_marginLeft="20dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:hint="Nhập số lượng"
             android:inputType="number"
             android:maxLines="1"
@@ -248,7 +247,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edt_supplier_name"
@@ -256,7 +255,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:backgroundTint="#fff"
             android:hint="Nhập tên nhà cung cấp"
             android:inputType="text"
@@ -282,7 +281,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edt_supplier_address"
@@ -292,7 +291,7 @@
             android:backgroundTint="#fff"
             android:hint="Nhập địa chỉ nhà cung cấp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="16dp" />
@@ -316,7 +315,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ctk_choose_employee"
@@ -325,7 +324,7 @@
             android:layout_marginLeft="12dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
+            android:textStyle="bold"
             android:text="Chọn nhân viên"
             android:textSize="14dp"
             android:textColor="#000" />
@@ -340,8 +339,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:fontFamily="@font/hachi"
-        android:textStyle="normal"
-        android:backgroundTint="#16a085"
+        android:backgroundTint="@color/primaryColor"
         android:textSize="14dp"
         android:text="Nhập kho" />
 

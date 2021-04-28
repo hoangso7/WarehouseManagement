@@ -20,7 +20,7 @@
         android:textStyle="normal"
         android:textSize="14dp"
         android:text="Thêm nhân viên mới"
-        android:backgroundTint="#16a085"
+        android:backgroundTint="@color/primaryColor"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="center"/>
