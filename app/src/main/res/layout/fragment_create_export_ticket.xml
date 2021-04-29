@@ -4,36 +4,57 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textview_import_ticket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/hachi"
-        android:textStyle="normal"
-        android:background="#16a085"
-        android:gravity="center"
-        android:padding="15dp"
-        android:text="PHIẾU XUẤT KHO"
-        android:textColor="#fff"
-        android:textSize="22dp" />
+<!--    <LinearLayout-->
+<!--        android:id="@+id/textview_export_ticket"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/primaryColor"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="25dp"-->
+<!--        android:paddingTop="15dp"-->
+<!--        android:paddingRight="15dp"-->
+<!--        android:paddingBottom="15dp">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="35dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:background="@drawable/triangle_radius_none_border"-->
+<!--            android:backgroundTint="#fff"-->
+<!--            android:padding="8dp"-->
+<!--            android:src="@drawable/_warehouse" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/hachi"-->
+<!--            android:text="PHIẾU XUẤT KHO"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="22dp"-->
+<!--            android:textStyle="normal" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    android:layout_below="@+id/textview_export_ticket"-->
 
     <LinearLayout
         android:id="@+id/linearlayout_warehouse_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textview_import_ticket"
-        android:layout_marginTop="10dp"
-        android:background="#fff"
+        android:layout_margin="10dp"
+        android:background="@drawable/triangle_radius"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:paddingLeft="10dp"
             android:text="Chọn Kho: "
             android:textColor="#14232d"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <Spinner
@@ -50,19 +71,19 @@
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/linearlayout_warehouse_choose"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray" />
+        android:background="#fff" />
 
     <LinearLayout
         android:id="@+id/linearlayout_warehouse_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
-        android:layout_marginTop="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/triangle_radius"
         android:orientation="vertical"
-        android:paddingLeft="10dp">
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,6 +93,8 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
                 android:text="Mã kho:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
@@ -81,6 +104,7 @@
                 android:id="@+id/textview_warehouseID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:textColor="#333"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -93,6 +117,8 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
                 android:text="Tên:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
@@ -102,6 +128,7 @@
                 android:id="@+id/textview_warehouseName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:textColor="#333"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -114,6 +141,8 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
                 android:text="Địa chỉ:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
@@ -123,6 +152,7 @@
                 android:id="@+id/textview_warehouseAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:textColor="#333"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -131,11 +161,9 @@
     <View
         android:id="@+id/line2"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/linearlayout_warehouse_info"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray" />
-
+        android:background="#fff" />
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -147,6 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,39 +184,46 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/hachi"
+                    android:text="Nhân viên:"
                     android:textColor="#14232d"
                     android:textSize="18sp"
-                    android:text="Nhân viên:"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/btn_choose_employee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="22dp"
+                    android:layout_marginLeft="18dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/hachi"
                     android:text="Chọn nhân viên"
                     android:textColor="@color/black"
-                    android:backgroundTint="@color/white"/>
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/hachi"
+                    android:text="Khách hàng:"
                     android:textColor="#14232d"
                     android:textSize="18sp"
-                    android:text="Khách hàng:"
                     android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/edt_customer_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:backgroundTint="#fff"
                     android:hint="Nhập tên khách hàng"
                     android:inputType="text"
                     android:maxLines="1"
@@ -199,24 +235,29 @@
                 android:layout_height="wrap_content"
                 android:background="#fff"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/hachi"
                     android:text="SĐT:"
                     android:textColor="#14232d"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/edt_customer_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:backgroundTint="#fff"
                     android:hint="Nhập SĐT khách hàng"
                     android:inputType="number"
                     android:maxLines="1"
                     android:textSize="18dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -226,9 +267,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textColor="#14232d"
-                    android:textSize="18sp"
+                    android:fontFamily="@font/hachi"
                     android:text="Sản phẩm:"
+                    android:textColor="#14232d"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <Button
@@ -236,87 +278,112 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="22dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/hachi"
                     android:text="Chọn sản phẩm"
                     android:textColor="@color/black"
-                    android:backgroundTint="@color/white"/>
+                    android:textSize="14dp" />
             </LinearLayout>
+
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
+                android:background="@drawable/triangle"
                 android:isScrollContainer="true"
                 android:orientation="horizontal">
+
                 <TableRow
                     android:id="@+id/tableRow1"
-                    android:background="@color/purple_200"
+                    android:background="@color/primaryColor"
                     android:padding="5dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TT"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tên sản phẩm"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="SL"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Đơn giá"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/hachi"
+                        android:gravity="center"
+                        android:text="TT"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/hachi"
+                        android:gravity="center"
+                        android:text="Tên sản phẩm"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/hachi"
+                        android:gravity="center"
+                        android:text="SL"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/hachi"
+                        android:gravity="center"
+                        android:text="Đơn giá"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
                 </TableRow>
             </TableLayout>
+
             <LinearLayout
-                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/hachi"
+                    android:text="Thành tiền: "
                     android:textColor="#14232d"
-                    android:text="Thành tiền: "/>
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:layout_marginLeft="20dp"
                     android:id="@+id/tv_total_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="#14232d" />
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/hachi"
+                    android:textColor="#14232d"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/btn_confirm_new_export_ticket"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@color/primaryColor"
+        android:fontFamily="@font/hachi"
         android:text="Xuất kho" />
 
 </RelativeLayout>
