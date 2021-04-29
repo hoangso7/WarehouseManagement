@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Warehouse Management</string>
+    <string name="app_name">QL Kho</string>
     <string name="title_text">Google Sign-In\nQuickstart</string>
 
     <!-- Sign-in status messages -->

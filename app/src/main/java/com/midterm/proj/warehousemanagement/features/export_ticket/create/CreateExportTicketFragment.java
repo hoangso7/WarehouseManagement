@@ -541,4 +541,8 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
             }
         }
     }
+
+    void resetEditText(){
+
+    }
 }
