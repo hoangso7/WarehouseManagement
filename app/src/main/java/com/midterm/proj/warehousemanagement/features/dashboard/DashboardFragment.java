@@ -25,6 +25,7 @@ import com.midterm.proj.warehousemanagement.database.daoImplementation.Warehouse
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.customer.show.ShowCustomerListFragment;
 import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
+import com.midterm.proj.warehousemanagement.features.export_ticket.show.ShowExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.show.ShowInstockFragment;
 import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
@@ -90,6 +91,15 @@ public class DashboardFragment extends Fragment {
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowInstockFragment());
+                fragmentTransaction.commit();
+            }
+        });
+        btn_tickets_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dashboardMenu.setVisibility(View.INVISIBLE);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowExportTicketFragment());
                 fragmentTransaction.commit();
             }
         });
