@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class ImportTicketDetailAdapter extends ArrayAdapter<ImportTicket> {
 
     private Context mContext;
-    TextView tvProductName, tvNumber, tvPriceUnit;
+    TextView tvProductName, tvNumber, tvPriceUnit, tvTotal;
     private ArrayList<ImportTicket> importTicketsDetailArrayList = new ArrayList<>();
     private ArrayList<Product> product = new ArrayList<>();
 
@@ -51,10 +51,12 @@ public class ImportTicketDetailAdapter extends ArrayAdapter<ImportTicket> {
         tvProductName = listItem.findViewById(R.id.tv_product_name);
         tvNumber = listItem.findViewById(R.id.tv_product_number);
         tvPriceUnit = listItem.findViewById(R.id.tv_price_unit);
+        tvTotal = listItem.findViewById(R.id.tv_total);
         fetchProduct(importTicketDetail.getProductID());
         tvProductName.setText(product.get(0).getName());
         tvNumber.setText(String.valueOf(importTicketDetail.getNumber()));
         tvPriceUnit.setText(String.valueOf(product.get(0).getPrice()));
+        tvTotal.setText(String.valueOf(product.get(0).getPrice()*importTicketDetail.getNumber()));
 
         return listItem;
     }

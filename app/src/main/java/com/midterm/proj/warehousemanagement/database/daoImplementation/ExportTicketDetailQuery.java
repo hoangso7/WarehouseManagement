@@ -65,7 +65,7 @@ public class ExportTicketDetailQuery implements DAO.ExportTicketDetailQuery {
                     ExportTicketDetail exportTicketDetail = new ExportTicketDetail();
                     exportTicketDetail.setID_ExportTicket
                             (cursor.getInt(cursor.getColumnIndex(Constants.EXPORT_TICKET_ID)));
-                    exportTicketDetail.setID_ExportTicket
+                    exportTicketDetail.setID_Product
                             (cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_ID)));
                     exportTicketDetail.setNumber(cursor.getInt
                             (cursor.getColumnIndex(Constants.EXPORT_TICKET_DETAIL_PRODUCT_NUMBER)));
