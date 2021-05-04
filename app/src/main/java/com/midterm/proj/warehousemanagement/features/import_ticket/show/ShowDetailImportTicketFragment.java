@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.midterm.proj.warehousemanagement.model.ImportTicket;
 import com.midterm.proj.warehousemanagement.model.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ShowDetailImportTicketFragment extends DialogFragment {
@@ -28,18 +30,19 @@ public class ShowDetailImportTicketFragment extends DialogFragment {
   private ListView lvImportTicketDetailListView;
   private ImportTicketDetailAdapter adapter;
   private static int importTicketId;
-
-
+  private static int warehouseId;
+  private ArrayList<ImportTicket> importTicketsWarehouseArrayList = new ArrayList<>();
   private ArrayList<ImportTicket> importTicketsDetailArrayList = new ArrayList<>();
     public ShowDetailImportTicketFragment() {
         // Required empty public constructor
     }
 
 
-    public static ShowDetailImportTicketFragment newInstance(int pos) {
+    public static ShowDetailImportTicketFragment newInstance(int pos, int warehouseID) {
         ShowDetailImportTicketFragment fragment = new ShowDetailImportTicketFragment();
         Bundle args = new Bundle();
         importTicketId = pos;
+        warehouseId = warehouseID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,11 +64,17 @@ public class ShowDetailImportTicketFragment extends DialogFragment {
 
     private void setEvent() {
         DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
-        importTicketQuery.readImportTicket(importTicketId, new QueryResponse<ImportTicket>() {
+        importTicketQuery.readAllImportTicketFromWarehouse(warehouseId, new QueryResponse<List<ImportTicket>>() {
             @Override
-            public void onSuccess(ImportTicket data) {
-                importTicketsDetailArrayList.clear();
-                importTicketsDetailArrayList.add(data);
+            public void onSuccess(List<ImportTicket> data) {
+                importTicketsWarehouseArrayList.clear();
+                importTicketsWarehouseArrayList.addAll(data);
+
+                for(ImportTicket it: importTicketsWarehouseArrayList){
+                    if(it.getImportTicketID() == importTicketId){
+                        importTicketsDetailArrayList.add(it);
+                    }
+                }
                 adapter = new ImportTicketDetailAdapter(getContext(), importTicketsDetailArrayList);
                 lvImportTicketDetailListView.setAdapter(adapter);
             }
@@ -75,6 +84,9 @@ public class ShowDetailImportTicketFragment extends DialogFragment {
 
             }
         });
+
+
+
     }
 
     private void setControl() {

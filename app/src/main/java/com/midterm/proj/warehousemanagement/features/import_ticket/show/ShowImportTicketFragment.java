@@ -96,7 +96,7 @@ public class ShowImportTicketFragment extends Fragment {
     }
 
 
-    private void showOptions(int idImportTicket) {
+    private void showOptions(int idImportTicket, int warehouseId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Tùy chọn");
         builder.setIcon(R.drawable._warehouse);
@@ -106,7 +106,7 @@ public class ShowImportTicketFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0: // Chỉnh sửa thông tin
-                        ShowDetailImportTicketFragment showDetailImportTicketFragment = ShowDetailImportTicketFragment.newInstance(idImportTicket);
+                        ShowDetailImportTicketFragment showDetailImportTicketFragment = ShowDetailImportTicketFragment.newInstance(idImportTicket, warehouseId);
                         showDetailImportTicketFragment.show(getFragmentManager(), "show_detail_import_ticket");
                         break;
                 }
@@ -135,7 +135,7 @@ public class ShowImportTicketFragment extends Fragment {
         lvImportTicketListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                showOptions(importTicketArrayList.get(position).getImportTicketID());
+                showOptions(importTicketArrayList.get(position).getImportTicketID(), importTicketArrayList.get(position).getID_Warehouse());
                 return false;
             }
         });

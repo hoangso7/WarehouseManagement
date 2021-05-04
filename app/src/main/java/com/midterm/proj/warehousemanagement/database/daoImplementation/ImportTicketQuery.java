@@ -59,19 +59,19 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
 //        //  select * from import_ticket_table where warehouse_id = 1
 //        String QUERY = "SELECT * FROM "
 //                +Constants.IMPORT_TICKET_TABLE + " WHERE "
-//                +Constants._WAREHOUSE_ID + " = "
+//                +Constants.IMPORT_TICKET_ID + " = "
 //                +ImportTicketID;
 //        Cursor cursor = null;
 //        try{
 //            ImportTicket importTicket = new ImportTicket();
 //            cursor = sqLiteDatabase.rawQuery(QUERY,null);
 //            if(cursor.moveToFirst()){
-//                importTicket.setID_Employee(cursor.getInt(Integer.parseInt(Constants._EMPLOYEE_ID)));
-//                importTicket.setID_Warehouse(cursor.getInt(Integer.parseInt(Constants._WAREHOUSE_ID)));
+//                importTicket.setID_Employee(cursor.getInt(cursor.getColumnIndex(Constants._EMPLOYEE_ID)));
+//                importTicket.setID_Warehouse(cursor.getInt(cursor.getColumnIndex(Constants._WAREHOUSE_ID)));
 //                importTicket.setCreateDate(cursor.getString(cursor.getColumnIndex(Constants.IMPORT_TICKET_CREATION_DATE)));
-//                importTicket.setNumber(cursor.getInt(Integer.parseInt(Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS)));
-//                importTicket.setProductID(cursor.getInt(Integer.parseInt(Constants.IMPORT_TICKET_PRODUCTS_ID_FK)));
-//                importTicket.setSupplierID(cursor.getInt(Integer.parseInt(Constants.IMPORT_TICKET_SUPPLIER_ID_FK)));
+//                importTicket.setNumber(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS)));
+//                importTicket.setProductID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_PRODUCTS_ID_FK)));
+//                importTicket.setSupplierID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_SUPPLIER_ID_FK)));
 //
 //                response.onSuccess(importTicket);
 //            }
