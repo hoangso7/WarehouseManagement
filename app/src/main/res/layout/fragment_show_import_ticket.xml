@@ -38,13 +38,13 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lv_export_ticket_list"
+        android:id="@+id/lv_import_ticket_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp" />
 
     <FrameLayout
-        android:id="@+id/fragment_show_export_ticket"
+        android:id="@+id/fragment_show_import_ticket"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

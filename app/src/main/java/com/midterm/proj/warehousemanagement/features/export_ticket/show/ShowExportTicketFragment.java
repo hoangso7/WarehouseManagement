@@ -79,15 +79,11 @@ public class ShowExportTicketFragment extends Fragment {
 
             }
         });
-
-
     }
-    private void ExportTicketInfo(int position) {
-    }
+
     private void setControl() {
         spnWarehouse = getView().findViewById(R.id.spiner_choose_warehouse);
         lvExportTicketListView = getView().findViewById(R.id.lv_export_ticket_list);
-
     }
 
     private void fetchWarehouseList(){

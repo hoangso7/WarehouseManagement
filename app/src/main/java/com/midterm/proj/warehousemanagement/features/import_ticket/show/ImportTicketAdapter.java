@@ -1,8 +1,7 @@
-package com.midterm.proj.warehousemanagement.features.export_ticket.show;
+package com.midterm.proj.warehousemanagement.features.import_ticket.show;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,27 +16,30 @@ import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.CustomerQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.SupplierQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.model.Customer;
 import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.model.ExportTicket;
+import com.midterm.proj.warehousemanagement.model.ImportTicket;
+import com.midterm.proj.warehousemanagement.model.Supplier;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExportTicketAdapter extends ArrayAdapter<ExportTicket> {
+public class ImportTicketAdapter extends ArrayAdapter<ImportTicket> {
     private Context mContext;
-    private ArrayList<ExportTicket> exportTicketsArrayList = new ArrayList<>();
+    private ArrayList<ImportTicket> importTicketsArrayList = new ArrayList<>();
     private ArrayList<Warehouse> warehouses = new ArrayList<>();
     private ArrayList<Employee> employees = new ArrayList<>();
-    private ArrayList<Customer> customers = new ArrayList<>();
+    private ArrayList<Supplier> suppliers = new ArrayList<>();
 
-    public ExportTicketAdapter(@NonNull Context context, @SuppressLint("SupportAnnotationUsage") @LayoutRes ArrayList<ExportTicket> list){
+    public ImportTicketAdapter(@NonNull Context context, @SuppressLint("SupportAnnotationUsage") @LayoutRes ArrayList<ImportTicket> list){
         super(context, 0 , list);
         mContext = context;
-        exportTicketsArrayList = list;
+        importTicketsArrayList = list;
     }
 
     @NonNull
@@ -45,30 +47,31 @@ public class ExportTicketAdapter extends ArrayAdapter<ExportTicket> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
         if(listItem == null){
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.export_ticket_list_item, parent, false);
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.import_ticket_list_item, parent, false);
         }
-        ExportTicket exportTicket = exportTicketsArrayList.get(position);
-        TextView idExportTicket = listItem.findViewById(R.id.tv_id_export_ticket);
+        ImportTicket importTicket = importTicketsArrayList.get(position);
+        TextView idIxportTicket = listItem.findViewById(R.id.tv_id_import_ticket);
+        TextView tvCreateDate = listItem.findViewById(R.id.tv_create_date);
         TextView WarehouseAddress = listItem.findViewById(R.id.tv_warehouse_address);
         TextView employeeName = listItem.findViewById(R.id.tv_employee_name);
-        TextView customerName = listItem.findViewById(R.id.tv_customer_name);
-        TextView customerPhone = listItem.findViewById(R.id.tv_customer_phone);
-        TextView tvCreateDate = listItem.findViewById(R.id.tv_create_date);
+        TextView supplierName = listItem.findViewById(R.id.tv_supplier_name);
+        TextView supplierAddress = listItem.findViewById(R.id.tv_supplier_address);
+
         fetchWarehouseList();
         for(Warehouse w: warehouses){
-            if(w.getID_Warehouse() == exportTicket.getWarehouseID()){
+            if(w.getID_Warehouse() == importTicket.getID_Warehouse()){
                 WarehouseAddress.setText(w.getAddress());
             }
         }
 
-        fetchEmployee(exportTicket.getEmployeeID());
-        fetchCustomer(exportTicket.getCustomerID());
+        fetchEmployee(importTicket.getID_Employee());
+        fetchSupplier(importTicket.getSupplierID());
 
-        idExportTicket.setText(String.valueOf(exportTicket.getID_ExportTicket()));
+        idIxportTicket.setText(String.valueOf(importTicket.getImportTicketID()));
         employeeName.setText(employees.get(0).getName());
-        customerName.setText(customers.get(0).getName());
-        customerPhone.setText(customers.get(0).getPhone());
-        tvCreateDate.setText(exportTicket.getCreateDate());
+        supplierName.setText(suppliers.get(0).getName());
+        supplierAddress.setText(suppliers.get(0).getAddress());
+        tvCreateDate.setText(importTicket.getCreateDate());
 
         return listItem;
     }
@@ -105,13 +108,13 @@ public class ExportTicketAdapter extends ArrayAdapter<ExportTicket> {
         });
     }
 
-    private void fetchCustomer(int customerID){
-        DAO.CustomerQuery customerQuery = new CustomerQuery();
-        customerQuery.readCustomer(customerID, new QueryResponse<Customer>() {
+    private void fetchSupplier(int supplierID){
+        DAO.SupplierQuery supplierQuery = new SupplierQuery();
+        supplierQuery.readSupplier(supplierID, new QueryResponse<Supplier>() {
             @Override
-            public void onSuccess(Customer data) {
-                customers.clear();
-                customers.add(data);
+            public void onSuccess(Supplier data) {
+                suppliers.clear();
+                suppliers.add(data);
             }
 
             @Override

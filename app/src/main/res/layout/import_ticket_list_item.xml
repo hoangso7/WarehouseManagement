@@ -3,59 +3,179 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#A2DDA4">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textview_import_ticket_create_time"
-        android:layout_width="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_height="wrap_content"/>
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/img_import"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/down"
-            android:scaleType="fitXY" />
-        <TextView
-            android:id="@+id/textview_ticket_info"
-            android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_toRightOf="@+id/img_import"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:background="@drawable/triangle_radius"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
 
-    </RelativeLayout>
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:orientation="vertical"-->
-    <!--        android:gravity="center">-->
-    <!--        <Button-->
-    <!--            android:id="@+id/btn_xoa"-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:text="XÓA"-->
-    <!--            android:textColor="@color/black"/>-->
-    <!--        <Button-->
-    <!--            android:id="@+id/btn_sua"-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:text="SỬA"-->
-    <!--            android:textColor="@color/black"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <!--        <Button-->
-    <!--            android:id="@+id/btn_them"-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:text="THÊM"-->
-    <!--            android:textColor="@color/black" />-->
-    <!--    </LinearLayout>-->
+                <TextView
+                    android:id="@+id/tv_create_date_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/hachi"
+                    android:text="Ngày xuất kho: "
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_create_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_create_date_name"
+                    android:fontFamily="@font/hachi"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_id_import_ticket_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/hachi"
+                    android:text="mã hóa đơn: "
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_id_import_ticket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_id_import_ticket_name"
+                    android:fontFamily="@font/hachi"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_id_warehouse_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv"
+                    android:fontFamily="@font/hachi"
+                    android:text="địa chỉ kho: "
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_warehouse_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_id_warehouse_name"
+                    android:fontFamily="@font/hachi"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_id_employee_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name"
+                    android:text="tên nhân viên: "
+                    android:textSize="16dp"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_employee_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_id_warehouse_name"
+                    android:layout_toRightOf="@+id/tv_id_employee_name"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_id_supplier_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_id_employee_name"
+                    android:text="Tên nhà cung cấp: "
+                    android:textSize="16dp"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_supplier_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_id_employee_name"
+                    android:layout_toRightOf="@+id/tv_id_supplier_name"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_id_supplier_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_id_supplier_name"
+                    android:text="địa chỉ nhà cung cấp "
+                    android:textSize="16dp"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_supplier_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_id_supplier_name"
+                    android:layout_toRightOf="@+id/tv_id_supplier_address"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/hachi"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
 
 </LinearLayout>

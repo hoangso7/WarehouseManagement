@@ -103,12 +103,13 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
                 do {
                     ImportTicket importTicket = new ImportTicket();
 
-                    importTicket.setID_Employee(cursor.getInt(Integer.parseInt(Constants._EMPLOYEE_ID)));
-                    importTicket.setID_Warehouse(cursor.getInt(Integer.parseInt(Constants._WAREHOUSE_ID)));
+//                    importTicket.setImportTicketID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_ID)));
+                    importTicket.setID_Employee(cursor.getInt(cursor.getColumnIndex(Constants._EMPLOYEE_ID)));
+                    importTicket.setID_Warehouse(cursor.getInt(cursor.getColumnIndex(Constants._WAREHOUSE_ID)));
                     importTicket.setCreateDate(cursor.getString(cursor.getColumnIndex(Constants.IMPORT_TICKET_CREATION_DATE)));
-                    importTicket.setNumber(cursor.getInt(Integer.parseInt(Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS)));
-                    importTicket.setProductID(cursor.getInt(Integer.parseInt(Constants.IMPORT_TICKET_PRODUCTS_ID_FK)));
-                    importTicket.setSupplierID(cursor.getInt(Integer.parseInt(Constants.IMPORT_TICKET_SUPPLIER_ID_FK)));
+                    importTicket.setNumber(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_NUMBER_OF_PRODUCTS)));
+                    importTicket.setProductID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_PRODUCTS_ID_FK)));
+                    importTicket.setSupplierID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_SUPPLIER_ID_FK)));
 
                     importTickets.add(importTicket);
                 } while (cursor.moveToNext());
