@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/hachi"
-                    android:text="Ngày xuất kho: "
+                    android:text="Ngày nhập kho: "
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -55,10 +55,10 @@
                 <TextView
                     android:id="@+id/tv_id_import_ticket_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/hachi"
-                    android:text="mã hóa đơn: "
+                    android:text="Mã hóa đơn: "
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv"
                     android:fontFamily="@font/hachi"
-                    android:text="địa chỉ kho: "
+                    android:text="Địa chỉ kho: "
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
                     android:fontFamily="@font/hachi"
-                    android:text="tên nhân viên: "
+                    android:text="Nhân viên: "
                     android:textSize="18dp"
                     android:textStyle="bold" />
 
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_id_supplier_name"
                     android:fontFamily="@font/hachi"
-                    android:text="địa chỉ nhà cung cấp "
+                    android:text="Địa chỉ :"
                     android:textSize="18dp"
                     android:textStyle="bold" />
 

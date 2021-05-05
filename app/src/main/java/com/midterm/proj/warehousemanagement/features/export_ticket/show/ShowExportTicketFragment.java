@@ -132,8 +132,10 @@ public class ShowExportTicketFragment extends Fragment {
             public void onSuccess(List<ExportTicket> data) {
                 exportTicketsArrayList.clear();
                 exportTicketsArrayList.addAll(data);
-                adapter = new ExportTicketAdapter(getContext(), exportTicketsArrayList);
-                lvExportTicketListView.setAdapter(adapter);
+                if(!exportTicketsArrayList.isEmpty()){
+                    adapter = new ExportTicketAdapter(getContext(), exportTicketsArrayList);
+                    lvExportTicketListView.setAdapter(adapter);
+                }
             }
 
             @Override

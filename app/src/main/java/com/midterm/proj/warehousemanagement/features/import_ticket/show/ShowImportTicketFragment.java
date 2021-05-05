@@ -123,8 +123,11 @@ public class ShowImportTicketFragment extends Fragment {
             public void onSuccess(List<ImportTicket> data) {
                 importTicketArrayList.clear();
                 importTicketArrayList.addAll(data);
-                adapter = new ImportTicketAdapter(getContext(), importTicketArrayList);
-                lvImportTicketListView.setAdapter(adapter);
+                if(!importTicketArrayList.isEmpty()){
+                    adapter = new ImportTicketAdapter(getContext(), importTicketArrayList);
+                    lvImportTicketListView.setAdapter(adapter);
+                }
+
             }
 
             @Override

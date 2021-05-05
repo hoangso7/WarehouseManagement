@@ -65,9 +65,21 @@ public class ExportTicketAdapter extends ArrayAdapter<ExportTicket> {
         fetchCustomer(exportTicket.getCustomerID());
 
         idExportTicket.setText(String.valueOf(exportTicket.getID_ExportTicket()));
-        employeeName.setText(employees.get(0).getName());
-        customerName.setText(customers.get(0).getName());
-        customerPhone.setText(customers.get(0).getPhone());
+        try{
+            employeeName.setText(employees.get(0).getName());
+        }catch (Exception e){
+            employeeName.setText("(?) đã xóa");
+        }
+        try{
+            customerName.setText(customers.get(0).getName());
+        }catch (Exception e){
+            customerName.setText("(?) đã xóa");
+        }
+        try{
+            customerPhone.setText(customers.get(0).getPhone());
+        }catch (Exception e){
+            customerName.setText("(?) đã xóa");
+        }
         tvCreateDate.setText(exportTicket.getCreateDate());
 
         return listItem;

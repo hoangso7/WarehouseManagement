@@ -39,6 +39,8 @@ import com.midterm.proj.warehousemanagement.util.BitmapHelper;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -160,7 +162,7 @@ public class CreateProductFragment extends Fragment {
         String name = edtProductName.getText().toString().trim();
         String unit = edtProductUnit.getText().toString().trim();
         String sPrice = edtProductPrice.getText().toString();
-        int price = Integer.parseInt(sPrice);
+        long price = Integer.parseInt(sPrice);
         Bitmap bitmap = BitmapFactory.decodeFile(this.path);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,0, byteArrayOutputStream);
@@ -180,6 +182,7 @@ public class CreateProductFragment extends Fragment {
                     Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
                 }
             });
+
         }
     }
 
@@ -196,9 +199,35 @@ public class CreateProductFragment extends Fragment {
         }else if (path.length() == 0){
             Toast.makeText(getActivity(), "Vui lòng thêm hình ảnh của sản phẩm", Toast.LENGTH_LONG).show();
             return false;
-        }else{
+        }else if(checkProductName(name)){
+            Toast.makeText(getActivity(), "Tên sản phẩm trùng, vui lòng kiểm tra lại", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else{
             return true;
         }
+    }
+
+    private boolean checkProductName(String name) {
+        DAO.ProductQuery productQuery = new ProductQuery();
+        ArrayList<Product> products = new ArrayList<>();
+        productQuery.readAllProduct(new QueryResponse<List<Product>>() {
+            @Override
+            public void onSuccess(List<Product> data) {
+                products.addAll(products);
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+        if(products.isEmpty()) return false;
+        for(Product p : products){
+            if(p.getName().equals(name))
+                return false;
+        }
+        return true;
     }
 
     @Override
@@ -217,6 +246,15 @@ public class CreateProductFragment extends Fragment {
             }
 
         }
+        resetProductInputField();
+    }
+
+    private void resetProductInputField() {
+        edtProductName.setText("");
+        edtProductUnit.setText("");
+        edtProductPrice.setText("");
+        imgvProductImage.setImageResource(0);
+        btnAddProduct.setVisibility(View.INVISIBLE);
     }
 
     private void processAndSetImage() {

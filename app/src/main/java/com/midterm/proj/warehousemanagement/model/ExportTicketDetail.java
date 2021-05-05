@@ -4,10 +4,10 @@ public class ExportTicketDetail {
     int ID_ExportTicket;    // primary key
     int ID_Product;    // primary key
     int number;
-    int pricePerUnit;
+    long pricePerUnit;
 
 
-    public ExportTicketDetail(int ID_ExportTicket, int ID_Product, int number, int pricePerUnit) {
+    public ExportTicketDetail(int ID_ExportTicket, int ID_Product, int number, long pricePerUnit) {
         this.ID_ExportTicket = ID_ExportTicket;
         this.ID_Product = ID_Product;
         this.number = number;
@@ -42,7 +42,7 @@ public class ExportTicketDetail {
         this.number = number;
     }
 
-    public int getPricePerUnit() {
+    public long getPricePerUnit() {
         return pricePerUnit;
     }
 

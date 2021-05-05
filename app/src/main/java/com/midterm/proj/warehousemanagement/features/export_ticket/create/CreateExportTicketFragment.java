@@ -64,9 +64,9 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
     public static class ChosenProductInfo {
         private String name;
         private int number;
-        private int price;
+        private long price;
 
-        public ChosenProductInfo(String name, int number, int price) {
+        public ChosenProductInfo(String name, int number, long price) {
             this.name = name;
             this.number = number;
             this.price = price;
@@ -80,7 +80,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
             return number;
         }
 
-        public int getPrice() {
+        public long getPrice() {
             return price;
         }
     }
@@ -492,8 +492,8 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         chosenProductsList.add(new ChosenProductInfo(productName,Integer.parseInt(productNumber),getProductPriceFromName()));
     }
 
-    private int getProductPriceFromName() {
-        int price=-1;
+    private long getProductPriceFromName() {
+        long price=-1;
         String name = btnChooseProduct.getText().toString();
         if(name.equals("Chọn sản phẩm")){
             return price;
