@@ -50,7 +50,7 @@ public class ImportTicketAdapter extends ArrayAdapter<ImportTicket> {
             listItem = LayoutInflater.from(mContext).inflate(R.layout.import_ticket_list_item, parent, false);
         }
         ImportTicket importTicket = importTicketsArrayList.get(position);
-        TextView idIxportTicket = listItem.findViewById(R.id.tv_id_import_ticket);
+        TextView idImportTicket = listItem.findViewById(R.id.tv_id_import_ticket);
         TextView tvCreateDate = listItem.findViewById(R.id.tv_create_date);
         TextView WarehouseAddress = listItem.findViewById(R.id.tv_warehouse_address);
         TextView employeeName = listItem.findViewById(R.id.tv_employee_name);
@@ -67,10 +67,22 @@ public class ImportTicketAdapter extends ArrayAdapter<ImportTicket> {
         fetchEmployee(importTicket.getID_Employee());
         fetchSupplier(importTicket.getSupplierID());
 
-        idIxportTicket.setText(String.valueOf(importTicket.getImportTicketID()));
-        employeeName.setText(employees.get(0).getName());
-        supplierName.setText(suppliers.get(0).getName());
-        supplierAddress.setText(suppliers.get(0).getAddress());
+        idImportTicket.setText(String.valueOf(importTicket.getImportTicketID()));
+        try{
+            employeeName.setText(employees.get(0).getName());
+        }catch (Exception e){
+            employeeName.setText("(?) đã xóa");
+        }
+        try{
+            supplierName.setText(suppliers.get(0).getName());
+        }catch (Exception e){
+            supplierName.setText("(?) đã xóa");
+        }
+        try{
+            supplierAddress.setText(suppliers.get(0).getAddress());
+        }catch (Exception e){
+            supplierAddress.setText("(?) đã xóa");
+        }
         tvCreateDate.setText(importTicket.getCreateDate());
 
         return listItem;

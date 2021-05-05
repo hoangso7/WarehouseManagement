@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/hachi"
-                    android:text="mã hóa đơn: "
+                    android:text="Mã hóa đơn: "
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -100,10 +100,10 @@
                 <TextView
                     android:id="@+id/tv_id_warehouse_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/tv"
                     android:fontFamily="@font/hachi"
-                    android:text="địa chỉ kho: "
+                    android:text="Địa chỉ kho: "
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -125,10 +125,10 @@
                 <TextView
                     android:id="@+id/tv_id_employee_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/tv_name"
                     android:fontFamily="@font/hachi"
-                    android:text="tên nhân viên: "
+                    android:text="Nhân viên: "
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -151,10 +151,10 @@
                 <TextView
                     android:id="@+id/tv_id_customer_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_below="@id/tv_name"
                     android:fontFamily="@font/hachi"
-                    android:text="tên khách hàng: "
+                    android:text="Khách hàng: "
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
                     android:fontFamily="@font/hachi"
-                    android:text="Sdt khách hàng: "
+                    android:text="SĐT: "
                     android:textSize="16dp"
                     android:textStyle="bold" />
 

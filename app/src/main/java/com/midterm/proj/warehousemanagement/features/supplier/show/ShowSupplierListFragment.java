@@ -76,13 +76,14 @@ public class ShowSupplierListFragment extends Fragment implements SupplierCrudLi
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0: // Chỉnh sửa thông tin
-                        editSupplierInfo(pos+1);
+                        editSupplierInfo(pos);
                         break;
                     case 1: // Google Map
-                        ThirdPartyApp.googlemapSearchForAddress(supplierArrayList.get(pos).getAddress());
+                        String address = adapter.getItem(pos).getAddress();
+                        ThirdPartyApp.googlemapSearchForAddress(address);
                         break;
                     case 2: // Xóa
-                        deleteSupplier(pos+1);
+                        deleteSupplier(pos);
                 }
             }
         });
@@ -96,13 +97,13 @@ public class ShowSupplierListFragment extends Fragment implements SupplierCrudLi
         builder.setTitle("CẢNH BÁO");
         builder.setIcon(R.drawable.ic_dangerous);
         builder.setMessage("Bạn chắc muốn xóa Nhà cung cấp này chứ?");
-
+        int id = adapter.getItem(pos).getID_Supplier();
         // add the buttons
         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 DAO.SupplierQuery supplierQuery = new SupplierQuery();
-                supplierQuery.deleteSupplier(pos, new QueryResponse<Boolean>() {
+                supplierQuery.deleteSupplier(id, new QueryResponse<Boolean>() {
                     @Override
                     public void onSuccess(Boolean data) {
                         updateSupplierList();
@@ -123,7 +124,8 @@ public class ShowSupplierListFragment extends Fragment implements SupplierCrudLi
     }
 
     private void editSupplierInfo(int pos) {
-        UpdateSupplierDialogFragment updateSupplierDialogFragment = UpdateSupplierDialogFragment.newInstance("Chỉnh sửa thông tin", pos, ShowSupplierListFragment.this);
+        int id = adapter.getItem(pos).getID_Supplier();
+        UpdateSupplierDialogFragment updateSupplierDialogFragment = UpdateSupplierDialogFragment.newInstance("Chỉnh sửa thông tin", id, ShowSupplierListFragment.this);
         updateSupplierDialogFragment.show(getFragmentManager(), "update_supplier");
 
     }

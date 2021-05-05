@@ -116,13 +116,14 @@ public class ShowWarehouseFragment extends Fragment implements WarehouseCrudList
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0: // Chỉnh sửa thông tin
-                        editWarehouseInfo(pos+1);
+                        editWarehouseInfo(pos);
                         break;
                     case 1: // Google Map
-                        ThirdPartyApp.googlemapSearchForAddress(warehouses.get(pos).getAddress());
+                        String address = warehouseAdapter.getItem(pos).getAddress();
+                        ThirdPartyApp.googlemapSearchForAddress(address);
                         break;
                     case 2: // Xóa
-                        deleteWarehouse(pos+1);
+                        deleteWarehouse(pos);
                 }
             }
         });
@@ -136,13 +137,13 @@ public class ShowWarehouseFragment extends Fragment implements WarehouseCrudList
         builder.setTitle("CẢNH BÁO");
         builder.setIcon(R.drawable.ic_dangerous);
         builder.setMessage("Bạn chắc muốn xóa kho này chứ?");
-
+        int id = warehouseAdapter.getItem(pos).getID_Warehouse();
         // add the buttons
         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 DAO.WarehouseQuery warehouseQuery = new WarehouseQuery();
-                warehouseQuery.deleteWarehouse(pos, new QueryResponse<Boolean>() {
+                warehouseQuery.deleteWarehouse(id, new QueryResponse<Boolean>() {
                     @Override
                     public void onSuccess(Boolean data) {
                         updateWarehouseList();
@@ -163,7 +164,8 @@ public class ShowWarehouseFragment extends Fragment implements WarehouseCrudList
     }
 
     private void editWarehouseInfo(int pos) {
-        UpdateWarehouseDialogFragment updateWarehouseDialogFragment = UpdateWarehouseDialogFragment.newInstance("Chỉnh sửa thông tin", pos, ShowWarehouseFragment.this);
+        int id = warehouseAdapter.getItem(pos).getID_Warehouse();
+        UpdateWarehouseDialogFragment updateWarehouseDialogFragment = UpdateWarehouseDialogFragment.newInstance("Chỉnh sửa thông tin", id, ShowWarehouseFragment.this);
         updateWarehouseDialogFragment.show(getFragmentManager(), "update_warehouse");
 
     }

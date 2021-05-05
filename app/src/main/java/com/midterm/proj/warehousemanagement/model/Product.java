@@ -5,14 +5,14 @@ public class Product {
     private String name;
     private String unit;
     private int number;
-    private int price;
+    private long price;
     private byte[] bytesImage;
 
     public Product(String name){
         this.name= name;
     }
 
-    public Product(int ID_Product, String name, String unit, int number, int price, byte[] bytesImage) {
+    public Product(int ID_Product, String name, String unit, int number, long price, byte[] bytesImage) {
         this.ID_Product = ID_Product;
         this.name = name;
         this.unit = unit;
@@ -21,7 +21,7 @@ public class Product {
         this.number = number;
     }
 
-    public Product(String name, String unit, int number ,int price, byte[] bytesImage) {
+    public Product(String name, String unit, int number ,long price, byte[] bytesImage) {
         this.name = name;
         this.unit = unit;
         this.number = number;
@@ -69,11 +69,11 @@ public class Product {
         this.number = number;
     }
 
-    public int getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 }

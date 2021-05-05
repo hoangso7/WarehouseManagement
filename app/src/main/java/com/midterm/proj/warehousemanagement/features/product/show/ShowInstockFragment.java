@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,13 +18,16 @@ import androidx.fragment.app.FragmentTransaction;
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.SupplierQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.show.WarehouseAdapter;
 import com.midterm.proj.warehousemanagement.model.Product;
+import com.midterm.proj.warehousemanagement.model.Supplier;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
+import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +95,71 @@ public class ShowInstockFragment extends Fragment {
     }
 
     private void setEvent() {
+        instockListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showOptions(position);
+                return true;
+            }
+        });
     }
+
+    private void showOptions(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Tùy chọn");
+        builder.setIcon(R.drawable.uc_information);
+        String[] options = { "Xóa"};
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0: // Xóa
+                        deleteProduct(position);
+                        break;
+                }
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void deleteProduct(int position) {
+        instockListView.getSelectedItem();
+        DAO.ProductQuery productQuery=new ProductQuery();
+        int id =  adapter.getItem(position).getID_Product();
+        productQuery.deleteProduct(id, new QueryResponse<Boolean>() {
+            @Override
+            public void onSuccess(Boolean data) {
+                Toast.makeText(getActivity(), "Đã xóa sản phẩm", Toast.LENGTH_LONG).show();
+                updateProductList();
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+    }
+
+    private void updateProductList() {
+        DAO.ProductQuery productQuery = new ProductQuery();
+        productQuery.readAllProduct(new QueryResponse<List<Product>>() {
+            @Override
+            public void onSuccess(List<Product> data) {
+                productArrayList.clear();
+                productArrayList.addAll(data);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(String message) {
+
+            }
+        });
+    }
+
+
     public void fetchInstock(){
         DAO.ProductQuery productQuery = new ProductQuery();
         productQuery.readAllProduct(new QueryResponse<List<Product>>() {

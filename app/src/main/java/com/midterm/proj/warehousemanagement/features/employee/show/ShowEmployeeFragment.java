@@ -117,13 +117,14 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0: // Chỉnh sửa thông tin
-                        editEmployeeInfo(pos+1);
+                        editEmployeeInfo(pos);
                         break;
                     case 1: // Gọi điện
-                        ThirdPartyApp.dialPhoneNumber(employees.get(pos).getPhone());
+                        String phone = employeeAdapter.getItem(pos).getPhone();
+                        ThirdPartyApp.dialPhoneNumber(phone);
                         break;
                     case 2: // Xóa
-                        deleteEmployee(pos+1);
+                        deleteEmployee(pos);
                 }
             }
         });
@@ -137,13 +138,13 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
         builder.setTitle("CẢNH BÁO");
         builder.setIcon(R.drawable.ic_dangerous);
         builder.setMessage("Bạn chắc muốn xóa nhân viên này chứ?");
-
+        int id = employeeAdapter.getItem(pos).getID_Employee();
         // add the buttons
         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 DAO.EmployeeQuery employeeQuery = new EmployeeQuery();
-                employeeQuery.deleteEmployee(pos, new QueryResponse<Boolean>() {
+                employeeQuery.deleteEmployee(id, new QueryResponse<Boolean>() {
                     @Override
                     public void onSuccess(Boolean data) {
                         updateEmployeeList();
@@ -164,7 +165,8 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
     }
 
     private void editEmployeeInfo(int pos) {
-        UpdateEmployeeDialogFragment updateEmployeeDialogFragment = UpdateEmployeeDialogFragment.newInstance("Chỉnh sửa thông tin", pos, ShowEmployeeFragment.this);
+        int id = employeeAdapter.getItem(pos).getID_Employee();
+        UpdateEmployeeDialogFragment updateEmployeeDialogFragment = UpdateEmployeeDialogFragment.newInstance("Chỉnh sửa thông tin", id, ShowEmployeeFragment.this);
         updateEmployeeDialogFragment.show(getFragmentManager(), "update_employee");
 
     }
