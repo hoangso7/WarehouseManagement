@@ -53,7 +53,7 @@
                     android:backgroundTint="@color/primaryColor"
                     android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
-                    android:text="HÀNG TRONG KHO"
+                    android:text="QUẢN LÝ SẢN PHẨM"
 
                     android:textColor="#fff"
                     android:textSize="14dp"

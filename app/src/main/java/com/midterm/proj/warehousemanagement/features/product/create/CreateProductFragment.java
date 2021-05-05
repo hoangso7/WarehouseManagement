@@ -35,6 +35,7 @@ import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.util.BitmapHelper;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -174,12 +175,12 @@ public class CreateProductFragment extends Fragment {
             productQuery.createProduct(product, new QueryResponse<Boolean>() {
                 @Override
                 public void onSuccess(Boolean data) {
-                    //Toast.makeText(getActivity(), "Tạo sản phẩm mới thành công!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyApp.context, "Tạo sản phẩm mới thành công!", Toast.LENGTH_LONG).show();
                 }
 
                 @Override
                 public void onFailure(String message) {
-                    Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyApp.context, message, Toast.LENGTH_LONG).show();
                 }
             });
             resetProductInputField();
@@ -188,19 +189,19 @@ public class CreateProductFragment extends Fragment {
 
     private boolean productValid(String name, String unit, String sPrice, String path) {
         if(name.length()==0){
-            Toast.makeText(getActivity(), "Tên sản phẩm không được trống", Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApp.context, "Tên sản phẩm không được trống", Toast.LENGTH_LONG).show();
             return false;
         }else if(unit.length() == 0){
-            Toast.makeText(getActivity(), "Đơn vị tính sản phẩm không được trống", Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApp.context, "Đơn vị tính sản phẩm không được trống", Toast.LENGTH_LONG).show();
             return false;
         }else if (sPrice.length() == 0){
-            Toast.makeText(getActivity(), "Giá sản phẩm không được trống", Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApp.context, "Giá sản phẩm không được trống", Toast.LENGTH_LONG).show();
             return false;
         }else if (path.length() == 0){
-            Toast.makeText(getActivity(), "Vui lòng thêm hình ảnh của sản phẩm", Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApp.context, "Vui lòng thêm hình ảnh của sản phẩm", Toast.LENGTH_LONG).show();
             return false;
-        }else if(checkProductName(name)){
-            Toast.makeText(getActivity(), "Tên sản phẩm trùng, vui lòng kiểm tra lại", Toast.LENGTH_LONG).show();
+        }else if(!checkProductName(name)){
+            Toast.makeText(MyApp.context, "Tên sản phẩm trùng, vui lòng kiểm tra lại", Toast.LENGTH_LONG).show();
             return false;
         }
         else{

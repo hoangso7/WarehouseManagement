@@ -70,7 +70,9 @@ public class DashboardFragment extends Fragment {
         item6 = getView().findViewById(R.id.item_main_6);
 
         item1.setAnimation(topAnimation);
+
         item2.setAnimation(topAnimation);
+
         item3.setAnimation(topAnimation);
         item4.setAnimation(topAnimation);
         item5.setAnimation(topAnimation);

@@ -8,8 +8,8 @@
         android:id="@+id/linearlayout_warehouse_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:gravity="center_vertical"
@@ -50,8 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:orientation="vertical"
@@ -78,8 +78,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
                 android:textColor="#333"
-                android:textStyle="bold"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,8 +103,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
                 android:textColor="#333"
-                android:textStyle="bold"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,8 +128,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
                 android:textColor="#333"
-                android:textStyle="bold"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -155,10 +155,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/triangle_radius"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/triangle_radius"
                 android:orientation="horizontal">
 
                 <TextView
@@ -187,10 +187,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/triangle_radius"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/triangle_radius"
                 android:orientation="horizontal">
 
                 <TextView
@@ -218,10 +218,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/triangle_radius"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/triangle_radius"
                 android:orientation="horizontal">
 
                 <TextView
@@ -249,10 +249,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/triangle_radius"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/triangle_radius"
                 android:orientation="horizontal">
 
                 <TextView
@@ -344,8 +344,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -378,7 +378,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="@color/primaryColor"
+        android:backgroundTint="@color/export_ticket"
         android:fontFamily="@font/hachi"
         android:text="Xuất kho" />
 

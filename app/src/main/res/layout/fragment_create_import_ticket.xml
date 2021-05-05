@@ -11,10 +11,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,9 +48,9 @@
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:orientation="vertical"
+        android:paddingLeft="10dp"
         android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:paddingLeft="10dp">
+        android:paddingBottom="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,19 +139,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/hachi"
             android:text="Tên hàng:"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ctk_choose_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
             android:layout_marginLeft="15dp"
+            android:layout_marginRight="12dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/hachi"
             android:text="Chọn sản phẩm"
@@ -173,11 +173,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/hachi"
             android:text="Đơn vị:"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <TextView
@@ -204,11 +204,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/hachi"
             android:text="Số lượng:"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <EditText
@@ -239,11 +239,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/hachi"
             android:text="NCC:"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <EditText
@@ -274,11 +274,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/hachi"
             android:text="Địa chỉ:"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <EditText
@@ -309,19 +309,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:fontFamily="@font/hachi"
             android:text="Nhân viên:"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ctk_choose_employee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/hachi"
             android:text="Chọn nhân viên"
@@ -338,7 +338,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="@color/primaryColor"
+        android:backgroundTint="@color/import_ticket"
         android:fontFamily="@font/hachi"
         android:text="Nhập kho"
         android:textSize="15dp" />
