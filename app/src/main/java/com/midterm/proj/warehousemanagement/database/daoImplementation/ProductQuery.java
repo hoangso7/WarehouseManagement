@@ -144,7 +144,16 @@ public class ProductQuery implements DAO.ProductQuery {
 
     @Override
     public void deleteProduct(int ProductID, QueryResponse<Boolean> response) {
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        int row = sqLiteDatabase.delete(Constants.PRODUCT_TABLE, Constants.PRODUCT_ID+" = ?",new String[]{String.valueOf(ProductID)});
 
+        if(row>0){
+            response.onSuccess(true);
+            Toast.makeText(MyApp.context, "Đã xóa thông tin sản phẩm ", Toast.LENGTH_LONG).show();
+        }
+        else{
+            response.onFailure("Không thể xóa thông tin sản phẩm");
+        }
     }
     private Product getProductFromCursor(Cursor cursor){
         int id = cursor.getInt(cursor.getColumnIndex(Constants.PRODUCT_ID));

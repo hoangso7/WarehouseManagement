@@ -76,13 +76,13 @@ public class ShowCustomerListFragment extends Fragment implements CustomerCrudLi
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0: // Chỉnh sửa thông tin
-                        editCustomerInfo(pos + 1);
+                        editCustomerInfo(pos);
                         break;
                     case 1: // Gọi
                         ThirdPartyApp.dialPhoneNumber(customerArrayList.get(pos).getPhone());
                         break;
                     case 2: // Xóa
-                        deleteCustomer(pos + 1);
+                        deleteCustomer(pos);
                 }
             }
         });
@@ -96,13 +96,13 @@ public class ShowCustomerListFragment extends Fragment implements CustomerCrudLi
         builder.setTitle("CẢNH BÁO");
         builder.setIcon(R.drawable.ic_dangerous);
         builder.setMessage("Bạn chắc muốn xóa khách hàng này chứ?");
-
+        int id = adapter.getItem(pos).getCustomerID();
         // add the buttons
         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 DAO.CustomerQuery customerQuery = new CustomerQuery();
-                customerQuery.deleteCustomer(pos, new QueryResponse<Boolean>() {
+                customerQuery.deleteCustomer(id, new QueryResponse<Boolean>() {
                     @Override
                     public void onSuccess(Boolean data) {
                         updateCustomerList();
@@ -123,7 +123,8 @@ public class ShowCustomerListFragment extends Fragment implements CustomerCrudLi
     }
 
     private void editCustomerInfo(int pos) {
-        UpdateCustomerDialogFragment updateCustomerDialogFragment = UpdateCustomerDialogFragment.newInstance("Sửa thông tin khách hàng",pos ,ShowCustomerListFragment.this);
+        int id = adapter.getItem(pos).getCustomerID();
+        UpdateCustomerDialogFragment updateCustomerDialogFragment = UpdateCustomerDialogFragment.newInstance("Sửa thông tin khách hàng",id ,ShowCustomerListFragment.this);
         updateCustomerDialogFragment.show(getFragmentManager(), "update_customer");
     }
 
