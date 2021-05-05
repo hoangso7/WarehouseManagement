@@ -104,6 +104,7 @@ public class ImportTicketQuery implements DAO.ImportTicketQuery{
                     ImportTicket importTicket = new ImportTicket();
 
 //                    importTicket.setImportTicketID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_ID)));
+                    importTicket.setImportTicketID(cursor.getInt(cursor.getColumnIndex(Constants.IMPORT_TICKET_ID)));
                     importTicket.setID_Employee(cursor.getInt(cursor.getColumnIndex(Constants._EMPLOYEE_ID)));
                     importTicket.setID_Warehouse(cursor.getInt(cursor.getColumnIndex(Constants._WAREHOUSE_ID)));
                     importTicket.setCreateDate(cursor.getString(cursor.getColumnIndex(Constants.IMPORT_TICKET_CREATION_DATE)));
