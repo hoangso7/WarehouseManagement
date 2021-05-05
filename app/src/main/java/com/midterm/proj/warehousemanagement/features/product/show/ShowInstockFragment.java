@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.SupplierQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
@@ -27,6 +28,7 @@ import com.midterm.proj.warehousemanagement.features.warehouse.show.WarehouseAda
 import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.model.Supplier;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
+import com.midterm.proj.warehousemanagement.util.MyApp;
 import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
 import java.util.ArrayList;
@@ -125,21 +127,37 @@ public class ShowInstockFragment extends Fragment {
     }
 
     private void deleteProduct(int position) {
-        instockListView.getSelectedItem();
-        DAO.ProductQuery productQuery=new ProductQuery();
-        int id =  adapter.getItem(position).getID_Product();
-        productQuery.deleteProduct(id, new QueryResponse<Boolean>() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("CẢNH BÁO");
+        builder.setIcon(R.drawable.ic_dangerous);
+        builder.setMessage("Bạn chắc muốn xóa sản phẩm này chứ?");
+        int id = adapter.getItem(position).getID_Product();
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
-            public void onSuccess(Boolean data) {
-                Toast.makeText(getActivity(), "Đã xóa sản phẩm", Toast.LENGTH_LONG).show();
-                updateProductList();
-            }
+            public void onClick(DialogInterface dialog, int which) {
+                DAO.ProductQuery productQuery=new ProductQuery();
+                productQuery.deleteProduct(id, new QueryResponse<Boolean>() {
+                @Override
+                public void onSuccess(Boolean data) {
+                    Toast.makeText(getActivity(), "Đã xóa sản phẩm", Toast.LENGTH_LONG).show();
+                    updateProductList();
+                }
 
-            @Override
-            public void onFailure(String message) {
+                @Override
+                public void onFailure(String message) {
 
+                }
+        });
             }
         });
+        builder.setNegativeButton("Hủy", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+//        instockListView.getSelectedItem();
+//        int id =  adapter.getItem(position).getID_Product();
+
     }
 
     private void updateProductList() {
