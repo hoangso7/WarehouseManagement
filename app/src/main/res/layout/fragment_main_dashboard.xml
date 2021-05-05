@@ -26,6 +26,8 @@
             >
 
             <LinearLayout
+                android:id="@+id/item_main_1"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/triangle_radius"
@@ -60,6 +62,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/item_main_2"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -96,6 +100,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/item_main_3"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -132,6 +138,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/item_main_4"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -168,6 +176,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/item_main_5"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -204,6 +214,8 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/item_main_6"
+
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"

@@ -15,9 +15,15 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,7 +46,12 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Activity mActivity;
     private Context mContext;
-    //private TicketInfoAdapter ticketInfoAdapter;
+    // private TicketInfoAdapter ticketInfoAdapter;
+
+    // Animation
+    Animation topAnimation, bottomAnimation;
+    Button btn1;
+
     private static final int MY_PERMISSIONS_REQUEST_CODE = 69;
 
     @Override
@@ -53,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
         setDatabase();
         setControl();
         setEvent();
+
+        // Animation
+        topAnimation = AnimationUtils.loadAnimation(this, R.anim.thuancute_animation);
+//
+//        btn1 = findViewById(R.id.btn_instock);
+//        btn1.setAnimation(topAnimation);
     }
 
     private void setDatabase() {

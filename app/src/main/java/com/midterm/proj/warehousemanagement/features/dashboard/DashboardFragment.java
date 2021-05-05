@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -38,6 +40,13 @@ public class DashboardFragment extends Fragment {
     Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
     private FragmentActivity myContext;
     LinearLayout dashboardMenu;
+
+    // Animation
+    Animation topAnimation, bottomAnimation;
+    LinearLayout item1, item2, item3, item4, item5, item6;
+
+    Button btn1;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +59,23 @@ public class DashboardFragment extends Fragment {
         checkEmptyWarehouseList();
         setControl();
         setEvent();
+
+        topAnimation = AnimationUtils.loadAnimation(myContext, R.anim.thuancute_animation);
+
+        item1 = getView().findViewById(R.id.item_main_1);
+        item2 = getView().findViewById(R.id.item_main_2);
+        item3 = getView().findViewById(R.id.item_main_3);
+        item4 = getView().findViewById(R.id.item_main_4);
+        item5 = getView().findViewById(R.id.item_main_5);
+        item6 = getView().findViewById(R.id.item_main_6);
+
+        item1.setAnimation(topAnimation);
+
+        item2.setAnimation(topAnimation);
+        item3.setAnimation(topAnimation);
+        item4.setAnimation(topAnimation);
+        item5.setAnimation(topAnimation);
+        item6.setAnimation(topAnimation);
     }
 
     private void checkEmptyWarehouseList() {
@@ -83,6 +109,9 @@ public class DashboardFragment extends Fragment {
         btn_customer_info = getView().findViewById(R.id.btn_customer_info);
         btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
         dashboardMenu = getView().findViewById(R.id.dashboard_menu);
+
+
+
     }
 
     private void setEvent() {
