@@ -285,6 +285,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/triangle"
                 android:isScrollContainer="true"
+
                 android:orientation="horizontal">
 
                 <TableRow
