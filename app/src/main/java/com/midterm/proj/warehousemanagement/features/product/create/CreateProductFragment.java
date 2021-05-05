@@ -163,13 +163,13 @@ public class CreateProductFragment extends Fragment {
         String name = edtProductName.getText().toString().trim();
         String unit = edtProductUnit.getText().toString().trim();
         String sPrice = edtProductPrice.getText().toString();
-        long price = Integer.parseInt(sPrice);
         Bitmap bitmap = BitmapFactory.decodeFile(this.path);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,0, byteArrayOutputStream);
         byte[] bytesImage = byteArrayOutputStream.toByteArray();
 
         if(productValid(name,unit,sPrice,path)){
+            long price = Integer.parseInt(sPrice);
             Product product = new Product(name,unit,0,price,bytesImage);
             DAO.ProductQuery productQuery = new ProductQuery();
             productQuery.createProduct(product, new QueryResponse<Boolean>() {
@@ -200,7 +200,7 @@ public class CreateProductFragment extends Fragment {
         }else if (path.length() == 0){
             Toast.makeText(MyApp.context, "Vui lòng thêm hình ảnh của sản phẩm", Toast.LENGTH_LONG).show();
             return false;
-        }else if(!checkProductName(name)){
+        }else if(checkProductName(name)){
             Toast.makeText(MyApp.context, "Tên sản phẩm trùng, vui lòng kiểm tra lại", Toast.LENGTH_LONG).show();
             return false;
         }

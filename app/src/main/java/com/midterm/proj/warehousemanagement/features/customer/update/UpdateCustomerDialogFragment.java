@@ -108,6 +108,10 @@ public class UpdateCustomerDialogFragment extends DialogFragment {
         if(phone.length()!=0){
             customer.setPhone(phone);
         }
+        else if(phone.length() != 10){
+            Toast.makeText(MyApp.context, "Kiểm tra lại SĐT khách hàng.", Toast.LENGTH_LONG).show();
+            return;
+        }
         DAO.CustomerQuery customerQuery = new CustomerQuery();
         customerQuery.updateCustomer(customer, new QueryResponse<Boolean>() {
             @Override

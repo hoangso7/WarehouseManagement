@@ -467,7 +467,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         TextView tvProductNumber = new TextView(context);
         TextView tvProductPrice = new TextView(context);
         tableIndex++;
-        totalMoney += getProductPriceFromName() * Integer.parseInt(productNumber);
+        totalMoney += getProductPriceFromName(productName) * Integer.parseInt(productNumber);
         tvTotalMoney.setText(String.valueOf(totalMoney));
 
         TableLayout.LayoutParams params = new TableLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -481,7 +481,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         tvProductNumber.setText(productNumber);
         tvProductNumber.setTextSize(15f);
 
-        tvProductPrice.setText(String.valueOf(getProductPriceFromName()));
+        tvProductPrice.setText(String.valueOf(getProductPriceFromName(productName)));
         tvProductPrice.setTextSize(15f);
 
         tableRow.addView(tvTableIndex);
@@ -489,15 +489,15 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         tableRow.addView(tvProductNumber);
         tableRow.addView(tvProductPrice);
 
-        chosenProductsList.add(new ChosenProductInfo(productName,Integer.parseInt(productNumber),getProductPriceFromName()));
+        chosenProductsList.add(new ChosenProductInfo(productName,Integer.parseInt(productNumber),getProductPriceFromName(productName)));
     }
 
-    private long getProductPriceFromName() {
+    private long getProductPriceFromName(String productName) {
         long price=-1;
-        String name = btnChooseProduct.getText().toString();
-        if(name.equals("Chọn sản phẩm")){
-            return price;
-        }
+//        String name = btnChooseProduct.getText().toString();
+//        if(name.equals("Chọn sản phẩm")){
+//            return price;
+//        }
         ArrayList<Product> products = new ArrayList<>();
         DAO.ProductQuery productQuery = new ProductQuery();
         productQuery.readAllProduct(new QueryResponse<List<Product>>() {
@@ -512,7 +512,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
             }
         });
         for(Product p : products){
-            if(p.getName().equals(name)){
+            if(p.getName().equals(productName)){
                 price = p.getPrice();
                 break;
             }
