@@ -182,7 +182,7 @@ public class CreateProductFragment extends Fragment {
                     Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
                 }
             });
-
+            resetProductInputField();
         }
     }
 
@@ -246,7 +246,7 @@ public class CreateProductFragment extends Fragment {
             }
 
         }
-        resetProductInputField();
+
     }
 
     private void resetProductInputField() {

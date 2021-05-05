@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.midterm.proj.warehousemanagement.features.warehouse.manager.Warehouse
 import com.midterm.proj.warehousemanagement.features.warehouse.show.WarehouseAdapter;
 import com.midterm.proj.warehousemanagement.model.Product;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
+import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +92,42 @@ public class ShowInstockFragment extends Fragment {
     }
 
     private void setEvent() {
+        instockListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showOptions(position);
+                return true;
+            }
+        });
     }
+
+    private void showOptions(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Tùy chọn");
+        builder.setIcon(R.drawable.customer);
+        String[] options = {"Chỉnh sửa thông tin", "Gọi điện", "Xóa"};
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0: // Xóa
+                        deleteProduct(position);
+                        break;
+                }
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void deleteProduct(int position) {
+        instockListView.getSelectedItem();
+        DAO.ProductQuery productQuery=new ProductQuery();
+
+       // productQuery.deleteProduct();
+    }
+
     public void fetchInstock(){
         DAO.ProductQuery productQuery = new ProductQuery();
         productQuery.readAllProduct(new QueryResponse<List<Product>>() {
