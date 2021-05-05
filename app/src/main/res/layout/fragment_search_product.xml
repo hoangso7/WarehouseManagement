@@ -14,7 +14,6 @@
             android:id="@+id/relLayout1"
             android:layout_height="wrap_content">
 
-
             <include layout="@layout/snippet_search_toolbar"/>
             <include layout="@layout/snippet_view_product_toolbar"/>
 
@@ -43,6 +42,5 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="80dp"
-    android:paddingBottom="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:orientation="vertical"
@@ -19,10 +18,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Tên khách hàng"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:fontFamily="@font/hachi"
             android:textStyle="normal" />
 
         <EditText
@@ -30,19 +29,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#fff"
+            android:fontFamily="@font/hachi"
             android:hint="Nhập tên nhân viên"
             android:inputType="text"
             android:maxLines="1"
-            android:fontFamily="@font/hachi"
-            android:textStyle="normal"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textStyle="normal" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:orientation="vertical"
@@ -51,10 +50,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Số điện thoại"
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:fontFamily="@font/hachi"
             android:textStyle="normal" />
 
         <EditText
@@ -62,12 +61,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#fff"
+            android:fontFamily="@font/hachi"
             android:hint="Nhập SĐT"
             android:inputType="number"
             android:maxLines="1"
-            android:fontFamily="@font/hachi"
-            android:textStyle="normal"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textStyle="normal" />
     </LinearLayout>
 
     <LinearLayout
@@ -82,23 +81,23 @@
             android:id="@+id/btn_submit_new_customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hachi"
-            android:textStyle="normal"
-            android:backgroundTint="#16a085"
-            android:text="OK"
             android:layout_marginTop="15dp"
-            android:textColor="#fff" />
+            android:backgroundTint="@color/primaryColor"
+            android:fontFamily="@font/hachi"
+            android:text="OK"
+            android:textColor="#fff"
+            android:textStyle="normal" />
 
         <Button
             android:id="@+id/btn_cancel_new_customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/hachi"
-            android:textStyle="normal"
-            android:backgroundTint="#16a085"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/primaryColor"
+            android:fontFamily="@font/hachi"
             android:text="Hủy"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textStyle="normal" />
     </LinearLayout>
 
 

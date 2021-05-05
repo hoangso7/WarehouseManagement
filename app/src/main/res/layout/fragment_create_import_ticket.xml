@@ -4,19 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textview_import_ticket"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/hachi"-->
-<!--        android:textStyle="bold"-->
-<!--        android:background="#16a085"-->
-<!--        android:gravity="center"-->
-<!--        android:padding="15dp"-->
-<!--        android:text="PHIẾU NHẬP KHO"-->
-<!--        android:textColor="#fff"-->
-<!--        android:textSize="22dp" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,17 +11,20 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
+
             android:paddingLeft="10dp"
             android:text="Chọn Kho: "
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <Spinner
@@ -44,9 +34,9 @@
             android:layout_marginLeft="10dp"
             android:dropDownVerticalOffset="36dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="bold"
             android:isScrollContainer="true"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -58,6 +48,8 @@
         android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:orientation="vertical"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:paddingLeft="10dp">
 
         <LinearLayout
@@ -68,10 +60,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Mã kho:"
                 android:textColor="#14232d"
-                android:textSize="16dp"
-                android:fontFamily="@font/hachi"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -79,9 +71,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
-                android:textStyle="bold"
                 android:textColor="#333"
-                android:textSize="16dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,10 +84,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Tên:"
                 android:textColor="#14232d"
-                android:textSize="16dp"
-                android:fontFamily="@font/hachi"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -103,9 +95,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
-                android:textStyle="bold"
                 android:textColor="#333"
-                android:textSize="16dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -116,10 +108,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Địa chỉ:"
                 android:textColor="#14232d"
-                android:textSize="16dp"
-                android:fontFamily="@font/hachi"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -127,9 +119,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
-                android:textStyle="bold"
                 android:textColor="#333"
-                android:textSize="16dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -147,22 +139,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Tên hàng:"
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ctk_choose_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
             android:layout_marginLeft="15dp"
-            android:fontFamily="@font/hachi"
             android:backgroundTint="#fff"
-            android:textSize="14dp"
+            android:fontFamily="@font/hachi"
             android:text="Chọn sản phẩm"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="15dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -179,10 +173,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Đơn vị:"
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <TextView
@@ -191,8 +186,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="bold"
-            android:textSize="16dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -209,10 +204,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Số lượng:"
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <EditText
@@ -222,11 +218,11 @@
             android:layout_marginLeft="20dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/hachi"
-            android:textStyle="bold"
             android:hint="Nhập số lượng"
             android:inputType="number"
             android:maxLines="1"
-            android:textSize="16dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -243,10 +239,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="NCC:"
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <EditText
@@ -254,13 +251,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
-            android:fontFamily="@font/hachi"
-            android:textStyle="bold"
             android:backgroundTint="#fff"
-            android:hint="Nhập tên nhà cung cấp"
+            android:fontFamily="@font/hachi"
+            android:hint="Tên nhà cung cấp"
             android:inputType="text"
             android:maxLines="1"
-            android:textSize="16dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -277,10 +274,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Địa chỉ:"
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <EditText
@@ -289,12 +287,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="37dp"
             android:backgroundTint="#fff"
-            android:hint="Nhập địa chỉ nhà cung cấp"
             android:fontFamily="@font/hachi"
-            android:textStyle="bold"
+            android:hint="Địa chỉ nhà cung cấp"
             android:inputType="text"
             android:maxLines="1"
-            android:textSize="16dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -311,23 +309,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:text="Nhân viên:"
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_ctk_choose_employee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
             android:backgroundTint="#fff"
             android:fontFamily="@font/hachi"
-            android:textStyle="bold"
             android:text="Chọn nhân viên"
-            android:textSize="14dp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
@@ -335,21 +335,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:fontFamily="@font/hachi"
         android:backgroundTint="@color/primaryColor"
-        android:textSize="14dp"
-        android:text="Nhập kho" />
+        android:fontFamily="@font/hachi"
+        android:text="Nhập kho"
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/hachi"
-        android:textSize="12dp"
         android:text="Lưu ý kiểm tra kỹ đơn hàng trước khi nhập kho"
+        android:textColor="#000"
+        android:textSize="14dp"
         android:textStyle="italic" />
 
 </LinearLayout>

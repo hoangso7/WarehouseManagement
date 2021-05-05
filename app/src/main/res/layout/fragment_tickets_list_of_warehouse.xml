@@ -4,32 +4,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textview_import_ticket"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="#16a085"-->
-<!--        android:padding="10dp"-->
-<!--        android:text="Quản Lý Kho"-->
-<!--        android:textColor="#fff"-->
-<!--        android:textSize="22dp" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="#fff"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:paddingLeft="10dp"
             android:text="Chọn Kho: "
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:fontFamily="@font/hachi"
             android:textStyle="bold" />
 
         <Spinner
@@ -46,9 +38,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/triangle_radius"
         android:orientation="vertical"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,10 +55,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Mã kho:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
-                android:fontFamily="@font/hachi"
                 android:textStyle="bold" />
 
             <TextView
@@ -80,10 +77,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Tên:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
-                android:fontFamily="@font/hachi"
                 android:textStyle="bold" />
 
             <TextView
@@ -102,10 +99,10 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/hachi"
                 android:text="Địa chỉ:"
                 android:textColor="#14232d"
                 android:textSize="18dp"
-                android:fontFamily="@font/hachi"
                 android:textStyle="bold" />
 
             <TextView
@@ -129,14 +126,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/import_ticket"
-        android:checked="true"
-        android:textColor="#fff"
-
-        android:textOff=" Phiếu nhập kho "
-        android:textOn=" Phiếu xuất kho "
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:background="@color/import_ticket"
+
+        android:checked="true"
+        android:textColor="#fff"
+        android:textOff=" Phiếu nhập kho "
+        android:textOn=" Phiếu xuất kho "
         android:textStyle="normal" />
 
 </LinearLayout>

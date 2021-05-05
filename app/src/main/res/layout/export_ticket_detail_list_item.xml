@@ -8,11 +8,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/triangle_radius"
             android:orientation="vertical"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:padding="10dp">
@@ -27,8 +28,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/hachi"
-                    android:text="id phiếu xuất: "
-                    android:textSize="16dp"
+                    android:text="Id phiếu xuất: "
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -37,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_id_export_ticket_name"
                     android:fontFamily="@font/hachi"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -53,7 +54,7 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/hachi"
                     android:text="Tên sản phẩm: "
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -62,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_name"
                     android:fontFamily="@font/hachi"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -78,7 +79,7 @@
                     android:layout_toRightOf="@+id/tv_product_name"
                     android:fontFamily="@font/hachi"
                     android:text="Đơn giá: "
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -87,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_id"
                     android:fontFamily="@font/hachi"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -102,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
                     android:text="Số lượng: "
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:fontFamily="@font/hachi"
                     android:textStyle="bold" />
 
@@ -112,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_product_name"
                     android:layout_toRightOf="@+id/tv_number_name"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:fontFamily="@font/hachi"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -128,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_number_name"
                     android:text="Thành tiền: "
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:fontFamily="@font/hachi"
                     android:textStyle="bold" />
 
@@ -138,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_product_number"
                     android:layout_toRightOf="@+id/tv_total_name"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:fontFamily="@font/hachi"
                     android:textStyle="bold" />
             </LinearLayout>

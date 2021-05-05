@@ -23,7 +23,7 @@
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/hachi"
                 android:text="Tên: "
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tv_name"
                 android:fontFamily="@font/hachi"
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_toRightOf="@+id/tv_product_name"
                 android:fontFamily="@font/hachi"
                 android:text="SĐT: "
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tv_id"
                 android:fontFamily="@font/hachi"
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
 

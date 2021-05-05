@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
-    android:fontFamily="monospace"
-    android:textSize="16dp"
+    android:fontFamily="@font/hachi"
+    android:textSize="18dp"
     android:padding="10dp"
     android:background="@drawable/triangle"
 

@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="80dp"
     android:paddingBottom="20dp"
     android:orientation="vertical">
 
@@ -84,7 +83,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hachi"
             android:textStyle="normal"
-            android:backgroundTint="#16a085"
+            android:backgroundTint="@color/primaryColor"
             android:text="OK"
             android:layout_marginTop="15dp"
             android:textColor="#fff" />
@@ -95,7 +94,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hachi"
             android:textStyle="normal"
-            android:backgroundTint="#16a085"
+            android:backgroundTint="@color/primaryColor"
             android:layout_marginTop="10dp"
             android:text="Hủy"
             android:textColor="#fff" />

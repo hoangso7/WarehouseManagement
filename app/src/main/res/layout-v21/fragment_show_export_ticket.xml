@@ -10,6 +10,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:background="@drawable/triangle_radius"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -17,11 +19,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/hachi"
             android:paddingLeft="10dp"
             android:text="Chọn Kho: "
             android:textColor="#14232d"
-            android:textSize="16dp"
-            android:fontFamily="@font/hachi"
+            android:textSize="18dp"
             android:textStyle="normal" />
 
         <Spinner
@@ -31,9 +33,9 @@
             android:layout_marginLeft="10dp"
             android:dropDownVerticalOffset="36dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal"
             android:isScrollContainer="true"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:textStyle="normal" />
 
     </LinearLayout>
 

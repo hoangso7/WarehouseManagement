@@ -4,45 +4,13 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/textview_export_ticket"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/primaryColor"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:paddingLeft="25dp"-->
-<!--        android:paddingTop="15dp"-->
-<!--        android:paddingRight="15dp"-->
-<!--        android:paddingBottom="15dp">-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="35dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:background="@drawable/triangle_radius_none_border"-->
-<!--            android:backgroundTint="#fff"-->
-<!--            android:padding="8dp"-->
-<!--            android:src="@drawable/_warehouse" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/hachi"-->
-<!--            android:text="PHIẾU XUẤT KHO"-->
-<!--            android:textColor="#fff"-->
-<!--            android:textSize="22dp"-->
-<!--            android:textStyle="normal" />-->
-
-<!--    </LinearLayout>-->
-
-<!--    android:layout_below="@+id/textview_export_ticket"-->
-
     <LinearLayout
         android:id="@+id/linearlayout_warehouse_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -52,9 +20,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/hachi"
             android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             android:text="Chọn Kho: "
             android:textColor="#14232d"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <Spinner
@@ -80,7 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
-        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/triangle_radius"
         android:orientation="vertical"
         android:padding="5dp">
@@ -106,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
                 android:textColor="#333"
+                android:textStyle="bold"
                 android:textSize="18dp" />
         </LinearLayout>
 
@@ -130,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
                 android:textColor="#333"
+                android:textStyle="bold"
                 android:textSize="18dp" />
         </LinearLayout>
 
@@ -154,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/hachi"
                 android:textColor="#333"
+                android:textStyle="bold"
                 android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
@@ -169,6 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/line2"
+        android:layout_marginTop="5dp"
         android:fillViewport="true">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -179,6 +155,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -196,6 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
+                    android:layout_marginRight="12dp"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/hachi"
                     android:text="Chọn nhân viên"
@@ -206,6 +187,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -222,7 +207,7 @@
                     android:id="@+id/edt_customer_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="6dp"
                     android:backgroundTint="#fff"
                     android:hint="Nhập tên khách hàng"
                     android:inputType="text"
@@ -233,7 +218,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
+                android:background="@drawable/triangle_radius"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -250,7 +238,7 @@
                     android:id="@+id/edt_customer_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="24dp"
                     android:backgroundTint="#fff"
                     android:hint="Nhập SĐT khách hàng"
                     android:inputType="number"
@@ -261,6 +249,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -278,6 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="22dp"
+                    android:layout_marginRight="12dp"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/hachi"
                     android:text="Chọn sản phẩm"
@@ -288,7 +281,7 @@
             <TableLayout
                 android:id="@+id/tableLayout"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="160dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/triangle"
                 android:isScrollContainer="true"
@@ -349,7 +342,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView

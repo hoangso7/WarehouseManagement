@@ -4,8 +4,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/searchToolbar"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#16a085">
+        android:layout_height="50dp"
+        android:background="@color/primaryColor">
 
         <Toolbar
             android:layout_width="match_parent"

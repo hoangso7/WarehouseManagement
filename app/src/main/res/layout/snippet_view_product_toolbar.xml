@@ -5,13 +5,13 @@
         android:id="@+id/viewProductsToolbar"
 
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#0099ff">
+        android:layout_height="50dp"
+        android:background="@color/primaryColor">
 
         <Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#16a085"
+            android:background="@color/primaryColor"
             tools:targetApi="lollipop">
 
             <RelativeLayout

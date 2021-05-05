@@ -6,15 +6,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal">
+
         <LinearLayout
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/triangle_radius"
             android:orientation="vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:padding="10dp">
 
             <LinearLayout
@@ -29,7 +31,7 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/hachi"
                     android:text="Tên sản phẩm: "
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -38,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_name"
                     android:fontFamily="@font/hachi"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -54,7 +56,7 @@
                     android:layout_toRightOf="@+id/tv_product_name"
                     android:fontFamily="@font/hachi"
                     android:text="Đơn giá: "
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -63,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_id"
                     android:fontFamily="@font/hachi"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -77,9 +79,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
-                    android:text="Số lượng: "
-                    android:textSize="16dp"
                     android:fontFamily="@font/hachi"
+                    android:text="Số lượng: "
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -88,10 +90,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_product_name"
                     android:layout_toRightOf="@+id/tv_number_name"
-                    android:textSize="16dp"
                     android:fontFamily="@font/hachi"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,9 +105,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_number_name"
-                    android:text="Thành tiền: "
-                    android:textSize="16dp"
                     android:fontFamily="@font/hachi"
+                    android:text="Thành tiền: "
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -113,8 +116,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_product_number"
                     android:layout_toRightOf="@+id/tv_total_name"
-                    android:textSize="16dp"
                     android:fontFamily="@font/hachi"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
