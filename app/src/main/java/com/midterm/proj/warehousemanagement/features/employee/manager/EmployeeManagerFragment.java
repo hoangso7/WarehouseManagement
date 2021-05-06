@@ -51,7 +51,7 @@ public class EmployeeManagerFragment extends Fragment {
         employeeQuery.anyEmployeeCreated(new QueryResponse<Boolean>() {
             @Override
             public void onSuccess(Boolean data) {
-                args.putInt("number_of_warehouse", 0);
+                args.putInt("number_of_employee", 0);
                 Fragment fragment = new CreateEmployeeFragment();
                 fragment.setArguments(args);
                 fragmentTransaction.add(R.id.framelayout_employee_manager_container, fragment);

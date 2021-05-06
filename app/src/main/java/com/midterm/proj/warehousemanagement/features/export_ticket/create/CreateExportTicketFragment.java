@@ -162,9 +162,19 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
 
     private void submitExportForm() {
         int employeeID = getEmployeeIdFromName();
-        if(employeeID == -1) return;
+        if(employeeID == -1) {
+            Toast.makeText(MyApp.context,"Vui lòng chọn nhân viên.", Toast.LENGTH_LONG).show();
+            return;
+        }
         int customerID = getCustomerId();
-        if(customerID == -1) return;
+        if(customerID == -1) {
+            Toast.makeText(MyApp.context, "Vui lòng chọn nhân viên.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(chosenProductsList.isEmpty()){
+            Toast.makeText(MyApp.context, "Vui lòng chọn sản phẩm.", Toast.LENGTH_LONG).show();
+            return;
+        }
         String creationDate = getCreationDate();
         ExportTicket exportTicket = new ExportTicket();
 
@@ -232,7 +242,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
                 productQuery.updateProduct(data, new QueryResponse<Boolean>() {
                     @Override
                     public void onSuccess(Boolean data) {
-                        Toast.makeText(MyApp.context, "Đã cập nhật số lượng sản phẩm.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MyApp.context, "Xuất kho thành công.Đã cập nhật số lượng sản phẩm.", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -395,7 +405,8 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         btnChooseProduct.setText(productName);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         final EditText edittext = new EditText(getContext());
-        edittext.setHint("");
+        edittext.setHint("Số lượng");
+        //edittext.setPadding(50,0,50,0);
         edittext.setInputType(InputType.TYPE_CLASS_NUMBER);
         alert.setMessage("Vui lòng nhập số lượng sản phẩm");
         //alert.setTitle("Enter Your Title");
@@ -484,11 +495,16 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
         tvProductPrice.setText(String.valueOf(getProductPriceFromName(productName)));
         tvProductPrice.setTextSize(15f);
 
+
+        TableLayout.LayoutParams trParams = new
+                TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
+        trParams.setMargins(10,4, 10, 4);
+        tableRow.setPadding(60,0,0,0);
+        tableRow.setLayoutParams(trParams);
         tableRow.addView(tvTableIndex);
         tableRow.addView(tvProductName);
         tableRow.addView(tvProductNumber);
         tableRow.addView(tvProductPrice);
-
         chosenProductsList.add(new ChosenProductInfo(productName,Integer.parseInt(productNumber),getProductPriceFromName(productName)));
     }
 

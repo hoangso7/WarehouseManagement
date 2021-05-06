@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class MyApp extends Application{
     public static Context context = null;
-
+    //public static CrudAllEventListener crudAllEventListener;
     @Override
     public void onCreate() {
         super.onCreate();

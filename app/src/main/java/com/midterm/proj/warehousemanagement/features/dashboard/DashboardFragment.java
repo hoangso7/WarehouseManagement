@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.List;
 
-public class DashboardFragment extends Fragment {
+public class DashboardFragment extends Fragment{
     Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
     private FragmentActivity myContext;
     LinearLayout dashboardMenu;
@@ -197,4 +198,9 @@ public class DashboardFragment extends Fragment {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+//
+//    @Override
+//    public void onCrudCallback(String message){
+//        Log.d("onCrudCallback: ", message);
+//    }
 }

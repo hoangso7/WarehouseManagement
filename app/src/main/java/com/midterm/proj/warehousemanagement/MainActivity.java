@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private ActionBar toolbar;
+    public ActionBar actionBar;
     public static List<Warehouse> warehouses = new ArrayList<>();
     BottomNavigationView bottomNavigationView;
     private ListView listView;
@@ -83,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setControl() {
+        actionBar = getSupportActionBar();
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setItemIconTintList(null);
+        actionBar.setTitle("TRANG CHỦ");
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
     }
 
@@ -96,15 +98,19 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()){
                         case R.id.item_warehouses_management:
+                            actionBar.setTitle("TRANG CHỦ");
                             selectedFragment = new DashboardFragment();
                             break;
                         case R.id.item_import_ticket:
+                            actionBar.setTitle("TẠO PHIẾU NHẬP KHO");
                             selectedFragment = new CreateImportTicketFragment();
                             break;
                         case R.id.item_export_ticket:
+                            actionBar.setTitle("TẠO PHIẾU XUẤT KHO");
                             selectedFragment = new CreateExportTicketFragment();
                             break;
                         case R.id.item_add_product:
+                            actionBar.setTitle("THÊM SẢN PHẨM MỚI");
                             selectedFragment = new CreateProductFragment();
                             break;
                     }

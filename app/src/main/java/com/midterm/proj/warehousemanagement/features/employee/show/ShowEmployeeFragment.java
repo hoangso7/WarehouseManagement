@@ -1,7 +1,6 @@
 package com.midterm.proj.warehousemanagement.features.employee.show;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
@@ -26,8 +23,9 @@ import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.EmployeeQuery;
 import com.midterm.proj.warehousemanagement.features.employee.EmployeeCrudListener;
 import com.midterm.proj.warehousemanagement.features.employee.create.CreateEmployeeDialogFragment;
-import com.midterm.proj.warehousemanagement.features.employee.search.SearchEmployeeAdapter;
 import com.midterm.proj.warehousemanagement.features.employee.update.UpdateEmployeeDialogFragment;
+import com.midterm.proj.warehousemanagement.features.observer.Message;
+import com.midterm.proj.warehousemanagement.features.observer.Observer;
 import com.midterm.proj.warehousemanagement.model.Employee;
 import com.midterm.proj.warehousemanagement.util.MyApp;
 import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
@@ -38,10 +36,15 @@ import java.util.List;
 public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListener {
     private ListView lvEmployeeList;
     public EmployeeAdapter employeeAdapter;
-    private FragmentManager fragmentManager;
     private FragmentActivity myContext;
     private Button btnAddEmployee;
     private ArrayList<Employee> employees = new ArrayList<>();
+//    private static CrudAllEventListener crudAllEventListener;
+//
+//    public static ShowEmployeeFragment newInstance(CrudAllEventListener listener){
+//        crudAllEventListener = listener;
+//        return new ShowEmployeeFragment();
+//    }
 
     @Nullable
     @Override
@@ -65,8 +68,6 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
     private void setControl() {
         lvEmployeeList = getView().findViewById(R.id.lv_employee_list);
         btnAddEmployee = getView().findViewById(R.id.btn_create_employee);
-        fragmentManager = myContext.getSupportFragmentManager();
-
         fetchEmployeeList();
     }
 
@@ -148,6 +149,7 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
                     @Override
                     public void onSuccess(Boolean data) {
                         updateEmployeeList();
+                        //crudAllEventListener.onCrudCallback("Đã xóa nhân viên. ID: "+id);
                     }
 
                     @Override
@@ -193,4 +195,6 @@ public class ShowEmployeeFragment extends Fragment implements EmployeeCrudListen
             }
         });
     }
+
+
 }
