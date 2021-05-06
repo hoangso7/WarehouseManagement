@@ -131,7 +131,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-
+        android:background="@drawable/circle_button"
         android:layout_marginRight="10dp"
         android:backgroundTint="@color/primaryColor"
         android:text="Thêm hình ảnh" />
@@ -156,6 +156,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:backgroundTint="@color/primaryColor"
+        android:background="@drawable/circle_button"
         android:fontFamily="@font/hachi"
         android:text="Thêm sản phẩm"
         android:textColor="#fff"

@@ -26,17 +26,18 @@
             android:id="@+id/btn_edit_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#ccc"
+            android:background="@drawable/circle_button"
             android:fontFamily="@font/hachi"
             android:text="Sửa thông tin"
+            android:layout_marginBottom="10dp"
             android:textSize="14dp" />
 
         <Button
             android:id="@+id/btn_call"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#ccc"
             android:fontFamily="@font/hachi"
+            android:background="@drawable/circle_button"
             android:text="Gọi điện"
             android:textSize="14dp" />
     </LinearLayout>

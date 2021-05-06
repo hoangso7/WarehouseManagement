@@ -128,216 +128,225 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/triangle_radius"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/hachi"
-            android:text="Tên hàng:"
-            android:textColor="#14232d"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btn_ctk_choose_product"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="12dp"
-            android:backgroundTint="#fff"
-            android:fontFamily="@font/hachi"
-            android:text="Chọn sản phẩm"
-            android:textColor="#000"
-            android:textSize="15dp" />
-    </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/triangle_radius"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/triangle_radius"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
+                android:text="Tên hàng:"
+                android:textColor="#14232d"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/hachi"
-            android:text="Đơn vị:"
-            android:textColor="#14232d"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/btn_ctk_choose_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="12dp"
+                android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
+                android:text="Chọn sản phẩm"
+                android:textColor="#000"
+                android:textSize="15dp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_productUnit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:fontFamily="@font/hachi"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/triangle_radius"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/triangle_radius"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
+                android:text="Đơn vị:"
+                android:textColor="#14232d"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/hachi"
-            android:text="Số lượng:"
-            android:textColor="#14232d"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_productUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:fontFamily="@font/hachi"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edt_productNumber"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:backgroundTint="#fff"
-            android:fontFamily="@font/hachi"
-            android:hint="Nhập số lượng"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/triangle_radius"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/triangle_radius"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
+                android:text="Số lượng:"
+                android:textColor="#14232d"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/hachi"
-            android:text="NCC:"
-            android:textColor="#14232d"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edt_productNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
+                android:hint="Nhập số lượng"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edt_supplier_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:backgroundTint="#fff"
-            android:fontFamily="@font/hachi"
-            android:hint="Tên nhà cung cấp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/triangle_radius"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/triangle_radius"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
+                android:text="NCC:"
+                android:textColor="#14232d"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/hachi"
-            android:text="Địa chỉ:"
-            android:textColor="#14232d"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edt_supplier_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
+                android:hint="Tên nhà cung cấp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edt_supplier_address"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="37dp"
-            android:backgroundTint="#fff"
-            android:fontFamily="@font/hachi"
-            android:hint="Địa chỉ nhà cung cấp"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/triangle_radius"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/triangle_radius"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
+                android:text="Địa chỉ:"
+                android:textColor="#14232d"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/hachi"
-            android:text="Nhân viên:"
-            android:textColor="#14232d"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edt_supplier_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="37dp"
+                android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
+                android:hint="Địa chỉ nhà cung cấp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_ctk_choose_employee"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:backgroundTint="#fff"
-            android:fontFamily="@font/hachi"
-            android:text="Chọn nhân viên"
-            android:textColor="#000"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/triangle_radius"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/hachi"
+                android:text="Nhân viên:"
+                android:textColor="#14232d"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_ctk_choose_employee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:backgroundTint="#fff"
+                android:fontFamily="@font/hachi"
+                android:text="Chọn nhân viên"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_submit_import_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:background="@drawable/circle_button"
         android:backgroundTint="@color/import_ticket"
         android:fontFamily="@font/hachi"
         android:text="Nhập kho"

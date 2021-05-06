@@ -43,10 +43,8 @@ public class DashboardFragment extends Fragment{
     LinearLayout dashboardMenu;
 
     // Animation
-    Animation topAnimation, bottomAnimation;
+    Animation ani1, ani2, ani3, ani4, ani5, ani6;
     LinearLayout item1, item2, item3, item4, item5, item6;
-
-    Button btn1;
 
     @Nullable
     @Override
@@ -61,7 +59,12 @@ public class DashboardFragment extends Fragment{
         setControl();
         setEvent();
 
-        topAnimation = AnimationUtils.loadAnimation(myContext, R.anim.thuancute_animation);
+        ani1 = AnimationUtils.loadAnimation(myContext, R.anim.thuancute_animation);
+        ani2 = AnimationUtils.loadAnimation(myContext, R.anim.ani2);
+        ani3 = AnimationUtils.loadAnimation(myContext, R.anim.ani3);
+        ani4 = AnimationUtils.loadAnimation(myContext, R.anim.ani4);
+        ani5 = AnimationUtils.loadAnimation(myContext, R.anim.ani5);
+        ani6 = AnimationUtils.loadAnimation(myContext, R.anim.ani6);
 
         item1 = getView().findViewById(R.id.item_main_1);
         item2 = getView().findViewById(R.id.item_main_2);
@@ -70,14 +73,21 @@ public class DashboardFragment extends Fragment{
         item5 = getView().findViewById(R.id.item_main_5);
         item6 = getView().findViewById(R.id.item_main_6);
 
-        item1.setAnimation(topAnimation);
+        ani1.setStartOffset(200);
+        ani2.setStartOffset(400);
+        ani3.setStartOffset(600);
+        ani4.setStartOffset(800);
+        ani5.setStartOffset(1000);
+        ani6.setStartOffset(1200);
 
-        item2.setAnimation(topAnimation);
+        item1.setAnimation(ani1);
 
-        item3.setAnimation(topAnimation);
-        item4.setAnimation(topAnimation);
-        item5.setAnimation(topAnimation);
-        item6.setAnimation(topAnimation);
+        item2.setAnimation(ani2);
+
+        item3.setAnimation(ani3);
+        item4.setAnimation(ani4);
+        item5.setAnimation(ani5);
+        item6.setAnimation(ani6);
     }
 
     private void checkEmptyWarehouseList() {
