@@ -78,7 +78,7 @@ public class ExportTicketAdapter extends ArrayAdapter<ExportTicket> {
         try{
             customerPhone.setText(customers.get(0).getPhone());
         }catch (Exception e){
-            customerName.setText("(?) đã xóa");
+            customerPhone.setText("(?) đã xóa");
         }
         tvCreateDate.setText(exportTicket.getCreateDate());
 
