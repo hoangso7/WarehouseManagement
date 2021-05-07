@@ -4,22 +4,18 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
@@ -28,8 +24,6 @@ import com.midterm.proj.warehousemanagement.database.daoImplementation.Warehouse
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.customer.show.ShowCustomerListFragment;
 import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
-import com.midterm.proj.warehousemanagement.features.export_ticket.show.ShowExportTicketFragment;
-import com.midterm.proj.warehousemanagement.features.import_ticket.show.ShowImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.show.ShowInstockFragment;
 import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
 import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
@@ -59,7 +53,7 @@ public class DashboardFragment extends Fragment{
         setControl();
         setEvent();
 
-        ani1 = AnimationUtils.loadAnimation(myContext, R.anim.thuancute_animation);
+        ani1 = AnimationUtils.loadAnimation(myContext, R.anim.ani1);
         ani2 = AnimationUtils.loadAnimation(myContext, R.anim.ani2);
         ani3 = AnimationUtils.loadAnimation(myContext, R.anim.ani3);
         ani4 = AnimationUtils.loadAnimation(myContext, R.anim.ani4);
@@ -81,9 +75,7 @@ public class DashboardFragment extends Fragment{
         ani6.setStartOffset(1200);
 
         item1.setAnimation(ani1);
-
         item2.setAnimation(ani2);
-
         item3.setAnimation(ani3);
         item4.setAnimation(ani4);
         item5.setAnimation(ani5);

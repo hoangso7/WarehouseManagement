@@ -11,19 +11,14 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,7 +28,6 @@ import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment
 import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
-import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
@@ -66,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         setEvent();
 
         // Animation
-        topAnimation = AnimationUtils.loadAnimation(this, R.anim.thuancute_animation);
+        topAnimation = AnimationUtils.loadAnimation(this, R.anim.ani1);
 //
 //        btn1 = findViewById(R.id.btn_instock);
 //        btn1.setAnimation(topAnimation);

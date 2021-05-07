@@ -58,7 +58,7 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
     private ArrayList<Warehouse> warehouses = new ArrayList<>();
     private TableLayout tableLayout;
     private static int warehouseID;
-    private static int tableIndex = 0;
+    private int tableIndex = 0;
     private static int totalMoney = 0;
 
     public static class ChosenProductInfo {
@@ -498,8 +498,10 @@ public class CreateExportTicketFragment extends Fragment implements SearchProduc
 
         TableLayout.LayoutParams trParams = new
                 TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
+
         trParams.setMargins(10,4, 10, 4);
-        tableRow.setPadding(60,0,0,0);
+        tableRow.setPadding(52,0,0,0);
+
         tableRow.setLayoutParams(trParams);
         tableRow.addView(tvTableIndex);
         tableRow.addView(tvProductName);
