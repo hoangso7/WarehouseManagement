@@ -136,7 +136,8 @@ public class DashboardFragment extends Fragment{
                 actionBar.setTitle("QUẢN LÝ SẢN PHẨM");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowInstockFragment());
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowInstockFragment(),"product");
+                fragmentTransaction.addToBackStack("product");
                 fragmentTransaction.commit();
             }
         });
@@ -146,7 +147,8 @@ public class DashboardFragment extends Fragment{
                 actionBar.setTitle("QUẢN LÝ PHIẾU NHẬP/XUẤT");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ImportExportFragment());
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ImportExportFragment(),"tickets");
+                fragmentTransaction.addToBackStack("tickets");
                 fragmentTransaction.commit();
             }
         });
@@ -156,7 +158,8 @@ public class DashboardFragment extends Fragment{
                 actionBar.setTitle("DANH SÁCH NHÀ KHO");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new WarehouseManagerFragment(),"warehouses");
+                fragmentTransaction.addToBackStack("warehouses");
                 fragmentTransaction.commit();
             }
         });
@@ -167,7 +170,8 @@ public class DashboardFragment extends Fragment{
                 actionBar.setTitle("QUẢN LÝ NHÂN VIÊN");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new EmployeeManagerFragment(),"employee");
+                fragmentTransaction.addToBackStack("employee");
                 fragmentTransaction.commit();
             }
         });
@@ -178,7 +182,8 @@ public class DashboardFragment extends Fragment{
                 actionBar.setTitle("DANH SÁCH KHÁCH HÀNG");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowCustomerListFragment());
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowCustomerListFragment(),"customer");
+                fragmentTransaction.addToBackStack("customer");
                 fragmentTransaction.commit();
             }
         });
@@ -189,7 +194,8 @@ public class DashboardFragment extends Fragment{
                 actionBar.setTitle("DANH SÁCH NHÀ CUNG CẤP");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowSupplierListFragment());
+                fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowSupplierListFragment(), "supplier");
+                fragmentTransaction.addToBackStack("supplier");
                 fragmentTransaction.commit();
             }
         });

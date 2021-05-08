@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.midterm.proj.warehousemanagement.R;
@@ -50,6 +52,14 @@ public class ShowInstockFragment extends Fragment {
         checkForEmptyInstock();
         setControl();
         setEvent();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //FragmentManager fragmentManager = getFragmentManager();
+        //Fragment current = fragmentManager.findFragmentById(R.id.fragment_container);
+        //getFragmentManager().beginTransaction().remove(current).commitAllowingStateLoss();
     }
 
     private void checkForEmptyInstock() {

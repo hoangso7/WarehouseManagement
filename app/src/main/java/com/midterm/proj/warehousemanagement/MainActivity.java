@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -15,8 +18,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,10 +31,16 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
+import com.midterm.proj.warehousemanagement.features.customer.show.ShowCustomerListFragment;
 import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment;
+import com.midterm.proj.warehousemanagement.features.dashboard.ImportExportFragment;
+import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
 import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.product.create.CreateProductFragment;
+import com.midterm.proj.warehousemanagement.features.product.show.ShowInstockFragment;
+import com.midterm.proj.warehousemanagement.features.supplier.show.ShowSupplierListFragment;
+import com.midterm.proj.warehousemanagement.features.warehouse.manager.WarehouseManagerFragment;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 
 import java.util.ArrayList;
@@ -67,6 +78,45 @@ public class MainActivity extends AppCompatActivity {
     private void setDatabase() {
         SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
         String dbName = databaseHelper.getDatabaseName();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Fragment dashboard = new DashboardFragment();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dashboard).commit();
+        //selectedFragment = new DashboardFragment();
+        //viewPagerAdapter.notifyDataSetChanged();
+        //viewPager.setCurrentItem(0);
+        //bottomNavigationView.getMenu().findItem(R.id.item_warehouses_management).setChecked(true);
+        int id = bottomNavigationView.getSelectedItemId();
+        if(id != R.id.item_warehouses_management){
+            actionBar.setTitle("TRANG CHỦ");
+            viewPager.setCurrentItem(0);
+        }
+        else{
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            String[] tags = {"product", "tickets","warehouses","employee","customer","supplier"};
+            for(int i = 0 ; i < tags.length; i++){
+                Fragment current = getSupportFragmentManager().findFragmentByTag(tags[i]);
+                if(current instanceof ShowInstockFragment
+                        || current instanceof ImportExportFragment
+                        || current instanceof WarehouseManagerFragment
+                        || current instanceof EmployeeManagerFragment
+                        || current instanceof ShowCustomerListFragment
+                        || current instanceof ShowSupplierListFragment)
+                {
+                    getSupportFragmentManager().popBackStackImmediate();
+
+                    actionBar.setTitle("TRANG CHỦ");
+                    //recreate();
+                    finish();
+                    startActivity(getIntent());
+                }
+            }
+
+
+        }
+        //super.onBackPressed();
     }
 
     private void setEvent() {
@@ -129,21 +179,25 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.item_warehouses_management:
                             actionBar.setTitle("TRANG CHỦ");
                             //selectedFragment = new DashboardFragment();
+                            //viewPagerAdapter.notifyDataSetChanged();
                             viewPager.setCurrentItem(0);
                             break;
                         case R.id.item_import_ticket:
                             actionBar.setTitle("TẠO PHIẾU NHẬP KHO");
                             //selectedFragment = new CreateImportTicketFragment();
+                            //viewPagerAdapter.notifyDataSetChanged();
                             viewPager.setCurrentItem(1);
                             break;
                         case R.id.item_export_ticket:
                             actionBar.setTitle("TẠO PHIẾU XUẤT KHO");
                             //selectedFragment = new CreateExportTicketFragment();
+                            //viewPagerAdapter.notifyDataSetChanged();
                             viewPager.setCurrentItem(2);
                             break;
                         case R.id.item_add_product:
                             actionBar.setTitle("THÊM SẢN PHẨM MỚI");
                             //selectedFragment = new CreateProductFragment();
+                            //viewPagerAdapter.notifyDataSetChanged();
                             viewPager.setCurrentItem(3);
                             break;
                     }
