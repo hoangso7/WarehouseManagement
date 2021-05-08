@@ -24,7 +24,7 @@
             android:textColor="#14232d"
             android:textSize="16dp"
             android:fontFamily="@font/hachi"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spiner_choose_warehouse"

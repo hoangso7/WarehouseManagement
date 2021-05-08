@@ -204,8 +204,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/triangle_radius"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -221,7 +220,7 @@
                 android:id="@+id/edt_productNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="5dp"
                 android:backgroundTint="#fff"
                 android:fontFamily="@font/hachi"
                 android:hint="Nhập số lượng"
@@ -239,8 +238,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/triangle_radius"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -256,7 +254,7 @@
                 android:id="@+id/edt_supplier_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
+                android:layout_marginLeft="5dp"
                 android:backgroundTint="#fff"
                 android:fontFamily="@font/hachi"
                 android:hint="Tên nhà cung cấp"
@@ -274,8 +272,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/triangle_radius"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -291,7 +288,7 @@
                 android:id="@+id/edt_supplier_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="37dp"
+                android:layout_marginLeft="5dp"
                 android:backgroundTint="#fff"
                 android:fontFamily="@font/hachi"
                 android:hint="Địa chỉ nhà cung cấp"
@@ -309,8 +306,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/triangle_radius"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -332,8 +328,7 @@
                 android:fontFamily="@font/hachi"
                 android:text="Chọn nhân viên"
                 android:textColor="#000"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                android:textSize="15dp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -14,10 +14,13 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.midterm.proj.warehousemanagement.MainActivity;
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
@@ -35,7 +38,7 @@ public class DashboardFragment extends Fragment{
     Button btn_instock, btn_tickets_list, btn_warehouse_management, btn_employee_info, btn_customer_info, btn_supplier_info;
     private FragmentActivity myContext;
     LinearLayout dashboardMenu;
-
+    private ActionBar actionBar;
     // Animation
     Animation ani1, ani2, ani3, ani4, ani5, ani6;
     LinearLayout item1, item2, item3, item4, item5, item6;
@@ -67,6 +70,7 @@ public class DashboardFragment extends Fragment{
         item5 = getView().findViewById(R.id.item_main_5);
         item6 = getView().findViewById(R.id.item_main_6);
 
+        ani1.setStartTime(200);
         ani1.setStartOffset(200);
         ani2.setStartOffset(400);
         ani3.setStartOffset(600);
@@ -74,12 +78,19 @@ public class DashboardFragment extends Fragment{
         ani5.setStartOffset(1000);
         ani6.setStartOffset(1200);
 
-        item1.setAnimation(ani1);
-        item2.setAnimation(ani2);
-        item3.setAnimation(ani3);
-        item4.setAnimation(ani4);
-        item5.setAnimation(ani5);
-        item6.setAnimation(ani6);
+        item1.startAnimation(ani1);
+        item2.startAnimation(ani2);
+        item3.startAnimation(ani3);
+        item4.startAnimation(ani4);
+        item5.startAnimation(ani5);
+        item6.startAnimation(ani6);
+
+//        item1.setAnimation(ani1);
+//        item2.setAnimation(ani2);
+//        item3.setAnimation(ani3);
+//        item4.setAnimation(ani4);
+//        item5.setAnimation(ani5);
+//        item6.setAnimation(ani6);
     }
 
     private void checkEmptyWarehouseList() {
@@ -113,7 +124,7 @@ public class DashboardFragment extends Fragment{
         btn_customer_info = getView().findViewById(R.id.btn_customer_info);
         btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
         dashboardMenu = getView().findViewById(R.id.dashboard_menu);
-
+        actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
 
 
     }
@@ -122,6 +133,7 @@ public class DashboardFragment extends Fragment{
         btn_instock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                actionBar.setTitle("QUẢN LÝ SẢN PHẨM");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowInstockFragment());
@@ -131,6 +143,7 @@ public class DashboardFragment extends Fragment{
         btn_tickets_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                actionBar.setTitle("QUẢN LÝ PHIẾU NHẬP/XUẤT");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new ImportExportFragment());
@@ -140,6 +153,7 @@ public class DashboardFragment extends Fragment{
         btn_warehouse_management.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                actionBar.setTitle("DANH SÁCH NHÀ KHO");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new WarehouseManagerFragment());
@@ -150,6 +164,7 @@ public class DashboardFragment extends Fragment{
         btn_employee_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                actionBar.setTitle("QUẢN LÝ NHÂN VIÊN");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new EmployeeManagerFragment());
@@ -160,6 +175,7 @@ public class DashboardFragment extends Fragment{
         btn_customer_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                actionBar.setTitle("DANH SÁCH KHÁCH HÀNG");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowCustomerListFragment());
@@ -170,6 +186,7 @@ public class DashboardFragment extends Fragment{
         btn_supplier_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                actionBar.setTitle("DANH SÁCH NHÀ CUNG CẤP");
                 dashboardMenu.setVisibility(View.INVISIBLE);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_dashboard_container, new ShowSupplierListFragment());

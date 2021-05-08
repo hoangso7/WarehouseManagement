@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -34,17 +36,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    public ActionBar actionBar;
+    public static ActionBar actionBar;
     public static List<Warehouse> warehouses = new ArrayList<>();
     BottomNavigationView bottomNavigationView;
     private ListView listView;
     private Activity mActivity;
     private Context mContext;
-    // private TicketInfoAdapter ticketInfoAdapter;
-
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
     // Animation
-    Animation topAnimation, bottomAnimation;
-    Button btn1;
+    private Animation topAnimation, bottomAnimation;
 
     private static final int MY_PERMISSIONS_REQUEST_CODE = 69;
 
@@ -61,27 +62,61 @@ public class MainActivity extends AppCompatActivity {
 
         // Animation
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.ani1);
-//
-//        btn1 = findViewById(R.id.btn_instock);
-//        btn1.setAnimation(topAnimation);
     }
 
     private void setDatabase() {
         SqliteDatabaseHelper databaseHelper = SqliteDatabaseHelper.getInstance();
         String dbName = databaseHelper.getDatabaseName();
-        //Log.d("DATABASE NAME", dbName);
     }
 
     private void setEvent() {
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        actionBar.setTitle("TRANG CHỦ");
+                        bottomNavigationView.getMenu().findItem(R.id.item_warehouses_management).setChecked(true);
+                        break;
+                    case 1:
+                        actionBar.setTitle("TẠO PHIẾU NHẬP KHO");
+                        bottomNavigationView.getMenu().findItem(R.id.item_import_ticket).setChecked(true);
+                        break;
+                    case 2:
+                        actionBar.setTitle("TẠO PHIẾU XUẤT KHO");
+                        bottomNavigationView.getMenu().findItem(R.id.item_export_ticket).setChecked(true);
+                        break;
+                    case 3:
+                        actionBar.setTitle("THÊM SẢN PHẨM MỚI");
+                        bottomNavigationView.getMenu().findItem(R.id.item_add_product).setChecked(true);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void setControl() {
         actionBar = getSupportActionBar();
+        viewPager = findViewById(R.id.view_pager);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setCurrentItem(0);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setItemIconTintList(null);
-        actionBar.setTitle("TRANG CHỦ");
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
+        //actionBar.setTitle("TRANG CHỦ");
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -93,23 +128,27 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.item_warehouses_management:
                             actionBar.setTitle("TRANG CHỦ");
-                            selectedFragment = new DashboardFragment();
+                            //selectedFragment = new DashboardFragment();
+                            viewPager.setCurrentItem(0);
                             break;
                         case R.id.item_import_ticket:
                             actionBar.setTitle("TẠO PHIẾU NHẬP KHO");
-                            selectedFragment = new CreateImportTicketFragment();
+                            //selectedFragment = new CreateImportTicketFragment();
+                            viewPager.setCurrentItem(1);
                             break;
                         case R.id.item_export_ticket:
                             actionBar.setTitle("TẠO PHIẾU XUẤT KHO");
-                            selectedFragment = new CreateExportTicketFragment();
+                            //selectedFragment = new CreateExportTicketFragment();
+                            viewPager.setCurrentItem(2);
                             break;
                         case R.id.item_add_product:
                             actionBar.setTitle("THÊM SẢN PHẨM MỚI");
-                            selectedFragment = new CreateProductFragment();
+                            //selectedFragment = new CreateProductFragment();
+                            viewPager.setCurrentItem(3);
                             break;
                     }
-                    assert selectedFragment != null;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+                    //assert selectedFragment != null;
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
                     return true;
                 }
             };

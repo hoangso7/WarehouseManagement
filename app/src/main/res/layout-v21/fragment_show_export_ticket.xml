@@ -24,7 +24,7 @@
             android:text="Chọn Kho: "
             android:textColor="#14232d"
             android:textSize="18dp"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spiner_choose_warehouse"
