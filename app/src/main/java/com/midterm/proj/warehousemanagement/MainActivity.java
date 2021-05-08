@@ -82,15 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //Fragment dashboard = new DashboardFragment();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dashboard).commit();
-        //selectedFragment = new DashboardFragment();
-        //viewPagerAdapter.notifyDataSetChanged();
-        //viewPager.setCurrentItem(0);
-        //bottomNavigationView.getMenu().findItem(R.id.item_warehouses_management).setChecked(true);
+        actionBar.setTitle("TRANG CHỦ");
         int id = bottomNavigationView.getSelectedItemId();
         if(id != R.id.item_warehouses_management){
-            actionBar.setTitle("TRANG CHỦ");
             viewPager.setCurrentItem(0);
         }
         else{
@@ -106,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
                         || current instanceof ShowSupplierListFragment)
                 {
                     getSupportFragmentManager().popBackStackImmediate();
-
-                    actionBar.setTitle("TRANG CHỦ");
-                    //recreate();
                     finish();
                     startActivity(getIntent());
                 }
@@ -165,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setItemIconTintList(null);
-        //actionBar.setTitle("TRANG CHỦ");
+        actionBar.setTitle("TRANG CHỦ");
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DashboardFragment()).commit();
     }
 
