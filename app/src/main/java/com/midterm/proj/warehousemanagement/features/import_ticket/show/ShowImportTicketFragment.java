@@ -38,6 +38,8 @@ public class ShowImportTicketFragment extends Fragment {
     private ArrayList<ImportTicket> importTicketArrayList = new ArrayList<>();
     private static int warehouseId;
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -116,6 +118,9 @@ public class ShowImportTicketFragment extends Fragment {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+
+
     private  void fetchImportTicket(){
         DAO.ImportTicketQuery importTicketQuery = new ImportTicketQuery();
         importTicketQuery.readAllImportTicketFromWarehouse(warehouseId, new QueryResponse<List<ImportTicket>>() {

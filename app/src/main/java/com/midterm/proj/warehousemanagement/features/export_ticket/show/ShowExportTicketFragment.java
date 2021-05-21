@@ -22,9 +22,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.midterm.proj.warehousemanagement.R;
 import com.midterm.proj.warehousemanagement.database.QueryResponse;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.ExportTicketQuery;
+import com.midterm.proj.warehousemanagement.database.daoImplementation.ImportTicketQuery;
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.model.ExportTicket;
+import com.midterm.proj.warehousemanagement.model.ImportTicket;
 import com.midterm.proj.warehousemanagement.model.Warehouse;
 import com.midterm.proj.warehousemanagement.util.ThirdPartyApp;
 
@@ -40,6 +42,7 @@ public class ShowExportTicketFragment extends Fragment {
     private ArrayList<Warehouse> warehouses = new ArrayList<>();
     private ArrayList<ExportTicket> exportTicketsArrayList = new ArrayList<>();
     private static int warehouseId;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -49,6 +49,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/triangle_radius"
                 android:backgroundTint="@color/primaryColor"
                 android:gravity="center"
@@ -63,6 +64,28 @@
                     android:fontFamily="@font/hachi"
                     android:stateListAnimator="@null"
                     android:text="Phiếu xuất kho"
+                    android:textColor="#fff"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/triangle_radius"
+                android:backgroundTint="@color/primaryColor"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_statistic_import_ticket"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circle_button"
+                    android:backgroundTint="@color/primaryColor"
+                    android:fontFamily="@font/hachi"
+                    android:stateListAnimator="@null"
+                    android:text="thống kê SP trong phiếu nhập"
                     android:textColor="#fff"
                     android:textSize="14dp"
                     android:textStyle="bold" />
