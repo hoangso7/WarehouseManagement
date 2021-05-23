@@ -23,6 +23,7 @@ import com.midterm.proj.warehousemanagement.database.daoImplementation.ProductQu
 import com.midterm.proj.warehousemanagement.database.daoImplementation.WarehouseQuery;
 import com.midterm.proj.warehousemanagement.database.daoInterface.DAO;
 import com.midterm.proj.warehousemanagement.features.export_ticket.show.ShowExportTicketFragment;
+import com.midterm.proj.warehousemanagement.features.export_ticket.show.StatisticExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.show.ShowImportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.show.StatisticImportTicketFragment;
 import com.midterm.proj.warehousemanagement.model.ImportTicket;
@@ -35,7 +36,7 @@ import java.util.List;
 
 public class ImportExportFragment extends Fragment {
 
-    Button btnImport, btnExport, btnStatisticImportTicket;
+    Button btnImport, btnExport, btnStatisticImportTicket, btnStatisticExportTicket;
     private FragmentActivity myContext;
     LinearLayout importExportmenu;
 
@@ -91,6 +92,15 @@ public class ImportExportFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        btnStatisticExportTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                importExportmenu.setVisibility(View.INVISIBLE);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_import_export_container, new StatisticExportTicketFragment());
+                fragmentTransaction.commit();
+            }
+        });
 
     }
 
@@ -98,6 +108,7 @@ public class ImportExportFragment extends Fragment {
         btnImport = getView().findViewById(R.id.btn_menu_import);
         btnExport = getView().findViewById(R.id.btn_menu_export);
         btnStatisticImportTicket = getView().findViewById(R.id.btn_statistic_import_ticket);
+        btnStatisticExportTicket = getView().findViewById(R.id.btn_statistic_export_ticket);
         importExportmenu = getView().findViewById(R.id.import_export_menu);
     }
 }
