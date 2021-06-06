@@ -3,6 +3,7 @@ package com.midterm.proj.warehousemanagement.features.dashboard;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -56,6 +58,90 @@ public class DashboardFragment extends Fragment{
         setControl();
         setEvent();
 
+        handleAnimation();
+        changeFontDancing();
+        changeFontOpensan();
+        changeFontItim();
+    }
+
+    private void changeFontDancing(){
+        Button btn_Dancing = getView().findViewById(R.id.btn_dancing);
+
+        btn_Dancing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Typeface font = ResourcesCompat.getFont(getContext(), R.font.dancing);
+                Button product = getView().findViewById(R.id.btn_instock);
+                Button tickets_list = getView().findViewById(R.id.btn_tickets_list);
+                Button btn_warehouse_management = getView().findViewById(R.id.btn_warehouse_management);
+                Button btn_employee_info = getView().findViewById(R.id.btn_employee_info);
+                Button btn_customer_info = getView().findViewById(R.id.btn_customer_info);
+                Button btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
+
+                product.setTypeface(font);
+                tickets_list.setTypeface(font);
+                btn_warehouse_management.setTypeface(font);
+                btn_employee_info.setTypeface(font);
+                btn_customer_info.setTypeface(font);
+                btn_supplier_info.setTypeface(font);
+
+            }
+        });
+    }
+
+    private void changeFontOpensan() {
+        Button btn_opensan = getView().findViewById(R.id.btn_opensan);
+
+        btn_opensan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Typeface font = ResourcesCompat.getFont(getContext(), R.font.opensan);
+
+                Button product = getView().findViewById(R.id.btn_instock);
+                Button tickets_list = getView().findViewById(R.id.btn_tickets_list);
+                Button btn_warehouse_management = getView().findViewById(R.id.btn_warehouse_management);
+                Button btn_employee_info = getView().findViewById(R.id.btn_employee_info);
+                Button btn_customer_info = getView().findViewById(R.id.btn_customer_info);
+                Button btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
+
+                product.setTypeface(font);
+                tickets_list.setTypeface(font);
+                btn_warehouse_management.setTypeface(font);
+                btn_employee_info.setTypeface(font);
+                btn_customer_info.setTypeface(font);
+                btn_supplier_info.setTypeface(font);
+
+            }
+        });
+    }
+
+    private void changeFontItim() {
+        Button btn_itim = getView().findViewById(R.id.btn_itim);
+
+        btn_itim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Typeface font = ResourcesCompat.getFont(getContext(), R.font.itim);
+
+                Button product = getView().findViewById(R.id.btn_instock);
+                Button tickets_list = getView().findViewById(R.id.btn_tickets_list);
+                Button btn_warehouse_management = getView().findViewById(R.id.btn_warehouse_management);
+                Button btn_employee_info = getView().findViewById(R.id.btn_employee_info);
+                Button btn_customer_info = getView().findViewById(R.id.btn_customer_info);
+                Button btn_supplier_info = getView().findViewById(R.id.btn_supplier_info);
+
+                product.setTypeface(font);
+                tickets_list.setTypeface(font);
+                btn_warehouse_management.setTypeface(font);
+                btn_employee_info.setTypeface(font);
+                btn_customer_info.setTypeface(font);
+                btn_supplier_info.setTypeface(font);
+
+            }
+        });
+    }
+
+    private void handleAnimation(){
         ani1 = AnimationUtils.loadAnimation(myContext, R.anim.ani1);
         ani2 = AnimationUtils.loadAnimation(myContext, R.anim.ani2);
         ani3 = AnimationUtils.loadAnimation(myContext, R.anim.ani3);
@@ -84,13 +170,6 @@ public class DashboardFragment extends Fragment{
         item4.startAnimation(ani4);
         item5.startAnimation(ani5);
         item6.startAnimation(ani6);
-
-//        item1.setAnimation(ani1);
-//        item2.setAnimation(ani2);
-//        item3.setAnimation(ani3);
-//        item4.setAnimation(ani4);
-//        item5.setAnimation(ani5);
-//        item6.setAnimation(ani6);
     }
 
     private void checkEmptyWarehouseList() {
