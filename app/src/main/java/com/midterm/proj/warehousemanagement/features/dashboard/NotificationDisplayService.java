@@ -1,9 +1,11 @@
 package com.midterm.proj.warehousemanagement.features.dashboard;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
@@ -50,30 +52,61 @@ public class NotificationDisplayService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         fetchProductList();
+        Log.d("TAG", "onStartCommand: cc "+ products);
+
         displayNotification("Xuất hiện mặt hàng mới: ", products.get(products.size()-1).getName());
         stopSelf(); // Beendet den Service nach dem Ausführen des Codes (nachträglich ergänzt)
         return super.onStartCommand(intent, flags, startId);
     }
     private void displayNotification(String title, String text){
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent notificationPendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-
-        @SuppressLint("ResourceAsColor") NotificationCompat.Builder notification = new NotificationCompat.Builder(this)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setSmallIcon(R.drawable._warehouse)
+//        Intent notificationIntent = new Intent(this, MainActivity.class);
+//        PendingIntent notificationPendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+//
+//        @SuppressLint("ResourceAsColor") NotificationCompat.Builder notification = new NotificationCompat.Builder(this)
+//                .setContentTitle(title)
+//                .setContentText(text)
+//                .setSmallIcon(R.drawable._warehouse)
 //                .setColor(R.color.teal_200)
-                .setVibrate(new long[]{0, 300, 300, 300})
-                    //.setSound()
-                .setLights(R.color.white, 1000, 5000)
-                //.setWhen(System.currentTimeMillis())
-                .setContentIntent(notificationPendingIntent)
-                .setAutoCancel(true)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
-
+//                .setVibrate(new long[]{0, 300, 300, 300})
+//                    //.setSound()
+//                .setLights(R.color.white, 1000, 5000)
+//                //.setWhen(System.currentTimeMillis())
+//                .setContentIntent(notificationPendingIntent)
+//                .setAutoCancel(true)
+//                .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
+//
+//        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        notificationManager.notify(NOTIFICATION_ID, notification.build());
+        int NOTIFICATION_ID = 234;
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFICATION_ID, notification.build());
+        String CHANNEL_ID = "my_channel_01";
+        CharSequence name = "my_channel";
+        String Description = "This is my channel";
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+            mChannel.setDescription(Description);
+            mChannel.enableLights(true);
+            mChannel.setLightColor(R.color.white);
+            mChannel.enableVibration(true);
+            mChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+            mChannel.setShowBadge(false);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(text);
+
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity.class);
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(resultPendingIntent);
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 }
