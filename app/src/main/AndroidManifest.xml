@@ -18,6 +18,10 @@
         android:roundIcon="@mipmap/ic_warehouse_app_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WarehouseManagement">
+        <service
+            android:name=".features.dashboard.NotificationDisplayService"
+            android:enabled="true"
+            android:exported="true"></service>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -28,7 +32,7 @@
             <!-- ressource file to create -->
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
 
         <activity android:name=".MainActivity">

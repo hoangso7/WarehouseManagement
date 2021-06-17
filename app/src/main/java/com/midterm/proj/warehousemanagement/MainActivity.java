@@ -34,6 +34,7 @@ import com.midterm.proj.warehousemanagement.database.SqliteDatabaseHelper;
 import com.midterm.proj.warehousemanagement.features.customer.show.ShowCustomerListFragment;
 import com.midterm.proj.warehousemanagement.features.dashboard.DashboardFragment;
 import com.midterm.proj.warehousemanagement.features.dashboard.ImportExportFragment;
+import com.midterm.proj.warehousemanagement.features.dashboard.NotificationDisplayService;
 import com.midterm.proj.warehousemanagement.features.employee.manager.EmployeeManagerFragment;
 import com.midterm.proj.warehousemanagement.features.export_ticket.create.CreateExportTicketFragment;
 import com.midterm.proj.warehousemanagement.features.import_ticket.create.CreateImportTicketFragment;
@@ -169,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.item_warehouses_management:
                             actionBar.setTitle("TRANG CHỦ");
+                            Intent startNotificationServiceIntent = new Intent(MainActivity.this, NotificationDisplayService.class);
+                            startService(startNotificationServiceIntent);
                             //selectedFragment = new DashboardFragment();
                             //viewPagerAdapter.notifyDataSetChanged();
                             viewPager.setCurrentItem(0);
